@@ -10,19 +10,18 @@ import java.util.UUID;
 @DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id", columnDefinition = "VARCHAR(64)")
-    private UUID userId;
+    private String userId;
 
-    public User(UUID uuid) {
-        this.userId=uuid;
+    public User(String uuid) {
 
     }
 
     public User() {
-        this.userId=UUID.randomUUID();
     }
 
-    public UUID getUserId() {
+    public String getUserId() {
         return userId;
     }
 }
