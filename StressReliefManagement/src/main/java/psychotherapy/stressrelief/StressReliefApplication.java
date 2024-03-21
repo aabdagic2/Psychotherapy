@@ -13,7 +13,7 @@ import java.time.ZoneOffset;
 import java.util.UUID;
 
 @SpringBootApplication
-public class AppointmentsApplication implements CommandLineRunner {
+public class StressReliefApplication implements CommandLineRunner {
 
 	@Autowired
 	private StressReliefActionRepository _stressReliefActionRepository;
