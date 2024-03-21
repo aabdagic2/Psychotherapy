@@ -11,9 +11,9 @@ import java.util.UUID;
 public class Message {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "message_id", columnDefinition = "VARCHAR(16)")
-    private UUID messageId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "message_id", columnDefinition = "VARCHAR(64)")
+    private String messageId;
 
     @Column(name = "content")
     private String content;
@@ -34,11 +34,11 @@ public class Message {
         this.createdAt = createdAt;
         this.sender = sender;
         this.recipient = recipient;
-        messageId=UUID.randomUUID();
+        messageId=UUID.randomUUID().toString();
     }
 
     public Message() {
-        messageId=UUID.randomUUID();
+        messageId=UUID.randomUUID().toString();
     }
 }
 

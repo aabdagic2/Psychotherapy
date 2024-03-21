@@ -8,8 +8,9 @@ import java.util.UUID;
 @Table(name = "daily_report")
 public class DailyReport {
     @Id
-    @Column(name = "daily_report_id", columnDefinition = "VARCHAR(16)")
-    private UUID dailyReportId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "daily_report_id", columnDefinition = "VARCHAR(64)")
+    private String dailyReportId;
 
     @Column(name = "content", columnDefinition = "VARCHAR(1024)")
     private String content;
@@ -26,11 +27,9 @@ public class DailyReport {
         content=sampleContent;
         this.patient=patient;
         this.weeklyReport=weeklyReport;
-        dailyReportId=UUID.randomUUID();
     }
 
     public DailyReport() {
-        dailyReportId=UUID.randomUUID();
     }
 
     // Constructors, getters, and setters

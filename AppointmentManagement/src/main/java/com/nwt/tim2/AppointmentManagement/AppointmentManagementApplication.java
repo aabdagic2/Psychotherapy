@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Date;
+import java.util.UUID;
 
 @SpringBootApplication
 public class AppointmentManagementApplication implements CommandLineRunner {
@@ -42,25 +43,15 @@ public class AppointmentManagementApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Psychologist psychologist = new Psychologist();
-		psychologistRepository.save(psychologist);
-		// Inserting data into the Patient table
-		Patient patient = new Patient();
-		patient.setAge(30);
-		patient.setSelectedPsychologist(psychologist);
+		psychologist=psychologistRepository.save(psychologist);
+		Patient patient = new Patient(30,psychologist);
 		patientRepository.save(patient);
-		// Inserting data into the Message table
 		Message message = new Message("Sample message content", new Date(), patient, psychologist);
 		messageRepository.save(message);
-
-		// Inserting data into the QualityRate table
 		QualityRate qualityRate = new QualityRate(psychologist, patient, 5);
 		qualityRateRepository.save(qualityRate);
-
-		// Inserting data into the WeeklyReport table
 		WeeklyReport weeklyReport = new WeeklyReport("Sample weekly report content", psychologist);
 		weeklyReportRepository.save(weeklyReport);
-
-		// Inserting data into the DailyReport table
 		DailyReport dailyReport = new DailyReport("Sample content", patient, weeklyReport);
 		dailyReportRepository.save(dailyReport);
 

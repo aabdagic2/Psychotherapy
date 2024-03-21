@@ -9,10 +9,10 @@ import java.util.UUID;
 public class Psychologist extends User {
 
     public Psychologist(UUID uuid) {
-        super(uuid);
+        super();
     }
 
     public Psychologist() {
-        super(UUID.randomUUID());
+        super();
     }
 }
