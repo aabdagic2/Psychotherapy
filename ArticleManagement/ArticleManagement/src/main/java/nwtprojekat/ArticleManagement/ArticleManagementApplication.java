@@ -39,13 +39,17 @@ public class ArticleManagementApplication implements CommandLineRunner {
 		sections.add(textSection);
 		sections.add(videoSection);
 		sections.add(imageSection);
-
+		articleRepo.save(article);
 		sections.forEach((Section s) -> {
+
 			s.setArticle(article);
+			sectionRepo.save(s);
 		});
 
-		article.setSections(sections);
-		articleRepo.save(article);
+		//article.setSections(sections);
+		// article se prvo spasi
+		// a nakon toga sections
+
 		
 	}
 
