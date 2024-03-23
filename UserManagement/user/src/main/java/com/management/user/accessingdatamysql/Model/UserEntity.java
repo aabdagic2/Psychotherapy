@@ -1,4 +1,4 @@
-package com.management.user.accessingdatamysql;
+package com.management.user.accessingdatamysql.Model;
 
 
 import jakarta.persistence.*;
@@ -9,7 +9,7 @@ import java.util.UUID;
 @Entity // This tells Hibernate to make a table out of this class
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id", columnDefinition = "VARCHAR(16)")
     private UUID userId;
 

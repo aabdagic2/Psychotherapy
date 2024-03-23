@@ -1,5 +1,6 @@
-package com.management.user.accessingdatamysql;
+package com.management.user.accessingdatamysql.Repository;
 
+import com.management.user.accessingdatamysql.Model.UserRoleEntity;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;

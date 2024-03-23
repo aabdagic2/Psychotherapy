@@ -1,4 +1,4 @@
-package com.management.user.accessingdatamysql;
+package com.management.user.accessingdatamysql.Model;
 
 import jakarta.persistence.*;
 
@@ -9,7 +9,7 @@ import java.util.UUID;
 public class UserRoleEntity {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_role_id", columnDefinition = "VARCHAR(64)")
     private UUID user_role_id;
     @ManyToOne
