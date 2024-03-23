@@ -49,15 +49,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifestFile>src/main/java/com/management/user/UserApplication.java</manifestFile>
-					</archive>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 
