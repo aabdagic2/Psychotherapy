@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="636d523a-9515-4dba-99bd-1d00f7af3ded" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/ArticleManagement/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/ArticleManagement/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/RoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/Model/RoleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/Repository/RoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/Model/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/Repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/UserRoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/Model/UserRoleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/UserRoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/Repository/UserRoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/UserApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/UserApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/Model/RoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/Model/RoleEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/Model/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/Model/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/Model/UserRoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserManagement/user/src/main/java/com/management/user/accessingdatamysql/Model/UserRoleEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +36,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/naimm/Desktop/Psychotherapy",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -66,6 +62,7 @@
       <updated>1711031493011</updated>
       <workItem from="1711031494132" duration="28000" />
       <workItem from="1711229745980" duration="855000" />
+      <workItem from="1711235776123" duration="13000" />
     </task>
     <servers />
   </component>

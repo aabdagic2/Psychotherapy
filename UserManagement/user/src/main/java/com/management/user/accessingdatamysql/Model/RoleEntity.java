@@ -10,8 +10,8 @@ import java.util.UUID;
 public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "role_id", columnDefinition = "VARCHAR(16)")
-    private UUID roleId;
+    @Column(name = "role_id", columnDefinition = "VARCHAR(64)")
+    private String roleId;
 
     @Column(name = "role_name", columnDefinition = "VARCHAR(1024)")
     private String name;
@@ -19,11 +19,11 @@ public class RoleEntity {
 
 
 
-    public UUID getId() {
+    public String getId() {
         return roleId;
     }
 
-    public void setId(UUID roleId) {
+    public void setId(String roleId) {
         this.roleId = roleId;
     }
 

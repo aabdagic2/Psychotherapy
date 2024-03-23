@@ -10,8 +10,8 @@ import java.util.UUID;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "user_id", columnDefinition = "VARCHAR(16)")
-    private UUID userId;
+    @Column(name = "user_id", columnDefinition = "VARCHAR(64)")
+    private String userId;
 
     @Column(name = "user_name", columnDefinition = "VARCHAR(1024)")
     private String name;
@@ -31,11 +31,11 @@ public class UserEntity {
     }
 
 
-    public UUID getId() {
+    public String getId() {
         return userId;
     }
 
-    public void setId(UUID idUser) {
+    public void setId(String idUser) {
         this.userId = idUser;
     }
 
