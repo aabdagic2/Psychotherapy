@@ -9,8 +9,9 @@ import java.util.UUID;
 @Table(name = "weekly_report")
 public class WeeklyReport {
     @Id
-    @Column(name = "weekly_report_id", columnDefinition = "VARCHAR(16)")
-    private UUID weeklyReportId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "weekly_report_id", columnDefinition = "VARCHAR(64)")
+    private String weeklyReportId;
 
     @Column(name = "content", columnDefinition = "VARCHAR(1024)")
     private String content;
@@ -20,12 +21,11 @@ public class WeeklyReport {
     private Psychologist psychologist;
 
     public WeeklyReport(String sampleWeeklyReportContent, Psychologist psychologist) {
-        weeklyReportId=UUID.randomUUID();
         this.psychologist=psychologist;
         this.content=sampleWeeklyReportContent;
     }
 
     public WeeklyReport() {
-        weeklyReportId=UUID.randomUUID();
+
     }
 }

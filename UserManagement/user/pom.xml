@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.3</version>
+		<version>3.2.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>nwtprojekat</groupId>
-	<artifactId>ArticleManagement</artifactId>
+	<groupId>com.management</groupId>
+	<artifactId>user</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ArticleManagement</name>
-	<description>One of the microservices.</description>
+	<name>user</name>
+	<description>Microservice for user management</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -25,11 +25,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>6.4.4.Final</version>
-		</dependency>
+
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
@@ -48,7 +44,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
 		</plugins>
 	</build>
 

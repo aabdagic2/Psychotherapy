@@ -19,17 +19,23 @@ public class Patient extends User {
 
 
     public Patient(UUID userId) {
-        super(userId);
+        super();
     }
 
     public Patient(UUID userId, int i, Psychologist psychologist) {
-        super(userId);
+        super(userId.toString());
         age=i;
         selectedPsychologist=psychologist;
     }
 
     public Patient() {
         super();
+    }
+
+    public Patient(int i, Psychologist psychologist) {
+        super();
+        this.selectedPsychologist=psychologist;
+        this.age=i;
     }
 
     public void setSelectedPsychologist(Psychologist selectedPsychologist) {
@@ -40,6 +46,4 @@ public class Patient extends User {
         this.age = age;
     }
 
-
-    // Other patient-specific fields
 }

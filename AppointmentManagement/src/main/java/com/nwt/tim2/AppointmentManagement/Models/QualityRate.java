@@ -8,9 +8,9 @@ import java.util.UUID;
 @Table(name = "quality_rate")
 public class QualityRate {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "quality_rate_id", columnDefinition = "VARCHAR(16)")
-    private UUID qualityRateId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "quality_rate_id", columnDefinition = "VARCHAR(64)")
+    private String qualityRateId;
 
     @ManyToOne
     @JoinColumn(name = "psychologist_id", referencedColumnName = "user_id")
@@ -27,10 +27,8 @@ public class QualityRate {
         this.psychologist=psychologist;
         this.patient=patient;
         this.rate=i;
-        qualityRateId=UUID.randomUUID();
     }
 
     public QualityRate() {
-        qualityRateId=UUID.randomUUID();
     }
 }
