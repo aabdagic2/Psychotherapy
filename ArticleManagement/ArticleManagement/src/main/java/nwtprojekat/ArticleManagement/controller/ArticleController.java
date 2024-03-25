@@ -17,32 +17,28 @@ public class ArticleController {
 
     @PostMapping
     public ResponseEntity<Article> createArticle(@RequestBody Article article) {
-        // Logika za kreiranje članka
         Article savedArticle = articleRepository.save(article);
         return ResponseEntity.ok(savedArticle);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Article> getArticleById(@PathVariable Long id) {
-        // Logika za dohvatanje članka po ID-u
         Optional<Article> optionalArticle = articleRepository.findById(id);
         return optionalArticle.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Article> updateArticle(@PathVariable Long id, @RequestBody Article updatedArticle) {
-        // Logika za ažuriranje članka
         if (!articleRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
-        updatedArticle.setId(id); // Postavljanje ID-a članka
+        updatedArticle.setId(id);
         Article savedArticle = articleRepository.save(updatedArticle);
         return ResponseEntity.ok(savedArticle);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteArticle(@PathVariable Long id) {
-        // Logika za brisanje članka
         if (!articleRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
