@@ -28,6 +28,7 @@ public class ArticleManagementApplication implements CommandLineRunner {
 		Article article = new Article();
 		article.setAuthor("Neko Nekic");
 		article.setTitle("Ovo je NWT projekat.");
+
 		Text textSection = new Text();
 		textSection.setContent("Ovo je tekst.");
 
@@ -41,9 +42,10 @@ public class ArticleManagementApplication implements CommandLineRunner {
 		sections.add(textSection);
 		sections.add(videoSection);
 		sections.add(imageSection);
-		articleRepo.save(article);
-		sections.forEach((Section s) -> {
 
+		articleRepo.save(article);
+
+		sections.forEach((Section s) -> {
 			s.setArticle(article);
 			sectionRepo.save(s);
 		});
@@ -51,9 +53,6 @@ public class ArticleManagementApplication implements CommandLineRunner {
 		//article.setSections(sections);
 		// article se prvo spasi
 		// a nakon toga sections
-
-
-		
 	}
 
 	public static void main(String[] args) {
