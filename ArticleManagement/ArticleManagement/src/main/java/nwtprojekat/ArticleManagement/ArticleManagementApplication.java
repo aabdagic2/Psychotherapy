@@ -27,15 +27,15 @@ public class ArticleManagementApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Article article = new Article();
 		article.setAuthor("Neko Nekic");
-		article.setTitle("Ovo je NWT projekta!");
+		article.setTitle("Ovo je NWT projekat.");
 		Text textSection = new Text();
-		textSection.setContent("TEXT TEXT");
+		textSection.setContent("Ovo je tekst.");
 
 		Video videoSection = new Video();
-		videoSection.setVideoUrl("URL URL");
+		videoSection.setVideoUrl("Ovo je video.");
 
 		Image imageSection = new Image();
-		imageSection.setImageUrl("Ovdje treba ici url!");
+		imageSection.setImageUrl("Ovo je slika.");
 
 		List<Section> sections = new ArrayList<>();
 		sections.add(textSection);
