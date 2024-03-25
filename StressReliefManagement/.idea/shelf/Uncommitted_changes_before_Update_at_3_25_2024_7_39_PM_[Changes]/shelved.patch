@@ -1,0 +1,11 @@
+Index: ../.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../.gitignore b/../.gitignore
+new file mode 100644
+--- /dev/null	(date 1711391970041)
++++ b/../.gitignore	(date 1711391970041)
+@@ -0,0 +1,1 @@
++/.idea/workspace.xml

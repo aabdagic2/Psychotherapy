@@ -18,7 +18,7 @@ public class StressReliefApplication implements CommandLineRunner {
 	@Autowired
 	private StressReliefActionRepository _stressReliefActionRepository;
 	public static void main(String[] args) {
-		SpringApplication.run(AppointmentsApplication.class, args);
+		SpringApplication.run(StressReliefApplication.class, args);
 	}
 
 	@Override
