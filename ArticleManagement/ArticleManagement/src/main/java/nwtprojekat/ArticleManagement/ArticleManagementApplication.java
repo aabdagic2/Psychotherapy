@@ -3,10 +3,11 @@ package nwtprojekat.ArticleManagement;
 import nwtprojekat.ArticleManagement.model.Article;
 import nwtprojekat.ArticleManagement.model.Image;
 import nwtprojekat.ArticleManagement.model.Video;
-import nwtprojekat.ArticleManagement.model.Section;
 import nwtprojekat.ArticleManagement.model.Text;
 import nwtprojekat.ArticleManagement.repository.ArticleRepository;
-import nwtprojekat.ArticleManagement.repository.SectionRepository;
+import nwtprojekat.ArticleManagement.repository.ImageRepository;
+import nwtprojekat.ArticleManagement.repository.TextRepository;
+import nwtprojekat.ArticleManagement.repository.VideoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,7 +22,13 @@ public class ArticleManagementApplication implements CommandLineRunner {
 	private ArticleRepository articleRepo;
 
 	@Autowired
-	private SectionRepository sectionRepo;
+	private TextRepository textRepo;
+
+	@Autowired
+	private VideoRepository videoRepo;
+
+	@Autowired
+	private ImageRepository imageRepo;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -38,21 +45,19 @@ public class ArticleManagementApplication implements CommandLineRunner {
 		Image imageSection = new Image();
 		imageSection.setImageUrl("Ovo je slika.");
 
-		List<Section> sections = new ArrayList<>();
-		sections.add(textSection);
-		sections.add(videoSection);
-		sections.add(imageSection);
+		article.setText(textSection);
+		article.setImage(imageSection);
+		article.setVideo(videoSection);
 
 		articleRepo.save(article);
 
-		sections.forEach((Section s) -> {
-			s.setArticle(article);
-			sectionRepo.save(s);
-		});
+		textSection.setArticle(article);
+		textRepo.save(textSection);
+		videoSection.setArticle(article);
+		videoRepo.save(videoSection);
+		imageSection.setArticle(article);
+		imageRepo.save(imageSection);
 
-		//article.setSections(sections);
-		// article se prvo spasi
-		// a nakon toga sections
 	}
 
 	public static void main(String[] args) {

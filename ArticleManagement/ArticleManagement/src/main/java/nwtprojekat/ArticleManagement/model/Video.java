@@ -7,10 +7,17 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "video_sections")
-@DiscriminatorValue("video")
-public class Video extends Section {
+public class Video {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
     @Column(nullable = false)
     private String videoUrl;
+
+    @OneToOne(mappedBy = "video")
+    private Article article;
 
     public Video() {}
 
@@ -20,5 +27,17 @@ public class Video extends Section {
 
     public void setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
     }
 }

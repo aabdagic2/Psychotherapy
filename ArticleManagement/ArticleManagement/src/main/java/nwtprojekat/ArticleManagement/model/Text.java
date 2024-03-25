@@ -7,10 +7,17 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "text_sections")
-@DiscriminatorValue("text")
-public class Text extends Section {
+public class Text {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
     @Column(nullable = false)
     private String content;
+
+    @OneToOne(mappedBy = "text")
+    private Article article;
 
     public Text() {}
 
@@ -20,5 +27,17 @@ public class Text extends Section {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 public class Article {
     @Id
     @Column(name = "article_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -18,16 +18,27 @@ public class Article {
     @Column(nullable = false)
     private String author;
 
-    @OneToMany(mappedBy = "article")
-    private List<Section> sections;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "text_id", referencedColumnName = "id")
+    private Text text;
 
-    public Article() {}
-    public Article(Long id, String title, String author, List<Section> sections) {
-        this.id = id;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "video_id", referencedColumnName = "id")
+    private Video video;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "image_id", referencedColumnName = "id")
+    private Image image;
+
+    public Article(String title, String author, Text text, Video video, Image image) {
         this.title = title;
         this.author = author;
-        this.sections = sections;
+        this.text = text;
+        this.video = video;
+        this.image = image;
     }
+
+    public Article() {}
 
     public Long getId() {
         return id;
@@ -37,27 +48,43 @@ public class Article {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
     }
 
     public void setAuthor(String author) {
         this.author = author;
     }
 
-    public List<Section> getSections() {
-        return sections;
+    public void setText(Text text) {
+        this.text = text;
     }
 
-    public void setSections(List<Section> sections) {
-        this.sections = sections;
+    public void setVideo(Video video) {
+        this.video = video;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public Text getText() {
+        return text;
+    }
+
+    public Video getVideo() {
+        return video;
+    }
+
+    public Image getImage() {
+        return image;
     }
 }

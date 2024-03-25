@@ -7,10 +7,17 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "image_sections")
-@DiscriminatorValue("image")
-public class Image extends Section {
+public class Image {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
     @Column(nullable = false)
     private String imageUrl;
+
+    @OneToOne(mappedBy = "image")
+    private Article article;
 
     public Image() {}
 
@@ -20,5 +27,17 @@ public class Image extends Section {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
     }
 }
