@@ -1,6 +1,5 @@
 package nwtprojekat.ArticleManagement.repository;
 
-import nwtprojekat.ArticleManagement.model.Article;
 import nwtprojekat.ArticleManagement.model.Image;
 import org.springframework.data.jpa.repository.JpaRepository;
 
