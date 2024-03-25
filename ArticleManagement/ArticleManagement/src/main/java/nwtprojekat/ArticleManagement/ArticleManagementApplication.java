@@ -1,10 +1,12 @@
 package nwtprojekat.ArticleManagement;
 
-import nwtprojekat.ArticleManagement.Models.Article;
-import nwtprojekat.ArticleManagement.Models.Image;
-import nwtprojekat.ArticleManagement.Models.Video;
-import nwtprojekat.ArticleManagement.Models.Section;
-import nwtprojekat.ArticleManagement.Models.Text;
+import nwtprojekat.ArticleManagement.model.Article;
+import nwtprojekat.ArticleManagement.model.Image;
+import nwtprojekat.ArticleManagement.model.Video;
+import nwtprojekat.ArticleManagement.model.Section;
+import nwtprojekat.ArticleManagement.model.Text;
+import nwtprojekat.ArticleManagement.repository.ArticleRepository;
+import nwtprojekat.ArticleManagement.repository.SectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
