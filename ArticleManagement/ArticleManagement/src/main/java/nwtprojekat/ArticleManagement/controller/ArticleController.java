@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -20,6 +21,17 @@ public class ArticleController {
         Article savedArticle = articleRepository.save(article);
         return ResponseEntity.ok(savedArticle);
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Article>> getAllArticles() {
+        List<Article> articles = articleRepository.findAll();
+        if (articles.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(articles);
+        }
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Article> getArticleById(@PathVariable Long id) {
