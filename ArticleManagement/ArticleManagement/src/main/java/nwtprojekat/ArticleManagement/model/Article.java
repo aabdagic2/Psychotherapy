@@ -1,8 +1,8 @@
 package nwtprojekat.ArticleManagement.model;
 
 import jakarta.persistence.*;
-
-import java.util.List;
+import jakarta.validation.constraints.NotBlank;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
 @Table(name = "articles")
@@ -13,6 +13,7 @@ public class Article {
     private Long id;
 
     @Column(nullable = false)
+    @NotBlank(message = "The title must not be empty!")
     private String title;
 
     @Column(nullable = false)

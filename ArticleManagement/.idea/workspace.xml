@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65a2f4ad-da89-48ea-a255-f52860118fdc" name="Changes" comment="one method added">
+    <list default="true" id="65a2f4ad-da89-48ea-a255-f52860118fdc" name="Changes" comment="dependency added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Article.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +18,7 @@
       <list>
         <option value="Class" />
         <option value="Interface" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -70,6 +70,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="nwtprojekat.ArticleManagement.model" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="ArticleManagementApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ArticleManagement" />
@@ -96,7 +101,7 @@
       <updated>1711023884570</updated>
       <workItem from="1711023885617" duration="3710000" />
       <workItem from="1711390281191" duration="15862000" />
-      <workItem from="1711496439471" duration="4861000" />
+      <workItem from="1711496439471" duration="6211000" />
     </task>
     <task id="LOCAL-00001" summary="dodani unosi u tabele">
       <option name="closed" value="true" />
@@ -210,7 +215,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711497541157</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="small changes">
+      <option name="closed" value="true" />
+      <created>1711501407593</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1711501407593</updated>
+    </task>
+    <task id="LOCAL-00016" summary="dependency added">
+      <option name="closed" value="true" />
+      <created>1711502580230</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1711502580230</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,7 +252,6 @@
     <MESSAGE value="dodani unosi u tabele" />
     <MESSAGE value="data added to db" />
     <MESSAGE value="reorganization of the project" />
-    <MESSAGE value="small changes" />
     <MESSAGE value="corrected id type" />
     <MESSAGE value="implementation of article service" />
     <MESSAGE value="the complete logic of the code has been changed" />
@@ -240,6 +260,8 @@
     <MESSAGE value="gitignore update" />
     <MESSAGE value="try" />
     <MESSAGE value="one method added" />
-    <option name="LAST_COMMIT_MESSAGE" value="one method added" />
+    <MESSAGE value="small changes" />
+    <MESSAGE value="dependency added" />
+    <option name="LAST_COMMIT_MESSAGE" value="dependency added" />
   </component>
 </project>
