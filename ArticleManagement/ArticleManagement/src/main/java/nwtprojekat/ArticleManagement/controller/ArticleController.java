@@ -3,8 +3,12 @@ package nwtprojekat.ArticleManagement.controller;
 import nwtprojekat.ArticleManagement.model.Article;
 import nwtprojekat.ArticleManagement.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpHeaders;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,9 +21,17 @@ public class ArticleController {
     private ArticleRepository articleRepository;
 
     @PostMapping("/add")
-    public ResponseEntity<Article> createArticle(@RequestBody Article article) {
+    public ResponseEntity<String> createArticle(@RequestBody Article article, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            FieldError titleError = bindingResult.getFieldError("title");
+            if (titleError != null) {
+                return ResponseEntity.badRequest().body(titleError.getDefaultMessage());
+            }
+            return ResponseEntity.badRequest().body("Invalid data: " + bindingResult.getAllErrors());
+        }
+
         Article savedArticle = articleRepository.save(article);
-        return ResponseEntity.ok(savedArticle);
+        return ResponseEntity.ok("Article added successfully");
     }
 
     @GetMapping("/all")
@@ -33,9 +45,10 @@ public class ArticleController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Article> getArticleById(@PathVariable Long id) {
+    public ResponseEntity<String> getArticleById(@PathVariable Long id) {
         Optional<Article> optionalArticle = articleRepository.findById(id);
-        return optionalArticle.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        return optionalArticle.map(article -> ResponseEntity.ok("Article successfully found"))
+                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body("Article with ID " + id + " not found"));
     }
 
     @PutMapping("/update/{id}")
