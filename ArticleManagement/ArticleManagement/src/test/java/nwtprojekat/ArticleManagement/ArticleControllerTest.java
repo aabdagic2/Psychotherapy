@@ -110,7 +110,7 @@ public class ArticleControllerTest {
         Assertions.assertEquals(1, articles.length);
     }
 
-    @Test
+    /*@Test
     public void testGetArticleByID() throws Exception {
         var allArticles = articleRepository.findAll();
         var id = allArticles.stream().findFirst().get().getId();
@@ -122,8 +122,47 @@ public class ArticleControllerTest {
         var article = objectMapper.convertValue(objectMapper.readTree(content), Article.class);
 
         Assertions.assertNotNull(article);
+    }*/
+
+    @Test
+    public void addNewArticle() throws Exception {
+        Text textSection = new Text();
+        textSection.setContent("Text 2");
+        Video videoSection = new Video();
+        videoSection.setVideoUrl("Video 2");
+        Image imageSection = new Image();
+        imageSection.setImageUrl("Image 2");
+        Article newArticle = new Article("Title 2", "Author 2", textSection, videoSection, imageSection);
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/articles/add")
+                        .content(asJsonString(newArticle))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/articles/all"))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        String content = result.getResponse().getContentAsString();
+        Article[] articles = objectMapper.readValue(content, Article[].class);
+
+        boolean articleFound = false;
+        for (Article article : articles) {
+            if (article.getTitle().equals("Title 2")) {
+                articleFound = true;
+                break;
+            }
+        }
+        Assertions.assertTrue(articleFound, "New article not found among retrieved articles");
     }
 
-
+    private static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 

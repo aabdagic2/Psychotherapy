@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65a2f4ad-da89-48ea-a255-f52860118fdc" name="Changes" comment="GET all test done">
+    <list default="true" id="65a2f4ad-da89-48ea-a255-f52860118fdc" name="Changes" comment="GET id needs a fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java" afterDir="false" />
     </list>
@@ -52,6 +52,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.ArticleControllerTest.addNewArticle.executor": "Run",
     "JUnit.ArticleControllerTest.executor": "Run",
     "JUnit.ArticleControllerTest.testGetAllArticles.executor": "Run",
     "JUnit.ArticleControllerTest.testGetArticleByID.executor": "Run",
@@ -78,7 +79,7 @@
       <recent name="nwtprojekat.ArticleManagement.model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ArticleControllerTest">
+  <component name="RunManager" selected="JUnit.ArticleControllerTest.addNewArticle">
     <configuration name="ArticleControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ArticleManagement" />
       <extension name="coverage">
@@ -90,6 +91,22 @@
       <option name="PACKAGE_NAME" value="nwtprojekat.ArticleManagement" />
       <option name="MAIN_CLASS_NAME" value="nwtprojekat.ArticleManagement.ArticleControllerTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArticleControllerTest.addNewArticle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ArticleManagement" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nwtprojekat.ArticleManagement.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nwtprojekat.ArticleManagement" />
+      <option name="MAIN_CLASS_NAME" value="nwtprojekat.ArticleManagement.ArticleControllerTest" />
+      <option name="METHOD_NAME" value="addNewArticle" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -135,9 +152,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ArticleControllerTest.addNewArticle" />
+        <item itemvalue="JUnit.ArticleControllerTest.testGetAllArticles" />
         <item itemvalue="JUnit.ArticleControllerTest" />
         <item itemvalue="JUnit.ArticleControllerTest.testGetArticleByID" />
-        <item itemvalue="JUnit.ArticleControllerTest.testGetAllArticles" />
       </list>
     </recent_temporary>
   </component>
@@ -162,7 +180,7 @@
       <workItem from="1711502942197" duration="107000" />
       <workItem from="1711529007830" duration="2896000" />
       <workItem from="1711532441266" duration="2674000" />
-      <workItem from="1711549076324" duration="5517000" />
+      <workItem from="1711549076324" duration="6844000" />
     </task>
     <task id="LOCAL-00001" summary="dodani unosi u tabele">
       <option name="closed" value="true" />
@@ -348,7 +366,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711554175019</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="GET id needs a fix">
+      <option name="closed" value="true" />
+      <created>1711555175018</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1711555175018</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,7 +410,8 @@
     <MESSAGE value="PUT request changed" />
     <MESSAGE value="added testing dependencies" />
     <MESSAGE value="GET all test done" />
-    <option name="LAST_COMMIT_MESSAGE" value="GET all test done" />
+    <MESSAGE value="GET id needs a fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="GET id needs a fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
