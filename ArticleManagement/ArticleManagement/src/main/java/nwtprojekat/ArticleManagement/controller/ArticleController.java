@@ -1,5 +1,6 @@
 package nwtprojekat.ArticleManagement.controller;
 
+import jakarta.validation.Valid;
 import nwtprojekat.ArticleManagement.model.Article;
 import nwtprojekat.ArticleManagement.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,10 +53,15 @@ public class ArticleController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Article> updateArticle(@PathVariable Long id, @RequestBody Article updatedArticle) {
+    public ResponseEntity<?> updateArticle(@PathVariable Long id, @Valid @RequestBody Article updatedArticle, BindingResult bindingResult) {
         if (!articleRepository.existsById(id)) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Article with ID " + id + " not found");
         }
+
+        if (bindingResult.hasErrors()) {
+            return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
+        }
+
         updatedArticle.setId(id);
         Article savedArticle = articleRepository.save(updatedArticle);
         return ResponseEntity.ok(savedArticle);
