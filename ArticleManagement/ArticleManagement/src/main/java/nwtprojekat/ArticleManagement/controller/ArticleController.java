@@ -16,7 +16,7 @@ public class ArticleController {
     @Autowired
     private ArticleRepository articleRepository;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Article> createArticle(@RequestBody Article article) {
         Article savedArticle = articleRepository.save(article);
         return ResponseEntity.ok(savedArticle);
@@ -32,14 +32,13 @@ public class ArticleController {
         }
     }
 
-
     @GetMapping("/{id}")
     public ResponseEntity<Article> getArticleById(@PathVariable Long id) {
         Optional<Article> optionalArticle = articleRepository.findById(id);
         return optionalArticle.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Article> updateArticle(@PathVariable Long id, @RequestBody Article updatedArticle) {
         if (!articleRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
@@ -49,13 +48,13 @@ public class ArticleController {
         return ResponseEntity.ok(savedArticle);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteArticle(@PathVariable Long id) {
+    @DeleteMapping("/remove/{id}")
+    public boolean deleteArticle(@PathVariable Long id) {
         if (!articleRepository.existsById(id)) {
-            return ResponseEntity.notFound().build();
+            return false;
         }
         articleRepository.deleteById(id);
-        return ResponseEntity.noContent().build();
+        return true;
     }
 }
 
