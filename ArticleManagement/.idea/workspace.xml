@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65a2f4ad-da89-48ea-a255-f52860118fdc" name="Changes" comment="added testing dependencies">
-      <change afterPath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java" afterDir="false" />
+    <list default="true" id="65a2f4ad-da89-48ea-a255-f52860118fdc" name="Changes" comment="GET all test done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +54,7 @@
   "keyToString": {
     "JUnit.ArticleControllerTest.executor": "Run",
     "JUnit.ArticleControllerTest.testGetAllArticles.executor": "Run",
+    "JUnit.ArticleControllerTest.testGetArticleByID.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -109,6 +110,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ArticleControllerTest.testGetArticleByID" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ArticleManagement" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nwtprojekat.ArticleManagement.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nwtprojekat.ArticleManagement" />
+      <option name="MAIN_CLASS_NAME" value="nwtprojekat.ArticleManagement.ArticleControllerTest" />
+      <option name="METHOD_NAME" value="testGetArticleByID" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ArticleManagementApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ArticleManagement" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="nwtprojekat.ArticleManagement.ArticleManagementApplication" />
@@ -119,6 +136,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ArticleControllerTest" />
+        <item itemvalue="JUnit.ArticleControllerTest.testGetArticleByID" />
         <item itemvalue="JUnit.ArticleControllerTest.testGetAllArticles" />
       </list>
     </recent_temporary>
@@ -144,7 +162,7 @@
       <workItem from="1711502942197" duration="107000" />
       <workItem from="1711529007830" duration="2896000" />
       <workItem from="1711532441266" duration="2674000" />
-      <workItem from="1711549076324" duration="4464000" />
+      <workItem from="1711549076324" duration="5517000" />
     </task>
     <task id="LOCAL-00001" summary="dodani unosi u tabele">
       <option name="closed" value="true" />
@@ -322,7 +340,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711551743907</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="GET all test done">
+      <option name="closed" value="true" />
+      <created>1711554175019</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1711554175019</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,7 +383,8 @@
     <MESSAGE value="validation for GET ID and database change" />
     <MESSAGE value="PUT request changed" />
     <MESSAGE value="added testing dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="added testing dependencies" />
+    <MESSAGE value="GET all test done" />
+    <option name="LAST_COMMIT_MESSAGE" value="GET all test done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

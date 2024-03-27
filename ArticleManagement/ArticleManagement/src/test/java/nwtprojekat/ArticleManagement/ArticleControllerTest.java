@@ -109,5 +109,21 @@ public class ArticleControllerTest {
 
         Assertions.assertEquals(1, articles.length);
     }
+
+    @Test
+    public void testGetArticleByID() throws Exception {
+        var allArticles = articleRepository.findAll();
+        var id = allArticles.stream().findFirst().get().getId();
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                        .get("/articles/{id}",id))
+                .andExpect(status().is2xxSuccessful())
+                .andReturn();
+        String content = result.getResponse().getContentAsString();
+        var article = objectMapper.convertValue(objectMapper.readTree(content), Article.class);
+
+        Assertions.assertNotNull(article);
+    }
+
+
 }
 
