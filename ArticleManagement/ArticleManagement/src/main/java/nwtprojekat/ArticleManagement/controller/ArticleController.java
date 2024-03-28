@@ -1,6 +1,8 @@
 package nwtprojekat.ArticleManagement.controller;
 
+//import io.swagger.annotations.Api;
 import jakarta.validation.Valid;
+import nwtprojekat.ArticleManagement.exception.ArticleNotFoundException;
 import nwtprojekat.ArticleManagement.model.Article;
 import nwtprojekat.ArticleManagement.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.HttpHeaders;
 
 import java.util.List;
 import java.util.Optional;
@@ -44,18 +45,23 @@ public class ArticleController {
             return ResponseEntity.ok(articles);
         }
     }
-
+    
     @GetMapping("/{id}")
-    public ResponseEntity<String> getArticleById(@PathVariable Long id) {
+    public ResponseEntity<Article> getArticleById(@PathVariable Long id) {
         Optional<Article> optionalArticle = articleRepository.findById(id);
-        return optionalArticle.map(article -> ResponseEntity.ok("Article successfully found"))
-                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body("Article with ID " + id + " not found"));
+        return optionalArticle.map(ResponseEntity::ok)
+                .orElseThrow(() -> new ArticleNotFoundException(id));
+    }
+
+    @ExceptionHandler(ArticleNotFoundException.class)
+    public ResponseEntity<String> handleArticleNotFoundException(ArticleNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateArticle(@PathVariable Long id, @Valid @RequestBody Article updatedArticle, BindingResult bindingResult) {
         if (!articleRepository.existsById(id)) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Article with ID " + id + " not found");
+            throw new ArticleNotFoundException(id);
         }
 
         if (bindingResult.hasErrors()) {
