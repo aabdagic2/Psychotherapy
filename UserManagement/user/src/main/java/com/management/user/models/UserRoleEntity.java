@@ -1,8 +1,6 @@
-package com.management.user.accessingdatamysql.Model;
+package com.management.user.models;
 
 import jakarta.persistence.*;
-
-import java.util.UUID;
 
 @Table(name = "user_role")
 @Entity // This tells Hibernate to make a table out of this class

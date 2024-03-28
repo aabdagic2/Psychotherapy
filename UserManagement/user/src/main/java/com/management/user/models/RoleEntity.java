@@ -1,9 +1,7 @@
-package com.management.user.accessingdatamysql.Model;
+package com.management.user.models;
 
 
 import jakarta.persistence.*;
-
-import java.util.UUID;
 
 @Table(name = "role")
 @Entity // This tells Hibernate to make a table out of this class
@@ -15,8 +13,6 @@ public class RoleEntity {
 
     @Column(name = "role_name", columnDefinition = "VARCHAR(1024)")
     private String name;
-
-
 
 
     public String getId() {

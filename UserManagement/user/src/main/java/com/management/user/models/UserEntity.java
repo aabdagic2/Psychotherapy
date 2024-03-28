@@ -1,9 +1,13 @@
-package com.management.user.accessingdatamysql.Model;
+package com.management.user.models;
 
 
 import jakarta.persistence.*;
+import lombok.*;
 
-import java.util.UUID;
+@Data
+@AllArgsConstructor
+
+@Builder
 
 @Table(name = "user")
 @Entity // This tells Hibernate to make a table out of this class
@@ -12,22 +16,27 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id", columnDefinition = "VARCHAR(64)")
     private String userId;
+    @Setter
+    @Getter
+    @Column(name = "user_type", columnDefinition = "VARCHAR(64)")
+    private String type;
 
+    @Setter
+    @Getter
     @Column(name = "user_name", columnDefinition = "VARCHAR(1024)")
     private String name;
 
+    @Getter
+    @Setter
     @Column(name = "email", columnDefinition = "VARCHAR(256)")
     private String email;
+    @Setter
+    @Getter
     @Column(name = "passwordHash", columnDefinition = "VARCHAR(256)")
     private String passwordHash;
 
-
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public UserEntity() {
+        super();
     }
 
 
@@ -39,37 +48,20 @@ public class UserEntity {
         this.userId = idUser;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    protected UserEntity(){}
-
-    public UserEntity(String email, String name, String passwordHash) {
+    public UserEntity(String type, String email, String name, String passwordHash) {
         this.email = email;
         this.name = name;
         this.passwordHash = passwordHash;
+        this.type = type;
     }
 
-    public UserEntity(String name) {
-        this.name = name;
-    }
+
 
     @Override
     public String toString() {
         return "UserEntity{" +
                 "id=" + userId +
+                ", type=" +type+ '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", passwordHash='" + passwordHash + '\'' +

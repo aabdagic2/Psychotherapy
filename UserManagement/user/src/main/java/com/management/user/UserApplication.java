@@ -1,19 +1,18 @@
 package com.management.user;
 
-import com.management.user.accessingdatamysql.Model.RoleEntity;
-import com.management.user.accessingdatamysql.Model.UserEntity;
-import com.management.user.accessingdatamysql.Model.UserRoleEntity;
-import com.management.user.accessingdatamysql.Repository.RoleRepository;
-import com.management.user.accessingdatamysql.Repository.UserRepository;
-import com.management.user.accessingdatamysql.Repository.UserRoleRepository;
-import jakarta.transaction.Transactional;
+import com.management.user.models.RoleEntity;
+import com.management.user.models.UserEntity;
+import com.management.user.models.UserRoleEntity;
+import com.management.user.Repository.RoleRepository;
+import com.management.user.Repository.UserRepository;
+import com.management.user.Repository.UserRoleRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.servers.Server;
 
-import java.util.Arrays;
-
+@OpenAPIDefinition(servers = {@Server(url = "/", description = "Default Server URL")})
 @SpringBootApplication
 public class UserApplication implements CommandLineRunner{
 	private final RoleRepository roleRepository;
@@ -36,7 +35,7 @@ public class UserApplication implements CommandLineRunner{
 	   RoleEntity psychologistRole = roleRepository.save(new RoleEntity("Psychologist"));
 	   RoleEntity patientRole = roleRepository.save(new RoleEntity("Patient"));
 
-	   UserEntity adminUser = new UserEntity("admin@example.com", "Admin", "admin123");
+	   UserEntity adminUser = new UserEntity("admin","admin@example.com", "Admin", "admin123");
 
 	   userRepository.save(adminUser);
 	   UserRoleEntity adminUserRole = new UserRoleEntity();
@@ -44,13 +43,13 @@ public class UserApplication implements CommandLineRunner{
 	   adminUserRole.setRole(administratorRole);
 
 
-	   UserEntity psychologistUser = new UserEntity("psychologist@example.com", "Psychologist", "psychologist123");
+	   UserEntity psychologistUser = new UserEntity("psychologist","psychologist@example.com", "Psychologist", "psychologist123");
 	   userRepository.save(psychologistUser);
 	   UserRoleEntity psychologistUserRole = new UserRoleEntity();
 	   psychologistUserRole.setUser(psychologistUser);
 	   psychologistUserRole.setRole(psychologistRole);
 
-       UserEntity patientUser = new UserEntity("patient@example.com", "Patient", "patient123");
+       UserEntity patientUser = new UserEntity("patient","patient@example.com", "Patient", "patient123");
 	   userRepository.save(patientUser);
 	   UserRoleEntity patientUserRole = new UserRoleEntity();
 	   patientUserRole.setUser(patientUser);
