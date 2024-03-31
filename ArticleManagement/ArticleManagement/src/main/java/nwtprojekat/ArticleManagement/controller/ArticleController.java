@@ -12,7 +12,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -53,11 +55,6 @@ public class ArticleController {
                 .orElseThrow(() -> new ArticleNotFoundException(id));
     }
 
-    @ExceptionHandler(ArticleNotFoundException.class)
-    public ResponseEntity<String> handleArticleNotFoundException(ArticleNotFoundException e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-    }
-
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateArticle(@PathVariable Long id, @Valid @RequestBody Article updatedArticle, BindingResult bindingResult) {
         if (!articleRepository.existsById(id)) {
@@ -80,6 +77,14 @@ public class ArticleController {
         }
         articleRepository.deleteById(id);
         return true;
+    }
+
+    @ExceptionHandler(ArticleNotFoundException.class)
+    public ResponseEntity<?> handleArticleNotFoundException(ArticleNotFoundException e) {
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("error", e.getError());
+        errorResponse.put("message", e.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 }
 
