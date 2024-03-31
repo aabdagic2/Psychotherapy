@@ -71,12 +71,14 @@ public class ArticleController {
     }
 
     @DeleteMapping("/remove/{id}")
-    public boolean deleteArticle(@PathVariable Long id) {
+    public ResponseEntity<?> deleteArticle(@PathVariable Long id) {
         if (!articleRepository.existsById(id)) {
-            return false;
+            throw new ArticleNotFoundException(id);
         }
         articleRepository.deleteById(id);
-        return true;
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Article with ID " + id + " has been deleted successfully");
+        return ResponseEntity.ok(response);
     }
 
     @ExceptionHandler(ArticleNotFoundException.class)
