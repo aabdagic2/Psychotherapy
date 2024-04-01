@@ -25,17 +25,22 @@ public class ArticleController {
     private ArticleRepository articleRepository;
 
     @PostMapping("/add")
-    public ResponseEntity<String> createArticle(@RequestBody Article article, BindingResult bindingResult) {
+    public ResponseEntity<?> createArticle(@RequestBody @Valid Article article, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             FieldError titleError = bindingResult.getFieldError("title");
             if (titleError != null) {
-                return ResponseEntity.badRequest().body(titleError.getDefaultMessage());
+                Map<String, String> errorResponse = new HashMap<>();
+                errorResponse.put("error", "validation");
+                errorResponse.put("message", titleError.getDefaultMessage());
+                return ResponseEntity.badRequest().body(errorResponse);
             }
             return ResponseEntity.badRequest().body("Invalid data: " + bindingResult.getAllErrors());
         }
 
         Article savedArticle = articleRepository.save(article);
-        return ResponseEntity.ok("Article added successfully");
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Article added successfully");
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/all")
