@@ -1,4 +1,4 @@
-package com.management.user.Repository;
+package com.management.user.repository;
 
 import com.management.user.models.RoleEntity;
 import org.springframework.data.repository.CrudRepository;
@@ -7,5 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 // CRUD refers Create, Read, Update, Delete
 
 public interface RoleRepository extends CrudRepository<RoleEntity, String> {
+    boolean existsByName(String name);
 
 }

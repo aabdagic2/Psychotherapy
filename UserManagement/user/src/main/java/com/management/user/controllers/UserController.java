@@ -4,7 +4,7 @@ package com.management.user.controllers;
 import com.management.user.dto.UserDto;
 import com.management.user.exceptions.UserNotFoundException;
 
-import com.management.user.Repository.UserRepository;
+import com.management.user.repository.UserRepository;
 import com.management.user.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
@@ -15,13 +15,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 //
 
 @RestController
 @AllArgsConstructor
-@RequestMapping(path="/demo")
 public class UserController {
     @Autowired
     private UserRepository userRepository;
@@ -47,37 +45,37 @@ public class UserController {
 
     @GetMapping("/user/{email}")
     public ResponseEntity<UserDto> getUserByEmail(@PathVariable String email) {
-        try {
-            UserDto user = userService.getUserByEmail(email);
-            return ResponseEntity.ok(user);
-        } catch (UserNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
+        UserDto user = userService.getUserByEmail(email);
+        return ResponseEntity.ok(user);
     }
+
 
 
     @PutMapping("/user/{email}")
     public ResponseEntity<UserDto> updateUserByEmail(@PathVariable String email, @RequestBody UserDto userDto) {
         UserDto updatedUserDto = userService.updateUser(userDto, email);
-        if (updatedUserDto == null) {
-            return ResponseEntity.notFound().build();
-        }
+
         return ResponseEntity.ok(updatedUserDto);
     }
 
 
 
-    @DeleteMapping("/user/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<Void> deleteUserByEmail(@RequestBody UserDto userDto) {
-        try {
+
             userService.deleteUser(userDto);
             return ResponseEntity.noContent().build(); // User deleted successfully
-        } catch (EntityNotFoundException e) {
-            return ResponseEntity.notFound().build(); // User not found
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Other errors
-        }
+
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<UserDto>> searchUsersByName(@RequestParam String name) {
+        List<UserDto> users = userService.searchUsersByName(name);
+        return ResponseEntity.ok(users);
+    }
+
+
+
 
 
 

@@ -1,13 +1,12 @@
 package com.management.user.service;
 
-import com.management.user.Repository.UserRepository;
-import com.management.user.Repository.UserRoleRepository;
 import com.management.user.dto.UserDto;
+import com.management.user.exceptions.InvalidFormatException;
+import com.management.user.exceptions.UserAlreadyExistsException;
 import com.management.user.exceptions.UserNotFoundException;
 import com.management.user.mapper.UserMapper;
 import com.management.user.models.UserEntity;
-import jakarta.persistence.EntityNotFoundException;
-import lombok.AllArgsConstructor;
+import com.management.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,28 +17,52 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
 public class UserServiceImp implements UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-    private UserRoleRepository userRoleRepository;
-
+    public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public UserDto createUser(UserDto userDto) {
+        String email = userDto.getEmail();
+        if (userRepository.existsByEmail(email)) {
+            throw new UserAlreadyExistsException("User with email '" + email + "' already exists.");
+        }
+
+
+        String password = userDto.getPasswordHash();
+        if (!isPasswordValid(password)) {
+            throw new InvalidFormatException("Invalid password. Password must meet policy requirements.");
+        }
+
+        if (!isEmailValid(email)) {
+            throw new InvalidFormatException("Invalid email format.");
+        }
+
         UserEntity user = UserMapper.mapToUser(userDto);
+        user.setPasswordHash(passwordEncoder.encode(password));
 
         UserEntity savedUser = userRepository.save(user);
 
-        // Convert User JPA entity to UserDto
-        UserDto savedUserDto;
-        savedUserDto = UserMapper.mapToUserDto(savedUser);
-
-        return savedUserDto;
+        return UserMapper.mapToUserDto(savedUser);
     }
+
+    private boolean isPasswordValid(String password) {
+
+        return password.length() >= 8;
+    }
+
+    private boolean isEmailValid(String email) {
+
+        return email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+    }
+
     @Override
     public List<UserDto> getAllUsers() {
         Iterable<UserEntity> users = userRepository.findAll();
@@ -48,9 +71,7 @@ public class UserServiceImp implements UserService {
             userDtos.add(UserMapper.mapToUserDto(userEntity));
         }
         return userDtos;
-   //     return null;
-   }
-
+    }
 
     @Override
     public UserDto getUserByEmail(String email) {
@@ -74,39 +95,21 @@ public class UserServiceImp implements UserService {
             return UserMapper.mapToUserDto(updatedUser);
         }
         throw new UserNotFoundException("User not found with email: " + email);
-
-
     }
-
-
-
-//    @Override
-//    public void deleteUser(String email) {
-//        Optional<UserEntity> optionalUser = userRepository.findByEmail(email);
-//        if (optionalUser.isPresent()) {
-//            userRepository.delete(optionalUser.get());
-//        } else {
-//            throw new EntityNotFoundException("User not found with email: " + email);
-//        }
-//    }
-
-
 
     @Override
     public void deleteUser(UserDto userDto) {
         Optional<UserEntity> optionalUser = userRepository.findByEmail(userDto.getEmail());
         if (optionalUser.isPresent()) {
-            UserEntity user = optionalUser.get();
-            userRoleRepository.deleteByUser(user); // Delete user's roles from the intermediate table
-            userRepository.delete(user); // Delete the user
+            userRepository.delete(optionalUser.get());
         } else {
-            throw new EntityNotFoundException("User not found with email: " + userDto.getEmail());
+            throw new UserNotFoundException("User not found with email: " + userDto.getEmail());
         }
     }
 
-
-
-
-
-
+    @Override
+    public List<UserDto> searchUsersByName(String name) {
+        List<UserEntity> users = userRepository.findByNameContainingIgnoreCase(name);
+        return users.stream().map(UserMapper::mapToUserDto).collect(Collectors.toList());
+    }
 }

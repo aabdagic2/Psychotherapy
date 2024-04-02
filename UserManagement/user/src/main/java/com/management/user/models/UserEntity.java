@@ -16,6 +16,13 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id", columnDefinition = "VARCHAR(64)")
     private String userId;
+ @Setter
+ @Getter
+
+    @ManyToOne
+    @JoinColumn(name = "role_id", referencedColumnName = "role_id")
+    private RoleEntity role;
+
     @Setter
     @Getter
     @Column(name = "user_type", columnDefinition = "VARCHAR(64)")
@@ -36,16 +43,7 @@ public class UserEntity {
     private String passwordHash;
 
     public UserEntity() {
-        super();
-    }
 
-
-    public String getId() {
-        return userId;
-    }
-
-    public void setId(String idUser) {
-        this.userId = idUser;
     }
 
     public UserEntity(String type, String email, String name, String passwordHash) {
