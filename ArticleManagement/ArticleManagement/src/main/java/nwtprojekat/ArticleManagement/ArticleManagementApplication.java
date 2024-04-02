@@ -35,6 +35,7 @@ public class ArticleManagementApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		// prvi clanak
 		Article article = new Article();
 		article.setAuthor("Neko Nekic");
 		article.setTitle("Ovo je NWT projekat.");
@@ -60,6 +61,60 @@ public class ArticleManagementApplication implements CommandLineRunner {
 		videoRepo.save(videoSection);
 		imageSection.setArticle(article);
 		imageRepo.save(imageSection);
+
+		// drugi clanak
+		Article article2 = new Article();
+		article2.setAuthor("Drugi Autor");
+		article2.setTitle("Drugi clanak.");
+
+		Text textSection2 = new Text();
+		textSection2.setContent("Jos jedan tekst.");
+
+		Video videoSection2 = new Video();
+		videoSection2.setVideoUrl("Jos jedan video.");
+
+		Image imageSection2 = new Image();
+		imageSection2.setImageUrl("Jos jedna slika.");
+
+		article2.setText(textSection2);
+		article2.setImage(imageSection2);
+		article2.setVideo(videoSection2);
+
+		articleRepo.save(article2);
+
+		textSection2.setArticle(article2);
+		textRepo.save(textSection2);
+		videoSection2.setArticle(article2);
+		videoRepo.save(videoSection2);
+		imageSection2.setArticle(article2);
+		imageRepo.save(imageSection2);
+
+		// treći clanak
+		Article article3 = new Article();
+		article3.setAuthor("Treci Autor");
+		article3.setTitle("Treci clanak.");
+
+		Text textSection3 = new Text();
+		textSection3.setContent("Tekst treceg clanka.");
+
+		Video videoSection3 = new Video();
+		videoSection3.setVideoUrl("Video treceg clanka.");
+
+		Image imageSection3 = new Image();
+		imageSection3.setImageUrl("Slika treceg clanka.");
+
+		article3.setText(textSection3);
+		article3.setImage(imageSection3);
+		article3.setVideo(videoSection3);
+
+		articleRepo.save(article3);
+
+		textSection3.setArticle(article3);
+		textRepo.save(textSection3);
+		videoSection3.setArticle(article3);
+		videoRepo.save(videoSection3);
+		imageSection3.setArticle(article3);
+		imageRepo.save(imageSection3);
 
 	}
 

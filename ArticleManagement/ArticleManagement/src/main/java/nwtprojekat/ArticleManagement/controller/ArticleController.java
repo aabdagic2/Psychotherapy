@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import nwtprojekat.ArticleManagement.exception.ArticleNotFoundException;
 import nwtprojekat.ArticleManagement.model.Article;
 import nwtprojekat.ArticleManagement.repository.ArticleRepository;
+import nwtprojekat.ArticleManagement.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +22,11 @@ import java.util.Optional;
 @RequestMapping("/articles")
 public class ArticleController {
 
+//    @Autowired
+//    private ArticleRepository articleRepository;
+
     @Autowired
-    private ArticleRepository articleRepository;
+    private ArticleService articleService;
 
     @PostMapping("/add")
     public ResponseEntity<?> createArticle(@RequestBody @Valid Article article, BindingResult bindingResult) {
@@ -37,32 +41,33 @@ public class ArticleController {
             return ResponseEntity.badRequest().body("Invalid data: " + bindingResult.getAllErrors());
         }
 
-        Article savedArticle = articleRepository.save(article);
+        Article savedArticle = articleService.createArticle(article);
         Map<String, String> response = new HashMap<>();
         response.put("message", "Article added successfully");
         return ResponseEntity.ok(response);
     }
 
+    // OK
     @GetMapping("/all")
     public ResponseEntity<List<Article>> getAllArticles() {
-        List<Article> articles = articleRepository.findAll();
+        List<Article> articles = articleService.getAllArticles();
         if (articles.isEmpty()) {
             return ResponseEntity.notFound().build();
         } else {
             return ResponseEntity.ok(articles);
         }
     }
-    
+
+    // OK
     @GetMapping("/{id}")
     public ResponseEntity<Article> getArticleById(@PathVariable Long id) {
-        Optional<Article> optionalArticle = articleRepository.findById(id);
-        return optionalArticle.map(ResponseEntity::ok)
-                .orElseThrow(() -> new ArticleNotFoundException(id));
+        Article article = articleService.getArticleById(id);
+        return ResponseEntity.ok(article);
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateArticle(@PathVariable Long id, @Valid @RequestBody Article updatedArticle, BindingResult bindingResult) {
-        if (!articleRepository.existsById(id)) {
+        if (!articleService.existsArticleById(id)) {
             throw new ArticleNotFoundException(id);
         }
 
@@ -71,16 +76,13 @@ public class ArticleController {
         }
 
         updatedArticle.setId(id);
-        Article savedArticle = articleRepository.save(updatedArticle);
+        Article savedArticle = articleService.updateArticle(updatedArticle);
         return ResponseEntity.ok(savedArticle);
     }
 
     @DeleteMapping("/remove/{id}")
     public ResponseEntity<?> deleteArticle(@PathVariable Long id) {
-        if (!articleRepository.existsById(id)) {
-            throw new ArticleNotFoundException(id);
-        }
-        articleRepository.deleteById(id);
+        articleService.deleteArticleById(id);
         Map<String, String> response = new HashMap<>();
         response.put("message", "Article with ID " + id + " has been deleted successfully");
         return ResponseEntity.ok(response);
@@ -92,6 +94,11 @@ public class ArticleController {
         errorResponse.put("error", e.getError());
         errorResponse.put("message", e.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+    @GetMapping("/byAuthor/{authorName}")
+    public ResponseEntity<List<Article>> getArticlesByAuthor(@PathVariable String authorName) {
+        List<Article> articles = articleService.findArticlesByAuthor(authorName);
+        return ResponseEntity.ok(articles);
     }
 }
 
