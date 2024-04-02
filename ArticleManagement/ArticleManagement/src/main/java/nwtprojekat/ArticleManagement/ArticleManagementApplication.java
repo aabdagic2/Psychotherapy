@@ -1,5 +1,7 @@
 package nwtprojekat.ArticleManagement;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.servers.Server;
 import nwtprojekat.ArticleManagement.model.Article;
 import nwtprojekat.ArticleManagement.model.Image;
 import nwtprojekat.ArticleManagement.model.Video;
@@ -16,6 +18,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.*;
 
 @SpringBootApplication
+@OpenAPIDefinition(servers = {@Server(url = "/", description = "Default Server URL")})
 public class ArticleManagementApplication implements CommandLineRunner {
 
 	@Autowired

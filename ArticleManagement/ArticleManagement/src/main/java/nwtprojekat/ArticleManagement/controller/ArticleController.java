@@ -1,6 +1,8 @@
 package nwtprojekat.ArticleManagement.controller;
 
+//import io.swagger.annotations.Api;
 import jakarta.validation.Valid;
+import nwtprojekat.ArticleManagement.exception.ArticleNotFoundException;
 import nwtprojekat.ArticleManagement.model.Article;
 import nwtprojekat.ArticleManagement.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.HttpHeaders;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -22,17 +25,22 @@ public class ArticleController {
     private ArticleRepository articleRepository;
 
     @PostMapping("/add")
-    public ResponseEntity<String> createArticle(@RequestBody Article article, BindingResult bindingResult) {
+    public ResponseEntity<?> createArticle(@RequestBody @Valid Article article, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             FieldError titleError = bindingResult.getFieldError("title");
             if (titleError != null) {
-                return ResponseEntity.badRequest().body(titleError.getDefaultMessage());
+                Map<String, String> errorResponse = new HashMap<>();
+                errorResponse.put("error", "validation");
+                errorResponse.put("message", titleError.getDefaultMessage());
+                return ResponseEntity.badRequest().body(errorResponse);
             }
             return ResponseEntity.badRequest().body("Invalid data: " + bindingResult.getAllErrors());
         }
 
         Article savedArticle = articleRepository.save(article);
-        return ResponseEntity.ok("Article added successfully");
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Article added successfully");
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/all")
@@ -44,18 +52,18 @@ public class ArticleController {
             return ResponseEntity.ok(articles);
         }
     }
-
+    
     @GetMapping("/{id}")
-    public ResponseEntity<String> getArticleById(@PathVariable Long id) {
+    public ResponseEntity<Article> getArticleById(@PathVariable Long id) {
         Optional<Article> optionalArticle = articleRepository.findById(id);
-        return optionalArticle.map(article -> ResponseEntity.ok("Article successfully found"))
-                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body("Article with ID " + id + " not found"));
+        return optionalArticle.map(ResponseEntity::ok)
+                .orElseThrow(() -> new ArticleNotFoundException(id));
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateArticle(@PathVariable Long id, @Valid @RequestBody Article updatedArticle, BindingResult bindingResult) {
         if (!articleRepository.existsById(id)) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Article with ID " + id + " not found");
+            throw new ArticleNotFoundException(id);
         }
 
         if (bindingResult.hasErrors()) {
@@ -68,12 +76,22 @@ public class ArticleController {
     }
 
     @DeleteMapping("/remove/{id}")
-    public boolean deleteArticle(@PathVariable Long id) {
+    public ResponseEntity<?> deleteArticle(@PathVariable Long id) {
         if (!articleRepository.existsById(id)) {
-            return false;
+            throw new ArticleNotFoundException(id);
         }
         articleRepository.deleteById(id);
-        return true;
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Article with ID " + id + " has been deleted successfully");
+        return ResponseEntity.ok(response);
+    }
+
+    @ExceptionHandler(ArticleNotFoundException.class)
+    public ResponseEntity<?> handleArticleNotFoundException(ArticleNotFoundException e) {
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("error", e.getError());
+        errorResponse.put("message", e.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 }
 
