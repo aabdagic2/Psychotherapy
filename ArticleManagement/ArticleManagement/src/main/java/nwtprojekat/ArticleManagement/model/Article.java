@@ -18,6 +18,7 @@ public class Article {
 
     @Column(nullable = false)
     private String author;
+    // ovo će vjerovatno biti instanca psihologa, pa za sad nema validaciju
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "text_id", referencedColumnName = "id")

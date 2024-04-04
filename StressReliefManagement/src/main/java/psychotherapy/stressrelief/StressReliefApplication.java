@@ -23,12 +23,12 @@ public class StressReliefApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		StressReliefAction action = new BreathControl();
-		action.setPatientId(UUID.randomUUID());
-		action.setStartedAt(LocalDateTime.now(ZoneOffset.UTC));
-		action.setDurationTime(10);
-
-		action = _stressReliefActionRepository.save(action);
-		System.out.println(action);
+//		StressReliefAction action = new BreathControl();
+//		action.setPatientId(UUID.randomUUID());
+//		action.setStartedAt(LocalDateTime.now(ZoneOffset.UTC));
+//		action.setDurationTime(10);
+//
+//		action = _stressReliefActionRepository.save(action);
+//		System.out.println(action);
 	}
 }
