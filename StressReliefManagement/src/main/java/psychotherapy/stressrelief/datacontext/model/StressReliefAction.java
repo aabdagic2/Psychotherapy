@@ -1,33 +1,42 @@
 package psychotherapy.stressrelief.datacontext.model;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
+@SuperBuilder
 @Getter
 @Setter
 @Entity
-@Table(
-        schema = "sql11692975"
-)
+@Table
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class StressReliefAction {
     @Id
-//    @Column(
-//            nullable = false
-//    )
-    @UuidGenerator
-    private UUID stressReliefActionId;
+    @Column(columnDefinition = "VARCHAR(36)")
+    private String stressReliefActionId;
 
     private UUID patientId;
 
     @Column(
             columnDefinition = "DATETIME"
     )
-    private LocalDateTime startedAt;
+    private OffsetDateTime startedAt;
 
     private double durationTime;
+
+    public StressReliefAction() {
+        this.stressReliefActionId = UUID.randomUUID().toString();
+    }
+    public StressReliefAction(UUID patientId, OffsetDateTime startedAt, double durationTime) {
+        this.patientId = patientId;
+        this.startedAt = startedAt;
+        this.durationTime = durationTime;
+    }
 }
