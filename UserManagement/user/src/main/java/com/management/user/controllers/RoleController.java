@@ -2,12 +2,13 @@ package com.management.user.controllers;
 
 import com.management.user.dto.RoleDto;
 import com.management.user.service.RoleService;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RefreshScope
 @RestController
 @RequestMapping("/create")
 public class RoleController {
