@@ -4,15 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65a2f4ad-da89-48ea-a255-f52860118fdc" name="Changes" comment="validation for post method">
+    <list default="true" id="65a2f4ad-da89-48ea-a255-f52860118fdc" name="Changes" comment="some bugs fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/ArticleManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/ArticleManagementApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Text.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/ArticleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/ArticleRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/ArticleManagementApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/ArticleManagementApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Article.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Article.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Text.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Text.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/ArticleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/ArticleRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/service/ArticleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/service/ArticleService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,36 +61,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.ArticleControllerTest.addNewArticle.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerTest.testGetAllArticles.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerTest.testGetArticleByID.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ArticleManagementApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/anida/IdeaProjects/Psychotherapy/ArticleManagement&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.ArticleControllerTest.addNewArticle.executor": "Run",
+    "JUnit.ArticleControllerTest.addNewArticleWithEmptyTitle.executor": "Run",
+    "JUnit.ArticleControllerTest.createArticle_EmptyTitle_ShouldReturnBadRequest.executor": "Run",
+    "JUnit.ArticleControllerTest.executor": "Run",
+    "JUnit.ArticleControllerTest.testGetAllArticles.executor": "Run",
+    "JUnit.ArticleControllerTest.testGetArticleByID.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.ArticleManagementApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/anida/IdeaProjects/Psychotherapy",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.general",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="nwtprojekat.ArticleManagement.model" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ArticleManagementApplication">
+  <component name="RunManager" selected="JUnit.ArticleControllerTest.testGetAllArticles">
     <configuration name="ArticleControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ArticleManagement" />
       <extension name="coverage">
@@ -117,6 +125,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ArticleControllerTest.addNewArticleWithEmptyTitle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ArticleManagement" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nwtprojekat.ArticleManagement.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nwtprojekat.ArticleManagement" />
+      <option name="MAIN_CLASS_NAME" value="nwtprojekat.ArticleManagement.ArticleControllerTest" />
+      <option name="METHOD_NAME" value="addNewArticleWithEmptyTitle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArticleControllerTest.createArticle_EmptyTitle_ShouldReturnBadRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ArticleManagement" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nwtprojekat.ArticleManagement.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nwtprojekat.ArticleManagement" />
+      <option name="MAIN_CLASS_NAME" value="nwtprojekat.ArticleManagement.ArticleControllerTest" />
+      <option name="METHOD_NAME" value="createArticle_EmptyTitle_ShouldReturnBadRequest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ArticleControllerTest.testGetAllArticles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ArticleManagement" />
       <extension name="coverage">
@@ -133,22 +173,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ArticleControllerTest.testGetArticleByID" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ArticleManagement" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nwtprojekat.ArticleManagement.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nwtprojekat.ArticleManagement" />
-      <option name="MAIN_CLASS_NAME" value="nwtprojekat.ArticleManagement.ArticleControllerTest" />
-      <option name="METHOD_NAME" value="testGetArticleByID" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ArticleManagementApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ArticleManagement" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="nwtprojekat.ArticleManagement.ArticleManagementApplication" />
@@ -158,10 +182,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ArticleControllerTest.addNewArticle" />
         <item itemvalue="JUnit.ArticleControllerTest.testGetAllArticles" />
+        <item itemvalue="JUnit.ArticleControllerTest.addNewArticleWithEmptyTitle" />
+        <item itemvalue="JUnit.ArticleControllerTest.createArticle_EmptyTitle_ShouldReturnBadRequest" />
         <item itemvalue="JUnit.ArticleControllerTest" />
-        <item itemvalue="JUnit.ArticleControllerTest.testGetArticleByID" />
+        <item itemvalue="JUnit.ArticleControllerTest.addNewArticle" />
       </list>
     </recent_temporary>
   </component>
@@ -191,7 +216,12 @@
       <workItem from="1711644747669" duration="236000" />
       <workItem from="1711914305214" duration="2716000" />
       <workItem from="1712006189334" duration="5045000" />
-      <workItem from="1712087740250" duration="6367000" />
+      <workItem from="1712087740250" duration="10140000" />
+      <workItem from="1712101007062" duration="783000" />
+      <workItem from="1712154198077" duration="59000" />
+      <workItem from="1712179592827" duration="1781000" />
+      <workItem from="1712225974808" duration="6021000" />
+      <workItem from="1712772267862" duration="4878000" />
     </task>
     <task id="LOCAL-00001" summary="dodani unosi u tabele">
       <option name="closed" value="true" />
@@ -425,7 +455,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712007627299</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="some bugs fixed">
+      <option name="closed" value="true" />
+      <created>1712095835127</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1712095835127</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -467,26 +505,7 @@
     <MESSAGE value="validation for get and put methods" />
     <MESSAGE value="validation for delete method" />
     <MESSAGE value="validation for post method" />
-    <option name="LAST_COMMIT_MESSAGE" value="validation for post method" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java</url>
-          <line>72</line>
-          <properties class="nwtprojekat.ArticleManagement.ArticleControllerTest" method="initialData">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="some bugs fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="some bugs fixed" />
   </component>
 </project>
