@@ -1,11 +1,16 @@
 package nwtprojekat.ArticleManagement;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
@@ -69,34 +74,36 @@ public class ArticleControllerTest {
         objectMapper.registerModule(new ParameterNamesModule());
     }
 
-    @BeforeEach
-    public void initialData() {
-        Article article = new Article();
-        article.setAuthor("Author 1");
-        article.setTitle("Title 1");
+//    @BeforeEach
+//    public void initialData() {
+//        Article article = new Article();
+//        article.setAuthor("Author 1");
+//        article.setTitle("Title 1");
+//
+//        Text textSection = new Text();
+//        textSection.setContent("Text 1");
+//
+//        Video videoSection = new Video();
+//        videoSection.setVideoUrl("Video 1");
+//
+//        Image imageSection = new Image();
+//        imageSection.setImageUrl("Image 1");
+//
+//        article.setText(textSection);
+//        article.setImage(imageSection);
+//        article.setVideo(videoSection);
+//
+//        articleRepository.save(article);
+//
+//        textSection.setArticle(article);
+//        textRepository.save(textSection);
+//        videoSection.setArticle(article);
+//        videoRepository.save(videoSection);
+//        imageSection.setArticle(article);
+//        imageRepository.save(imageSection);
+//    }
 
-        Text textSection = new Text();
-        textSection.setContent("Text 1");
 
-        Video videoSection = new Video();
-        videoSection.setVideoUrl("Video 1");
-
-        Image imageSection = new Image();
-        imageSection.setImageUrl("Image 1");
-
-        article.setText(textSection);
-        article.setImage(imageSection);
-        article.setVideo(videoSection);
-
-        articleRepository.save(article);
-
-        textSection.setArticle(article);
-        textRepository.save(textSection);
-        videoSection.setArticle(article);
-        videoRepository.save(videoSection);
-        imageSection.setArticle(article);
-        imageRepository.save(imageSection);
-    }
     @Test
     public void testGetAllArticles() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
@@ -110,20 +117,7 @@ public class ArticleControllerTest {
         Assertions.assertEquals(1, articles.length);
     }
 
-    /*@Test
-    public void testGetArticleByID() throws Exception {
-        var allArticles = articleRepository.findAll();
-        var id = allArticles.stream().findFirst().get().getId();
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-                        .get("/articles/{id}",id))
-                .andExpect(status().is2xxSuccessful())
-                .andReturn();
-        String content = result.getResponse().getContentAsString();
-        var article = objectMapper.convertValue(objectMapper.readTree(content), Article.class);
-
-        Assertions.assertNotNull(article);
-    }*/
-
+    // POST - uspjesno dodavanje
     @Test
     public void addNewArticle() throws Exception {
         Text textSection = new Text();
@@ -156,6 +150,23 @@ public class ArticleControllerTest {
         }
         Assertions.assertTrue(articleFound, "New article not found among retrieved articles");
     }
+
+    // POST - neuspjesno dodavanje; izuzetak bacen (naslov prazan)
+    @Test
+    void addNewArticleWithEmptyTitle() throws Exception {
+        Article article = new Article();
+        article.setTitle("");
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/articles/add")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(article)))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.error").value("validation"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("The title must not be empty!"));
+    }
+
+
+
 
     private static String asJsonString(final Object obj) {
         try {

@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "text_sections")
@@ -13,7 +14,9 @@ public class Text {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(nullable = false)
+    //@NotBlank(message = "Article must have text!")
     private String content;
 
     @OneToOne(mappedBy = "text")

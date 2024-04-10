@@ -46,4 +46,7 @@ public class ArticleService {
         return articleRepository.findByAuthor(authorName);
     }
 
+    public List<Article> findArticlesByKeyword(String keyword) {
+        return articleRepository.findByKeywordInTitle(keyword);
+    }
 }
