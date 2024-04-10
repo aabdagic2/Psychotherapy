@@ -14,7 +14,6 @@ import java.util.UUID;
 @DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id", columnDefinition = "VARCHAR(64)")
     private String userId;
 

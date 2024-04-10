@@ -49,8 +49,10 @@ public class AppointmentManagementApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Psychologist psychologist = new Psychologist();
+		psychologist.setUserId(UUID.randomUUID().toString());
 		psychologist=psychologistRepository.save(psychologist);
 		Patient patient = new Patient(30,psychologist);
+		patient.setUserId(UUID.randomUUID().toString());
 		patientRepository.save(patient);
 		Message message = new Message("Sample message content", new Date(), patient, psychologist);
 		messageRepository.save(message);

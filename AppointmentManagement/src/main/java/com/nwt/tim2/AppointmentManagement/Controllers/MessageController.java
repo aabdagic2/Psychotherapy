@@ -4,6 +4,7 @@ import com.nwt.tim2.AppointmentManagement.Dtos.MessageDto;
 import com.nwt.tim2.AppointmentManagement.Models.Message;
 import com.nwt.tim2.AppointmentManagement.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@RefreshScope
 @RestController
 @RequestMapping("/messages")
 public class MessageController {

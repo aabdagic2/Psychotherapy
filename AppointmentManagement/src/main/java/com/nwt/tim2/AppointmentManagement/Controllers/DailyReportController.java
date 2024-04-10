@@ -5,6 +5,7 @@ import com.nwt.tim2.AppointmentManagement.Dtos.Mapper.DailyReportMapper;
 import com.nwt.tim2.AppointmentManagement.Models.*;
 import com.nwt.tim2.AppointmentManagement.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+@RefreshScope
 @RestController
 @RequestMapping("/api/daily-reports")
 public class DailyReportController {

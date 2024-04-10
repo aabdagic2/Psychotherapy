@@ -4,6 +4,7 @@ import com.nwt.tim2.AppointmentManagement.Dtos.PsychologistDto;
 import com.nwt.tim2.AppointmentManagement.Models.Psychologist;
 import com.nwt.tim2.AppointmentManagement.Service.PsychologistService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
-
+@RefreshScope
 @RestController
 @RequestMapping("/psychologists")
 public class PsychologistController {
@@ -50,7 +51,7 @@ public class PsychologistController {
 
     @DeleteMapping("/delete/{psychologistId}")
     public ResponseEntity<?> deletePsychologist(@PathVariable UUID psychologistId) {
-            psychologistService.deletePsychologist(psychologistId);
+            psychologistService.deletePsychologist(psychologistId.toString());
             return ResponseEntity.ok("Psychologist deleted successfully.");
 
     }
