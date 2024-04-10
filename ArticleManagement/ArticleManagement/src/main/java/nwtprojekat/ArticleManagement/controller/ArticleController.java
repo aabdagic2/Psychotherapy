@@ -22,8 +22,6 @@ import java.util.Optional;
 @RequestMapping("/articles")
 public class ArticleController {
 
-//    @Autowired
-//    private ArticleRepository articleRepository;
 
     @Autowired
     private ArticleService articleService;
@@ -96,9 +94,27 @@ public class ArticleController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
     @GetMapping("/byAuthor/{authorName}")
-    public ResponseEntity<List<Article>> getArticlesByAuthor(@PathVariable String authorName) {
+    public ResponseEntity<?> getArticlesByAuthor(@PathVariable String authorName) {
         List<Article> articles = articleService.findArticlesByAuthor(authorName);
-        return ResponseEntity.ok(articles);
+        Map<String, Object> response = new HashMap<>();
+        if (articles.isEmpty()) {
+            response.put("message", "No articles found for author: " + authorName);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+        response.put("articles", articles);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/byKeyword/{keyword}")
+    public ResponseEntity<?> getArticlesByKeyword(@PathVariable String keyword) {
+        List<Article> articles = articleService.findArticlesByKeyword(keyword);
+        Map<String, Object> response = new HashMap<>();
+        if (articles.isEmpty()) {
+            response.put("message", "No articles found containing keyword: " + keyword);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+        response.put("articles", articles);
+        return ResponseEntity.ok(response);
     }
 }
 

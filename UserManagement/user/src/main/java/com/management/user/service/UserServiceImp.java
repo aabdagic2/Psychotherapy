@@ -112,4 +112,6 @@ public class UserServiceImp implements UserService {
         List<UserEntity> users = userRepository.findByNameContainingIgnoreCase(name);
         return users.stream().map(UserMapper::mapToUserDto).collect(Collectors.toList());
     }
+
+
 }
