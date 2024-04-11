@@ -24,6 +24,7 @@ public class PatientMapper {
         }
 
         PatientDto dto = new PatientDto();
+        dto.setUserId(patient.getUserId());
         dto.setSelectedPsychologistId(patient.getSelectedPsychologistId());
         dto.setAge(patient.getAge());
         return dto;
@@ -35,8 +36,11 @@ public class PatientMapper {
         }
 
         Patient patient = new Patient();
-        Psychologist psychologist = psychologistRepo.findById(patientDto.getSelectedPsychologistId())
-                .orElseThrow(() -> new IllegalArgumentException("Psychologist not found."));
+        Psychologist psychologist=null;
+        if(patientDto.getSelectedPsychologistId()!=null){
+        psychologist = psychologistRepo.findById(patientDto.getSelectedPsychologistId())
+                .orElseThrow(() -> new IllegalArgumentException("Psychologist not found."));}
+        patient.setUserId(patientDto.getUserId());
         patient.setAge(patientDto.getAge());
         patient.setSelectedPsychologist(psychologist);
         return patient;
