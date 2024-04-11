@@ -2,6 +2,7 @@ package com.management.user.controllers;
 
 //
 import com.management.user.Request.PatientRequest;
+import com.management.user.Request.PsychologistRequest;
 import com.management.user.dto.UserDto;
 import com.management.user.exceptions.UserNotFoundException;
 
@@ -67,6 +68,12 @@ public class UserController {
         public ResponseEntity<UserDto> createPsychologist(@RequestBody UserDto userDto) {
             userDto.setPasswordHash(passwordEncoder.encode(userDto.getPasswordHash()));
             UserDto createdUserDto = userService.createPsychologist(userDto);
+
+            String urlPsychologist = "http://appointmentservice/psychologists/save";
+        PsychologistRequest psychologistRequest = new PsychologistRequest();
+        psychologistRequest.setUserId(createdUserDto.getUserId());
+        restTemplate.postForObject(urlPsychologist,psychologistRequest,PsychologistRequest.class);
+
 
             return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
     }

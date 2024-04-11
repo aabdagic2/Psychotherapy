@@ -19,6 +19,7 @@ import java.util.*;
 
 @SpringBootApplication
 @OpenAPIDefinition(servers = {@Server(url = "/", description = "Default Server URL")})
+// @EnableEurekaClient
 public class ArticleManagementApplication implements CommandLineRunner {
 
 	@Autowired

@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65a2f4ad-da89-48ea-a255-f52860118fdc" name="Changes" comment="some bugs fixed">
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+    <list default="true" id="65a2f4ad-da89-48ea-a255-f52860118fdc" name="Changes" comment="article management eureka client">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArticleManagement/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +25,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="eureka" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -84,7 +89,7 @@
       <recent name="nwtprojekat.ArticleManagement.model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ArticleControllerTest.testGetAllArticles">
+  <component name="RunManager" selected="Spring Boot.ArticleManagementApplication">
     <configuration name="ArticleControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ArticleManagement" />
       <extension name="coverage">
@@ -213,6 +218,7 @@
       <workItem from="1712179592827" duration="1781000" />
       <workItem from="1712225974808" duration="6021000" />
       <workItem from="1712772267862" duration="4878000" />
+      <workItem from="1712829813643" duration="1043000" />
     </task>
     <task id="LOCAL-00001" summary="dodani unosi u tabele">
       <option name="closed" value="true" />
@@ -454,7 +460,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712095835127</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="dependency added">
+      <option name="closed" value="true" />
+      <created>1712823420407</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1712823420407</updated>
+    </task>
+    <task id="LOCAL-00032" summary="article management eureka client">
+      <option name="closed" value="true" />
+      <created>1712824233286</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1712824233286</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -472,7 +494,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dodani unosi u tabele" />
     <MESSAGE value="data added to db" />
     <MESSAGE value="reorganization of the project" />
     <MESSAGE value="corrected id type" />
@@ -484,7 +505,6 @@
     <MESSAGE value="try" />
     <MESSAGE value="one method added" />
     <MESSAGE value="small changes" />
-    <MESSAGE value="dependency added" />
     <MESSAGE value="validation" />
     <MESSAGE value="validation for GET ID and database change" />
     <MESSAGE value="PUT request changed" />
@@ -497,6 +517,8 @@
     <MESSAGE value="validation for delete method" />
     <MESSAGE value="validation for post method" />
     <MESSAGE value="some bugs fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="some bugs fixed" />
+    <MESSAGE value="dependency added" />
+    <MESSAGE value="article management eureka client" />
+    <option name="LAST_COMMIT_MESSAGE" value="article management eureka client" />
   </component>
 </project>
