@@ -9,12 +9,10 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto {
-    //private String userId;
     private String type;
     private String name;
     private String email;
     private String passwordHash;
-
     @Getter
     private String userId;
 }

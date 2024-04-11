@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import io.swagger.v3.oas.annotations.servers.Server;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -16,6 +17,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 @OpenAPIDefinition(servers = {@Server(url = "/", description = "Default Server URL")})
 public class AppointmentManagementApplication implements CommandLineRunner {
 
