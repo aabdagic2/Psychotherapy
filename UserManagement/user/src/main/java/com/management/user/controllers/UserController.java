@@ -45,13 +45,14 @@ public class UserController {
         userDto.setPasswordHash(passwordEncoder.encode(userDto.getPasswordHash()));
         UserDto createdUserDto = userService.createPatient(userDto);
         String urlPatient = "http://appointmentservice/patients/save";
-      UserEntity user = UserMapper.mapToUser(userDto);
-        //System.out.println(sentData);
+
+        String userId = createdUserDto.getUserId();
+
         PatientRequest patientRequest = new PatientRequest();
-        patientRequest.setUserId(user.getUserId());
+        patientRequest.setUserId(userId);
         patientRequest.setAge(age);
         patientRequest.setSelectedPsychologistId(null);
-        //return new ResponseEntity<>(patientRequest, HttpStatus.CREATED);
+       // return new ResponseEntity<>(patientRequest, HttpStatus.CREATED);
         restTemplate.postForObject(urlPatient,patientRequest, PatientRequest.class);
         return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
     }

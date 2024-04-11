@@ -12,6 +12,7 @@ import lombok.*;
 @Table(name = "user")
 @Entity // This tells Hibernate to make a table out of this class
 public class UserEntity {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id", columnDefinition = "VARCHAR(64)")

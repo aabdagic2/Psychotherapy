@@ -58,7 +58,7 @@ public class UserServiceImp implements UserService {
 
 
     @Override
-    public UserDto createPsychologist(UserDto userDto) {
+    public  UserDto createPsychologist(UserDto userDto) {
         String email = userDto.getEmail();
         if (userRepository.existsByEmail(email)) {
             throw new UserAlreadyExistsException("User with email '" + email + "' already exists.");
@@ -80,7 +80,7 @@ public class UserServiceImp implements UserService {
         user.setPasswordHash(passwordEncoder.encode(password));
 
         UserEntity savedUser = userRepository.save(user);
-
+        String id = savedUser.getUserId();
         return UserMapper.mapToUserDto(savedUser);
     }
 
