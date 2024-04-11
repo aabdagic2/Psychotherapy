@@ -135,10 +135,7 @@ public class SessionService {
                 .collect(Collectors.toList());
     }
 @Transactional
-    public void deleteSessionByPsychologistIdAndDayAndTime(@Valid SessionDto request) {
-        String psychologistId = request.getPsychologistId();
-        String day = request.getDay();
-        String time = request.getTime();
+    public void deleteSessionByPsychologistIdAndDayAndTime(String psychologistId,String day, String time) {
 
         DayOfWeek sessionDay;
         LocalTime sessionTime;

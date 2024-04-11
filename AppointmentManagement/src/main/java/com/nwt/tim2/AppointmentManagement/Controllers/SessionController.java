@@ -44,8 +44,8 @@ public class SessionController {
     }
 
     @DeleteMapping("/deleteSession/{psychologistId}/{day}/{time}")
-    public ResponseEntity<?> deleteSessionByPsychologistIdAndDayAndTime(@RequestBody SessionDto deleteSessionRequest) {
-            sessionService.deleteSessionByPsychologistIdAndDayAndTime(deleteSessionRequest);
+    public ResponseEntity<?> deleteSessionByPsychologistIdAndDayAndTime(@RequestParam String psychologistId, @RequestParam String day, @RequestParam String time) {
+            sessionService.deleteSessionByPsychologistIdAndDayAndTime(psychologistId, day, time);
             return ResponseEntity.ok().build();
     }
 
