@@ -12,6 +12,7 @@ import lombok.*;
 @Table(name = "user")
 @Entity // This tells Hibernate to make a table out of this class
 public class UserEntity {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id", columnDefinition = "VARCHAR(64)")
@@ -47,6 +48,7 @@ public class UserEntity {
     }
 
     public UserEntity(String type, String email, String name, String passwordHash) {
+
         this.email = email;
         this.name = name;
         this.passwordHash = passwordHash;

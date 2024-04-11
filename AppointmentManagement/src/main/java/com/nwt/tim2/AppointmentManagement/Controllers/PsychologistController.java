@@ -2,11 +2,14 @@ package com.nwt.tim2.AppointmentManagement.Controllers;
 
 import com.nwt.tim2.AppointmentManagement.Dtos.PsychologistDto;
 import com.nwt.tim2.AppointmentManagement.Models.Psychologist;
+import com.nwt.tim2.AppointmentManagement.Responses.UserDTOResponse;
 import com.nwt.tim2.AppointmentManagement.Service.PsychologistService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -14,17 +17,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
-
+@RefreshScope
 @RestController
 @RequestMapping("/psychologists")
 public class PsychologistController {
-
-    private final PsychologistService psychologistService;
-
     @Autowired
-    public PsychologistController(PsychologistService psychologistService) {
-        this.psychologistService = psychologistService;
-    }
+   PsychologistService psychologistService;
+    @Autowired
+    RestTemplate restTemplate = new RestTemplate();
 
     @PostMapping("/save")
     public ResponseEntity<?> savePsychologist(@RequestBody PsychologistDto psychologist) {
@@ -47,10 +47,19 @@ public class PsychologistController {
             return ResponseEntity.ok(psychologist);
 
     }
+    @GetMapping("/findUserPsychologist/{psychologistId}")
+    public ResponseEntity<?> getUserPsychologistById(@PathVariable String psychologistId) {
+        var response = new ResponseEntity<>(psychologistService.getPsychologistById(psychologistId), HttpStatus.OK);
+        if(response.getStatusCode().is2xxSuccessful()){
+            String url = "http://userservice/userId/"+psychologistId;
+            return restTemplate.getForEntity(url, UserDTOResponse.class);
+        }
+        return response;
+    }
 
     @DeleteMapping("/delete/{psychologistId}")
     public ResponseEntity<?> deletePsychologist(@PathVariable UUID psychologistId) {
-            psychologistService.deletePsychologist(psychologistId);
+            psychologistService.deletePsychologist(psychologistId.toString());
             return ResponseEntity.ok("Psychologist deleted successfully.");
 
     }

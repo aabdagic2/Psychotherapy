@@ -4,16 +4,12 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @ControllerAdvice
 public class GlobalRestExceptionHandler {
@@ -42,6 +38,14 @@ public class GlobalRestExceptionHandler {
     }
     @ExceptionHandler(InvalidFormat.class)
     public ResponseEntity<Error> handleInvalidFormatException(InvalidFormat ex) {
+        Error errorObject = new Error();
+        errorObject.setCode(HttpStatus.BAD_REQUEST.value());
+        errorObject.setMessage(ex.getMessage());
+        errorObject.setTimeStamp(new Date());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorObject);
+    }
+    @ExceptionHandler(IdNotUUID.class)
+    public ResponseEntity<Error> handleUserIdNotUUIDException(IdNotUUID ex) {
         Error errorObject = new Error();
         errorObject.setCode(HttpStatus.BAD_REQUEST.value());
         errorObject.setMessage(ex.getMessage());

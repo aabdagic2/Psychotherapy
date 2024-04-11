@@ -3,11 +3,12 @@ package com.nwt.tim2.AppointmentManagement.Controllers;
 import com.nwt.tim2.AppointmentManagement.Dtos.QualityRateDto;
 import com.nwt.tim2.AppointmentManagement.Models.QualityRate;
 import com.nwt.tim2.AppointmentManagement.Service.QualityRateService;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.*;
 import java.time.LocalDateTime;
 import java.util.*;
-
+@RefreshScope
 @RestController
 @RequestMapping("/quality-rates")
 public class QualityRateController {

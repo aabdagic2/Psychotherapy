@@ -29,19 +29,21 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public UserDto createUser(UserDto userDto) {
+    public UserDto createPatient(UserDto userDto) {
         String email = userDto.getEmail();
         if (userRepository.existsByEmail(email)) {
             throw new UserAlreadyExistsException("User with email '" + email + "' already exists.");
         }
 
 
+
+
         String password = userDto.getPasswordHash();
-        if (!isPasswordValid(password)) {
+        if (isPasswordValid(password)) {
             throw new InvalidFormatException("Invalid password. Password must meet policy requirements.");
         }
 
-        if (!isEmailValid(email)) {
+        if (isEmailValid(email)) {
             throw new InvalidFormatException("Invalid email format.");
         }
 
@@ -53,14 +55,43 @@ public class UserServiceImp implements UserService {
         return UserMapper.mapToUserDto(savedUser);
     }
 
+
+
+    @Override
+    public  UserDto createPsychologist(UserDto userDto) {
+        String email = userDto.getEmail();
+        if (userRepository.existsByEmail(email)) {
+            throw new UserAlreadyExistsException("User with email '" + email + "' already exists.");
+        }
+
+
+
+
+        String password = userDto.getPasswordHash();
+        if (isPasswordValid(password)) {
+            throw new InvalidFormatException("Invalid password. Password must meet policy requirements.");
+        }
+
+        if (isEmailValid(email)) {
+            throw new InvalidFormatException("Invalid email format.");
+        }
+
+        UserEntity user = UserMapper.mapToUser(userDto);
+        user.setPasswordHash(passwordEncoder.encode(password));
+
+        UserEntity savedUser = userRepository.save(user);
+        String id = savedUser.getUserId();
+        return UserMapper.mapToUserDto(savedUser);
+    }
+
     private boolean isPasswordValid(String password) {
 
-        return password.length() >= 8;
+        return password.length() < 8;
     }
 
     private boolean isEmailValid(String email) {
 
-        return email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        return !email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
     }
 
     @Override
@@ -81,6 +112,13 @@ public class UserServiceImp implements UserService {
             return UserMapper.mapToUserDto(user);
         }
         throw new UserNotFoundException("User not found with email: " + email);
+    }
+    @Override
+    public UserDto getUserById(String id) {
+        UserEntity user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + id));
+
+        return UserMapper.mapToUserDto(user);
     }
 
     @Override
@@ -112,4 +150,6 @@ public class UserServiceImp implements UserService {
         List<UserEntity> users = userRepository.findByNameContainingIgnoreCase(name);
         return users.stream().map(UserMapper::mapToUserDto).collect(Collectors.toList());
     }
+
+
 }
