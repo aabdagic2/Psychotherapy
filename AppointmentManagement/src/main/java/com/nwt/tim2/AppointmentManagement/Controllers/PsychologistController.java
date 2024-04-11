@@ -6,17 +6,13 @@ import com.nwt.tim2.AppointmentManagement.Responses.UserDTOResponse;
 import com.nwt.tim2.AppointmentManagement.Service.PsychologistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
+
 @RefreshScope
 @RestController
 @RequestMapping("/psychologists")
@@ -49,13 +45,21 @@ public class PsychologistController {
     }
     @GetMapping("/findUserPsychologist/{psychologistId}")
     public ResponseEntity<?> getUserPsychologistById(@PathVariable String psychologistId) {
-        var response = new ResponseEntity<>(psychologistService.getPsychologistById(psychologistId), HttpStatus.OK);
-        if(response.getStatusCode().is2xxSuccessful()){
-            String url = "http://userservice/userId/"+psychologistId;
-            return restTemplate.getForEntity(url, UserDTOResponse.class);
+        PsychologistDto psychologist = psychologistService.getPsychologistById(psychologistId);
+        String url = "http://userservice/userId/" + psychologistId;
+        if (psychologist != null) {
+            HttpHeaders headers = new HttpHeaders();
+            headers.setAccept(Collections.singletonList(MediaType.ALL));
+            HttpEntity<?> entity = new HttpEntity<>(headers);
+            ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+
+            return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
+
+        } else {
+            return ResponseEntity.notFound().build();
         }
-        return response;
     }
+
 
     @DeleteMapping("/delete/{psychologistId}")
     public ResponseEntity<?> deletePsychologist(@PathVariable UUID psychologistId) {

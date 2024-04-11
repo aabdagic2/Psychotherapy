@@ -8,11 +8,11 @@ public class UserMapper {
     // Convert User JPA Entity into UserDto
     public static UserDto mapToUserDto(UserEntity user){
         UserDto userDto = new UserDto(
-                user.getUserId(),
                 user.getType(),
                 user.getName(),
                 user.getEmail(),
-                user.getPasswordHash()
+                user.getPasswordHash(),
+                user.getUserId()
         );
         return userDto;
     }
