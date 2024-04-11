@@ -50,7 +50,11 @@ public class Patient extends User {
     }
 
     public String getSelectedPsychologistId() {
-        return selectedPsychologist.getUserId();
+        if(selectedPsychologist!=null){
+        return selectedPsychologist.getUserId();}
+        else{
+            return null;
+        }
     }
 
 

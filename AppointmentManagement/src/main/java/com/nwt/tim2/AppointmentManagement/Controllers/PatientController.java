@@ -3,6 +3,7 @@ package com.nwt.tim2.AppointmentManagement.Controllers;
 import com.nwt.tim2.AppointmentManagement.Dtos.Mapper.PatientMapper;
 import com.nwt.tim2.AppointmentManagement.Dtos.PatientDto;
 import com.nwt.tim2.AppointmentManagement.Models.Patient;
+import com.nwt.tim2.AppointmentManagement.Responses.UserDTOResponse;
 import com.nwt.tim2.AppointmentManagement.Service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
