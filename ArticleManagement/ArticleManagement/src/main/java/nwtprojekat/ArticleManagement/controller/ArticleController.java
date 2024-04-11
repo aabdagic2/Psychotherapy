@@ -7,6 +7,7 @@ import nwtprojekat.ArticleManagement.model.Article;
 import nwtprojekat.ArticleManagement.repository.ArticleRepository;
 import nwtprojekat.ArticleManagement.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -20,6 +21,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/articles")
+@RefreshScope
 public class ArticleController {
 
 
