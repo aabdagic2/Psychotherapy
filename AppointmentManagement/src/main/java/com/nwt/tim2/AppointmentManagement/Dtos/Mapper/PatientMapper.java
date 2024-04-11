@@ -24,6 +24,7 @@ public class PatientMapper {
         }
 
         PatientDto dto = new PatientDto();
+        dto.setUserId(patient.getUserId());
         dto.setSelectedPsychologistId(patient.getSelectedPsychologistId());
         dto.setAge(patient.getAge());
         return dto;

@@ -1,9 +1,12 @@
 package com.management.user.controllers;
 
 //
+import com.management.user.Request.PatientRequest;
 import com.management.user.dto.UserDto;
 import com.management.user.exceptions.UserNotFoundException;
 
+import com.management.user.mapper.UserMapper;
+import com.management.user.models.UserEntity;
 import com.management.user.repository.UserRepository;
 import com.management.user.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
@@ -14,8 +17,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 //
 @RefreshScope
@@ -27,16 +33,45 @@ public class UserController {
 //
     @Autowired
     private PasswordEncoder passwordEncoder;
-
+    @Autowired
     private UserService userService;
 
-    @PostMapping(path="/register")
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @PostMapping(path="/registerPatient/{age}")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> createPatient(@RequestBody UserDto userDto, @RequestParam int age) {
         userDto.setPasswordHash(passwordEncoder.encode(userDto.getPasswordHash()));
-        UserDto createdUserDto = userService.createUser(userDto);
+        UserDto createdUserDto = userService.createPatient(userDto);
+        String urlPatient = "http://appointmentservice/patients/save";
+      UserEntity user = UserMapper.mapToUser(userDto);
+        //System.out.println(sentData);
+        PatientRequest patientRequest = new PatientRequest();
+        patientRequest.setUserId(user.getUserId());
+        patientRequest.setAge(age);
+        patientRequest.setSelectedPsychologistId(null);
+        //return new ResponseEntity<>(patientRequest, HttpStatus.CREATED);
+        restTemplate.postForObject(urlPatient,patientRequest, PatientRequest.class);
         return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
     }
+
+    @GetMapping("/userId/{id}")
+    public ResponseEntity<UserDto> getUserById(@PathVariable String id) {
+        UserDto user = userService.getUserById(id);
+        return ResponseEntity.ok(user);
+    }
+    @PostMapping(path = "/registerPsychologist")
+        @ResponseStatus(HttpStatus.CREATED)
+        public ResponseEntity<UserDto> createPsychologist(@RequestBody UserDto userDto) {
+            userDto.setPasswordHash(passwordEncoder.encode(userDto.getPasswordHash()));
+            UserDto createdUserDto = userService.createPsychologist(userDto);
+
+            return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
+    }
+
+
+
 
     @GetMapping(path = "/users")
     public ResponseEntity<List<UserDto>> getAllUsers(){
