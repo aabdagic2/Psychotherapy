@@ -4,46 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65a2f4ad-da89-48ea-a255-f52860118fdc" name="Changes" comment="eureka client">
+    <list default="true" id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="probaaa">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/ArticleManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/ArticleManagementApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/exception/ArticleNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/exception/ArticleNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Image.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Text.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Video.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Video.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/ArticleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/ArticleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/ImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/ImageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/TextRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/TextRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/VideoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/VideoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/ArticleManagementApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/ArticleManagementApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Article.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Article.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Image.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Image.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Text.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Text.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Video.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Video.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/ArticleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/ArticleRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/ImageRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/ImageRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/TextRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/TextRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/VideoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/VideoRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/service/ArticleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/service/ArticleService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="AnnotationType" />
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -70,126 +38,44 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
-  <component name="ProjectId" id="2dzvn7gnQCg0CcHYq53k7ZARv34" />
+  <component name="ProjectId" id="2fKU03SELf9ANumyxMY7CJmgNG3" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.ArticleControllerTest.addNewArticle.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerTest.addNewArticleWithEmptyTitle.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerTest.createArticle_EmptyTitle_ShouldReturnBadRequest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerTest.testGetAllArticles.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerTest.testGetArticleByID.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ArticleManagementApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/anida/IdeaProjects/Psychotherapy/AppointmentManagement&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ArticleManagementApplication.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.ArticleManagementApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/anida/IdeaProjects/PsychotherapyUser",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="nwtprojekat.ArticleManagement.model" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\anida\IdeaProjects\Psychotherapy\ArticleManagement\ArticleManagement\src\test\java\nwtprojekat\ArticleManagement" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ArticleManagementApplication">
-    <configuration name="ArticleControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ArticleManagement" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nwtprojekat.ArticleManagement.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nwtprojekat.ArticleManagement" />
-      <option name="MAIN_CLASS_NAME" value="nwtprojekat.ArticleManagement.ArticleControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ArticleControllerTest.addNewArticle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ArticleManagement" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nwtprojekat.ArticleManagement.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nwtprojekat.ArticleManagement" />
-      <option name="MAIN_CLASS_NAME" value="nwtprojekat.ArticleManagement.ArticleControllerTest" />
-      <option name="METHOD_NAME" value="addNewArticle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ArticleControllerTest.addNewArticleWithEmptyTitle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ArticleManagement" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nwtprojekat.ArticleManagement.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nwtprojekat.ArticleManagement" />
-      <option name="MAIN_CLASS_NAME" value="nwtprojekat.ArticleManagement.ArticleControllerTest" />
-      <option name="METHOD_NAME" value="addNewArticleWithEmptyTitle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ArticleControllerTest.createArticle_EmptyTitle_ShouldReturnBadRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ArticleManagement" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nwtprojekat.ArticleManagement.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nwtprojekat.ArticleManagement" />
-      <option name="MAIN_CLASS_NAME" value="nwtprojekat.ArticleManagement.ArticleControllerTest" />
-      <option name="METHOD_NAME" value="createArticle_EmptyTitle_ShouldReturnBadRequest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ArticleControllerTest.testGetAllArticles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ArticleManagement" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nwtprojekat.ArticleManagement.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nwtprojekat.ArticleManagement" />
-      <option name="MAIN_CLASS_NAME" value="nwtprojekat.ArticleManagement.ArticleControllerTest" />
-      <option name="METHOD_NAME" value="testGetAllArticles" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="ArticleManagementApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ArticleManagement" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="nwtprojekat.ArticleManagement.ArticleManagementApplication" />
@@ -197,15 +83,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.ArticleControllerTest.testGetAllArticles" />
-        <item itemvalue="JUnit.ArticleControllerTest.addNewArticleWithEmptyTitle" />
-        <item itemvalue="JUnit.ArticleControllerTest.createArticle_EmptyTitle_ShouldReturnBadRequest" />
-        <item itemvalue="JUnit.ArticleControllerTest" />
-        <item itemvalue="JUnit.ArticleControllerTest.addNewArticle" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -217,341 +94,32 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="65a2f4ad-da89-48ea-a255-f52860118fdc" name="Changes" comment="" />
-      <created>1711023884570</created>
+      <changelist id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="" />
+      <created>1713549036554</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1711023884570</updated>
-      <workItem from="1711023885617" duration="3710000" />
-      <workItem from="1711390281191" duration="15862000" />
-      <workItem from="1711496439471" duration="6319000" />
-      <workItem from="1711502942197" duration="107000" />
-      <workItem from="1711529007830" duration="2896000" />
-      <workItem from="1711532441266" duration="2674000" />
-      <workItem from="1711549076324" duration="7270000" />
-      <workItem from="1711623795639" duration="9536000" />
-      <workItem from="1711644747669" duration="236000" />
-      <workItem from="1711914305214" duration="2716000" />
-      <workItem from="1712006189334" duration="5045000" />
-      <workItem from="1712087740250" duration="10140000" />
-      <workItem from="1712101007062" duration="783000" />
-      <workItem from="1712154198077" duration="59000" />
-      <workItem from="1712179592827" duration="1781000" />
-      <workItem from="1712225974808" duration="6021000" />
-      <workItem from="1712772267862" duration="4878000" />
-      <workItem from="1712829813643" duration="1548000" />
-      <workItem from="1712831386609" duration="12000" />
-      <workItem from="1712831417078" duration="8000" />
-      <workItem from="1712831452709" duration="7045000" />
-      <workItem from="1713545424886" duration="745000" />
+      <updated>1713549036554</updated>
+      <workItem from="1713549037792" duration="654000" />
+      <workItem from="1713549726248" duration="23000" />
+      <workItem from="1713549932496" duration="3415000" />
+      <workItem from="1713555392645" duration="899000" />
     </task>
-    <task id="LOCAL-00001" summary="dodani unosi u tabele">
+    <task id="LOCAL-00001" summary="probaaa">
       <option name="closed" value="true" />
-      <created>1711025210476</created>
+      <created>1713549361343</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1711025210476</updated>
+      <updated>1713549361343</updated>
     </task>
-    <task id="LOCAL-00002" summary="data added to db">
-      <option name="closed" value="true" />
-      <created>1711025488423</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1711025488423</updated>
-    </task>
-    <task id="LOCAL-00003" summary="reorganization of the project">
-      <option name="closed" value="true" />
-      <created>1711390833318</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1711390833318</updated>
-    </task>
-    <task id="LOCAL-00004" summary="small changes">
-      <option name="closed" value="true" />
-      <created>1711393608890</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1711393608890</updated>
-    </task>
-    <task id="LOCAL-00005" summary="small changes">
-      <option name="closed" value="true" />
-      <created>1711394582149</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1711394582149</updated>
-    </task>
-    <task id="LOCAL-00006" summary="corrected id type">
-      <option name="closed" value="true" />
-      <created>1711398562458</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1711398562458</updated>
-    </task>
-    <task id="LOCAL-00007" summary="implementation of article service">
-      <option name="closed" value="true" />
-      <created>1711399054699</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1711399054699</updated>
-    </task>
-    <task id="LOCAL-00008" summary="the complete logic of the code has been changed">
-      <option name="closed" value="true" />
-      <created>1711405179432</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1711405179432</updated>
-    </task>
-    <task id="LOCAL-00009" summary="unused import statement deleted">
-      <option name="closed" value="true" />
-      <created>1711405338648</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1711405338648</updated>
-    </task>
-    <task id="LOCAL-00010" summary="add">
-      <option name="closed" value="true" />
-      <created>1711405566013</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1711405566013</updated>
-    </task>
-    <task id="LOCAL-00011" summary="gitignore update">
-      <option name="closed" value="true" />
-      <created>1711406367765</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1711406367765</updated>
-    </task>
-    <task id="LOCAL-00012" summary="gitignore update">
-      <option name="closed" value="true" />
-      <created>1711406761258</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1711406761258</updated>
-    </task>
-    <task id="LOCAL-00013" summary="try">
-      <option name="closed" value="true" />
-      <created>1711497390195</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1711497390195</updated>
-    </task>
-    <task id="LOCAL-00014" summary="one method added">
-      <option name="closed" value="true" />
-      <created>1711497541157</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1711497541157</updated>
-    </task>
-    <task id="LOCAL-00015" summary="small changes">
-      <option name="closed" value="true" />
-      <created>1711501407593</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1711501407593</updated>
-    </task>
-    <task id="LOCAL-00016" summary="dependency added">
-      <option name="closed" value="true" />
-      <created>1711502580230</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1711502580230</updated>
-    </task>
-    <task id="LOCAL-00017" summary="validation">
-      <option name="closed" value="true" />
-      <created>1711502716334</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1711502716334</updated>
-    </task>
-    <task id="LOCAL-00018" summary="validation for GET ID and database change">
-      <option name="closed" value="true" />
-      <created>1711535230716</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1711535230716</updated>
-    </task>
-    <task id="LOCAL-00019" summary="validation for GET ID and database change">
-      <option name="closed" value="true" />
-      <created>1711549125623</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1711549125623</updated>
-    </task>
-    <task id="LOCAL-00020" summary="PUT request changed">
-      <option name="closed" value="true" />
-      <created>1711551459819</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1711551459819</updated>
-    </task>
-    <task id="LOCAL-00021" summary="added testing dependencies">
-      <option name="closed" value="true" />
-      <created>1711551681377</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1711551681377</updated>
-    </task>
-    <task id="LOCAL-00022" summary="added testing dependencies">
-      <option name="closed" value="true" />
-      <created>1711551743907</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1711551743907</updated>
-    </task>
-    <task id="LOCAL-00023" summary="GET all test done">
-      <option name="closed" value="true" />
-      <created>1711554175019</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1711554175019</updated>
-    </task>
-    <task id="LOCAL-00024" summary="GET id needs a fix">
-      <option name="closed" value="true" />
-      <created>1711555175018</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1711555175018</updated>
-    </task>
-    <task id="LOCAL-00025" summary="test for adding a new article">
-      <option name="closed" value="true" />
-      <created>1711556672130</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1711556672130</updated>
-    </task>
-    <task id="LOCAL-00026" summary="swagger configuration done and exception added">
-      <option name="closed" value="true" />
-      <created>1711644928442</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1711644928442</updated>
-    </task>
-    <task id="LOCAL-00027" summary="validation for get and put methods">
-      <option name="closed" value="true" />
-      <created>1711915768014</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1711915768014</updated>
-    </task>
-    <task id="LOCAL-00028" summary="validation for delete method">
-      <option name="closed" value="true" />
-      <created>1711916017880</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1711916017880</updated>
-    </task>
-    <task id="LOCAL-00029" summary="validation for post method">
-      <option name="closed" value="true" />
-      <created>1712007627299</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1712007627299</updated>
-    </task>
-    <task id="LOCAL-00030" summary="some bugs fixed">
-      <option name="closed" value="true" />
-      <created>1712095835127</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1712095835127</updated>
-    </task>
-    <task id="LOCAL-00031" summary="dependency added">
-      <option name="closed" value="true" />
-      <created>1712823420407</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1712823420407</updated>
-    </task>
-    <task id="LOCAL-00032" summary="article management eureka client">
-      <option name="closed" value="true" />
-      <created>1712824233286</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1712824233286</updated>
-    </task>
-    <task id="LOCAL-00033" summary="eureka client">
-      <option name="closed" value="true" />
-      <created>1712830938456</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1712830938456</updated>
-    </task>
-    <option name="localTasksCounter" value="34" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="reorganization of the project" />
-    <MESSAGE value="corrected id type" />
-    <MESSAGE value="implementation of article service" />
-    <MESSAGE value="the complete logic of the code has been changed" />
-    <MESSAGE value="unused import statement deleted" />
-    <MESSAGE value="add" />
-    <MESSAGE value="gitignore update" />
-    <MESSAGE value="try" />
-    <MESSAGE value="one method added" />
-    <MESSAGE value="small changes" />
-    <MESSAGE value="validation" />
-    <MESSAGE value="validation for GET ID and database change" />
-    <MESSAGE value="PUT request changed" />
-    <MESSAGE value="added testing dependencies" />
-    <MESSAGE value="GET all test done" />
-    <MESSAGE value="GET id needs a fix" />
-    <MESSAGE value="test for adding a new article" />
-    <MESSAGE value="swagger configuration done and exception added" />
-    <MESSAGE value="validation for get and put methods" />
-    <MESSAGE value="validation for delete method" />
-    <MESSAGE value="validation for post method" />
-    <MESSAGE value="some bugs fixed" />
-    <MESSAGE value="dependency added" />
-    <MESSAGE value="article management eureka client" />
-    <MESSAGE value="eureka client" />
-    <option name="LAST_COMMIT_MESSAGE" value="eureka client" />
+    <MESSAGE value="probaaa" />
+    <option name="LAST_COMMIT_MESSAGE" value="probaaa" />
   </component>
 </project>
