@@ -38,7 +38,7 @@ public class ArticleManagementApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// prvi clanak
 		Article article = new Article();
-		article.setAuthor("Neko Nekic");
+		article.setAuthor("06d04f45-6e59-4cd1-aca9-e00434987b24");
 		article.setTitle("Ovo je NWT projekat.");
 
 		Text textSection = new Text();
@@ -65,7 +65,7 @@ public class ArticleManagementApplication implements CommandLineRunner {
 
 		// drugi clanak
 		Article article2 = new Article();
-		article2.setAuthor("Drugi Autor");
+		article2.setAuthor("0dbac29d-a95c-42cd-bc0d-6809cad9e4fb");
 		article2.setTitle("Drugi clanak.");
 
 		Text textSection2 = new Text();
@@ -92,7 +92,7 @@ public class ArticleManagementApplication implements CommandLineRunner {
 
 		// treći clanak
 		Article article3 = new Article();
-		article3.setAuthor("Treci Autor");
+		article3.setAuthor("ddad59ca-2065-481a-aa3a-03f91ababc14");
 		article3.setTitle("Treci clanak.");
 
 		Text textSection3 = new Text();

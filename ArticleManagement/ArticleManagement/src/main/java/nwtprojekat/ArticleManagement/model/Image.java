@@ -10,9 +10,11 @@ import jakarta.persistence.*;
 public class Image {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id", columnDefinition = "VARCHAR(64)")
+    private String id;
+
+
     @Column(nullable = false)
     private String imageUrl;
 
@@ -29,11 +31,11 @@ public class Image {
         this.imageUrl = imageUrl;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

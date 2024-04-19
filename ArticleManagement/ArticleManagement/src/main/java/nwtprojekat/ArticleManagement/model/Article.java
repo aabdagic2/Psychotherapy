@@ -8,9 +8,9 @@ import org.antlr.v4.runtime.misc.NotNull;
 @Table(name = "articles")
 public class Article {
     @Id
-    @Column(name = "article_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "article_id", columnDefinition = "VARCHAR(64)")
+    private String id;
 
     @Column(nullable = false)
     @NotBlank(message = "The title must not be empty!")
@@ -18,7 +18,6 @@ public class Article {
 
     @Column(nullable = false)
     private String author;
-    // ovo će vjerovatno biti instanca psihologa, pa za sad nema validaciju
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "text_id", referencedColumnName = "id")
@@ -42,11 +41,11 @@ public class Article {
 
     public Article() {}
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

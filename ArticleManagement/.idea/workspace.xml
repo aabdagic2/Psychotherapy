@@ -4,11 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65a2f4ad-da89-48ea-a255-f52860118fdc" name="Changes" comment="article management eureka client">
+    <list default="true" id="65a2f4ad-da89-48ea-a255-f52860118fdc" name="Changes" comment="eureka client">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/ArticleManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/ArticleManagementApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/exception/ArticleNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/exception/ArticleNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Text.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Video.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Video.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/ArticleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/ArticleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/ImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/ImageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/TextRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/TextRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/VideoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/VideoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/ArticleManagementApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/ArticleManagementApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Article.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Article.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Image.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Image.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Text.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Text.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Video.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/model/Video.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/ArticleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/ArticleRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/ImageRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/ImageRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/TextRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/TextRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/VideoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/repository/VideoRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/service/ArticleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/service/ArticleService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +95,7 @@
     &quot;Spring Boot.ArticleManagementApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/anida/IdeaProjects/Psychotherapy&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/anida/IdeaProjects/Psychotherapy/AppointmentManagement&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -218,7 +239,11 @@
       <workItem from="1712179592827" duration="1781000" />
       <workItem from="1712225974808" duration="6021000" />
       <workItem from="1712772267862" duration="4878000" />
-      <workItem from="1712829813643" duration="1043000" />
+      <workItem from="1712829813643" duration="1548000" />
+      <workItem from="1712831386609" duration="12000" />
+      <workItem from="1712831417078" duration="8000" />
+      <workItem from="1712831452709" duration="7045000" />
+      <workItem from="1713545424886" duration="745000" />
     </task>
     <task id="LOCAL-00001" summary="dodani unosi u tabele">
       <option name="closed" value="true" />
@@ -476,7 +501,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712824233286</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="eureka client">
+      <option name="closed" value="true" />
+      <created>1712830938456</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1712830938456</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -494,7 +527,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="data added to db" />
     <MESSAGE value="reorganization of the project" />
     <MESSAGE value="corrected id type" />
     <MESSAGE value="implementation of article service" />
@@ -519,6 +551,7 @@
     <MESSAGE value="some bugs fixed" />
     <MESSAGE value="dependency added" />
     <MESSAGE value="article management eureka client" />
-    <option name="LAST_COMMIT_MESSAGE" value="article management eureka client" />
+    <MESSAGE value="eureka client" />
+    <option name="LAST_COMMIT_MESSAGE" value="eureka client" />
   </component>
 </project>

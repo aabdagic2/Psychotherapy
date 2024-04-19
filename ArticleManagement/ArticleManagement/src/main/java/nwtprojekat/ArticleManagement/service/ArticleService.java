@@ -14,7 +14,7 @@ public class ArticleService {
     @Autowired
     private ArticleRepository articleRepository;
 
-    public Article getArticleById(Long id) {
+    public Article getArticleById(String id) {
         return articleRepository.findById(id)
                 .orElseThrow(() -> new ArticleNotFoundException(id));
     }
@@ -23,14 +23,14 @@ public class ArticleService {
         return articleRepository.save(article);
     }
 
-    public void deleteArticleById(Long id) {
+    public void deleteArticleById(String id) {
         if (!articleRepository.existsById(id)) {
             throw new ArticleNotFoundException(id);
         }
         articleRepository.deleteById(id);
     }
 
-    public boolean existsArticleById(Long id) {
+    public boolean existsArticleById(String id) {
         return articleRepository.existsById(id);
     }
 

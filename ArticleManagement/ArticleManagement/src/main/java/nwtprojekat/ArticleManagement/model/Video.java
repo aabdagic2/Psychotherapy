@@ -10,9 +10,9 @@ import jakarta.persistence.*;
 public class Video {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id", columnDefinition = "VARCHAR(64)")
+    private String id;
     @Column(nullable = false)
     private String videoUrl;
 
@@ -29,11 +29,11 @@ public class Video {
         this.videoUrl = videoUrl;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

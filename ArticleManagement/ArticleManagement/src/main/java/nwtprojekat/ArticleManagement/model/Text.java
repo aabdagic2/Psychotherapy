@@ -11,9 +11,9 @@ import jakarta.validation.constraints.NotBlank;
 public class Text {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id", columnDefinition = "VARCHAR(64)")
+    private String id;
 
     @Column(nullable = false)
     //@NotBlank(message = "Article must have text!")
@@ -32,11 +32,11 @@ public class Text {
         this.content = content;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
