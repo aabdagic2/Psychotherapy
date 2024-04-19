@@ -24,9 +24,9 @@ public class ArticleService {
     }
 
     public void deleteArticleById(String id) {
-        if (!articleRepository.existsById(id)) {
-            throw new ArticleNotFoundException(id);
-        }
+        Article article = articleRepository.findById(id)
+                .orElseThrow(() -> new ArticleNotFoundException(id));
+
         articleRepository.deleteById(id);
     }
 

@@ -74,35 +74,6 @@ public class ArticleControllerTest {
         objectMapper.registerModule(new ParameterNamesModule());
     }
 
-//    @BeforeEach
-//    public void initialData() {
-//        Article article = new Article();
-//        article.setAuthor("Author 1");
-//        article.setTitle("Title 1");
-//
-//        Text textSection = new Text();
-//        textSection.setContent("Text 1");
-//
-//        Video videoSection = new Video();
-//        videoSection.setVideoUrl("Video 1");
-//
-//        Image imageSection = new Image();
-//        imageSection.setImageUrl("Image 1");
-//
-//        article.setText(textSection);
-//        article.setImage(imageSection);
-//        article.setVideo(videoSection);
-//
-//        articleRepository.save(article);
-//
-//        textSection.setArticle(article);
-//        textRepository.save(textSection);
-//        videoSection.setArticle(article);
-//        videoRepository.save(videoSection);
-//        imageSection.setArticle(article);
-//        imageRepository.save(imageSection);
-//    }
-
 
     @Test
     public void testGetAllArticles() throws Exception {

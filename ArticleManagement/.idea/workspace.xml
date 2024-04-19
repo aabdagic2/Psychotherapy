@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="probaaa">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="a lot has been done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/exception/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/exception/ErrorResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eureka-server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-server.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,12 +55,16 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.ArticleManagementApplication.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.ArticleManagementApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/anida/IdeaProjects/PsychotherapyUser",
+    "last_opened_file_path": "C:/Users/anida/IdeaProjects/PsychotherapyEurekaServer",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -102,7 +109,7 @@
       <workItem from="1713549037792" duration="654000" />
       <workItem from="1713549726248" duration="23000" />
       <workItem from="1713549932496" duration="3415000" />
-      <workItem from="1713555392645" duration="899000" />
+      <workItem from="1713555392645" duration="5411000" />
     </task>
     <task id="LOCAL-00001" summary="probaaa">
       <option name="closed" value="true" />
@@ -112,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713549361343</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="a lot has been done">
+      <option name="closed" value="true" />
+      <created>1713556366708</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713556366708</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,6 +135,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="probaaa" />
-    <option name="LAST_COMMIT_MESSAGE" value="probaaa" />
+    <MESSAGE value="a lot has been done" />
+    <option name="LAST_COMMIT_MESSAGE" value="a lot has been done" />
   </component>
 </project>
