@@ -1,6 +1,8 @@
 package nwtprojekat.ArticleManagement.controller;
 
 //import io.swagger.annotations.Api;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Valid;
 import nwtprojekat.ArticleManagement.exception.ArticleNotFoundException;
 import nwtprojekat.ArticleManagement.model.Article;
@@ -71,41 +73,36 @@ public class ArticleController {
         }
     }
 
-//    @PostMapping("/add")
-//    public ResponseEntity<?> createArticle(@RequestBody @Valid Article article, BindingResult bindingResult) {
-//        try {
-//            String url = "http://appointmentservice/psychologists/find/" + article.getAuthor();
-//            HttpHeaders headers = new HttpHeaders();
-//            headers.setAccept(Collections.singletonList(MediaType.ALL));
-//            HttpEntity<?> entity = new HttpEntity<>(headers);
-//            ResponseEntity<String> response1 = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-//
-//            if(response1.getStatusCode().is2xxSuccessful()) {
-//                if (bindingResult.hasErrors()) {
-//                    FieldError titleError = bindingResult.getFieldError("title");
-//                    if (titleError != null) {
-//                        Map<String, String> errorResponse = new HashMap<>();
-//                        errorResponse.put("error", "validation");
-//                        errorResponse.put("message", titleError.getDefaultMessage());
-//                        return ResponseEntity.badRequest().body(errorResponse);
-//                    }
-//                    return ResponseEntity.badRequest().body("Invalid data: " + bindingResult.getAllErrors());
-//                }
-//
-//                Article savedArticle = articleService.createArticle(article);
-//                Map<String, String> response = new HashMap<>();
-//                response.put("message", "Article added successfully");
-//                return ResponseEntity.ok(response);
-//            } else {
-//                return response1;
-//            }
-//        } catch (HttpClientErrorException.NotFound ex) {
-//            // Handle 404 Not Found error
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred");
-//        }
-//    }
+    @PostMapping("/add")
+    public ResponseEntity<?> createArticle(@RequestBody @Valid Article article, BindingResult bindingResult) {
+        try {
+            String url = "http://appointmentservice/psychologists/find/" + article.getAuthor();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setAccept(Collections.singletonList(MediaType.ALL));
+            HttpEntity<?> entity = new HttpEntity<>(headers);
+            ResponseEntity<String> responseAuthor = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+
+            if (responseAuthor.getStatusCode().is2xxSuccessful()) {
+                if (bindingResult.hasErrors()) {
+                    StringBuilder errorMessage = new StringBuilder();
+                    bindingResult.getAllErrors().forEach(error -> {
+                        errorMessage.append(error.getDefaultMessage()).append("");
+                    });
+                    return ResponseEntity.badRequest().body(new ErrorResponse("validation", errorMessage.toString()));
+                }
+
+                Article savedArticle = articleService.createArticle(article);
+                return ResponseEntity.ok(new ErrorResponse("No", "Article added successfully!"));
+            } else {
+                return responseAuthor;
+            }
+        } catch (Exception ex) {
+            ErrorResponse errorResponse = new ErrorResponse("Not found", "Psychologist (author) not found: " + ex.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+        }
+    }
+
+
 //
 //    // OK
 //    @GetMapping("/all")
