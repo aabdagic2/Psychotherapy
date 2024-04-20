@@ -28,7 +28,6 @@ public class ArticleController {
     @Autowired
     private RestTemplate restTemplate;
 
-    // OK
     @GetMapping("/{id}")
     public ResponseEntity<Object> getArticleById(@PathVariable String id) {
         try {
@@ -39,7 +38,6 @@ public class ArticleController {
         }
     }
 
-    // OK
     @DeleteMapping("/remove/{id}")
     public ResponseEntity<ErrorResponse> deleteArticleById(@PathVariable String id) {
         try {
@@ -122,34 +120,51 @@ public class ArticleController {
 //    }
 
 
+// kako da izmijenim objekat, za koji ne znam
+//    @PutMapping("/update/{id}")
+//    public ResponseEntity<?> updateArticle(@PathVariable String id, @Valid @RequestBody Article updatedArticle, BindingResult bindingResult) {
+//        try {
+//            if (!articleService.existsArticleById(id)) {
+//                throw new ArticleNotFoundException(id);
+//            }
 //
+//            if (bindingResult.hasErrors()) {
+//                    FieldError titleError = bindingResult.getFieldError("title");
+//                    if (titleError != null) {
+//                        Map<String, String> errorResponse = new HashMap<>();
+//                        errorResponse.put("error", "validation");
+//                        errorResponse.put("message", titleError.getDefaultMessage());
+//                        return ResponseEntity.badRequest().body(errorResponse);
+//                    }
+//                    return ResponseEntity.badRequest().body("Invalid data: " + bindingResult.getAllErrors());
+//                }
+//
+//            updatedArticle.setId(id);
+//            Article savedArticle = articleService.updateArticle(updatedArticle);
+//            return ResponseEntity.ok(savedArticle);
+//        } catch(Exception ex) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+//        }
+//    }
+
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateArticle(@PathVariable String id, @Valid @RequestBody Article updatedArticle, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            StringBuilder errorMessage = new StringBuilder();
+            bindingResult.getAllErrors().forEach(error -> {
+                errorMessage.append(error.getDefaultMessage()).append("");
+            });
+            return ResponseEntity.badRequest().body(new ErrorResponse("validation", errorMessage.toString()));
+        }
+
         try {
-            if (!articleService.existsArticleById(id)) {
-                throw new ArticleNotFoundException(id);
-            }
-
-            if (bindingResult.hasErrors()) {
-                    FieldError titleError = bindingResult.getFieldError("title");
-                    if (titleError != null) {
-                        Map<String, String> errorResponse = new HashMap<>();
-                        errorResponse.put("error", "validation");
-                        errorResponse.put("message", titleError.getDefaultMessage());
-                        return ResponseEntity.badRequest().body(errorResponse);
-                    }
-                    return ResponseEntity.badRequest().body("Invalid data: " + bindingResult.getAllErrors());
-                }
-
             updatedArticle.setId(id);
             Article savedArticle = articleService.updateArticle(updatedArticle);
             return ResponseEntity.ok(savedArticle);
-        } catch(Exception ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        } catch (ArticleNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("validation", ex.getMessage()));
         }
     }
-
-    // OK
 
 
 

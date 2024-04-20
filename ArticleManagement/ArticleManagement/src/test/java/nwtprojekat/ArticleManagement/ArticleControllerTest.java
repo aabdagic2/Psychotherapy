@@ -62,10 +62,12 @@ public class ArticleControllerTest {
     @Mock
     private ImageRepository imageRepository;
 
-    @InjectMocks
-    private ArticleController articleController;
-
     private static ObjectMapper objectMapper;
+
+    @Mock
+    private Article article;
+
+
 
     @BeforeAll
     public static void setUp() {
@@ -73,6 +75,30 @@ public class ArticleControllerTest {
         objectMapper.registerModule(new JavaTimeModule());
         objectMapper.registerModule(new ParameterNamesModule());
     }
+
+//    @BeforeEach
+//    public void initialData() {
+//        article = new Article();
+//        article.setAuthor("aaaaaaaaa-bbbbbbbb-cccc-ddddd-eeeeeee");
+//        //article.setId("pomocni-neki-za-test");
+//        article.setTitle("Title 1");
+//        Text textSection = new Text();
+//        textSection.setContent("Text 1");
+//        Video videoSection = new Video();
+//        videoSection.setVideoUrl("Video 1");
+//        Image imageSection = new Image();
+//        imageSection.setImageUrl("Image 1");
+//        article.setText(textSection);
+//        article.setImage(imageSection);
+//        article.setVideo(videoSection);
+//        articleRepository.save(article);
+//        textSection.setArticle(article);
+//        textRepository.save(textSection);
+//        videoSection.setArticle(article);
+//        videoRepository.save(videoSection);
+//        imageSection.setArticle(article);
+//        imageRepository.save(imageSection);
+//    }
 
 
     @Test
@@ -134,6 +160,45 @@ public class ArticleControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.error").value("validation"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("The title must not be empty!"));
+    }
+
+    @Test
+    public void testDeleteArticleById() throws Exception {
+        Article article = new Article();
+        article.setAuthor("aaaaaaaaa-bbbbbbbb-cccc-ddddd-eeeeeee");
+        article.setTitle("Title 1");
+
+        Text textSection = new Text();
+        textSection.setContent("Text 1");
+
+        Video videoSection = new Video();
+        videoSection.setVideoUrl("Video 1");
+
+        Image imageSection = new Image();
+        imageSection.setImageUrl("Image 1");
+
+        article.setText(textSection);
+        article.setImage(imageSection);
+        article.setVideo(videoSection);
+        articleRepository.save(article);
+
+        textSection.setArticle(article);
+        textRepository.save(textSection);
+        videoSection.setArticle(article);
+        videoRepository.save(videoSection);
+        imageSection.setArticle(article);
+        imageRepository.save(imageSection);
+
+        System.out.println(article.getId());
+
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.delete("/remove/{id}", article.getId())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().is2xxSuccessful())
+                .andReturn();
+
+        String content = result.getResponse().getContentAsString();
+
+        Assertions.assertTrue(content.contains("Article with ID " + article.getId() + " has been deleted successfully"));
     }
 
 

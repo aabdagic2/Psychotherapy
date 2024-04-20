@@ -4,17 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="a lot has been done">
+    <list default="true" id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="fixed id type in methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/ArticleManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/ArticleManagementApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/exception/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/exception/ErrorResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka-server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/ArticleManagementApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/ArticleManagementApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/service/ArticleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/service/ArticleService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -52,37 +61,104 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ArticleManagementApplication.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.ArticleManagementApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/anida/IdeaProjects/PsychotherapyEurekaServer",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ArticleManagementApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.deleteShouldDeleteExistingCategory.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.testDeleteArticleById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.testDeleteArticleById2.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ArticleManagementApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/anida/IdeaProjects/PsychotherapyEurekaServer&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\anida\IdeaProjects\Psychotherapy\ArticleManagement\ArticleManagement\src\test\java\nwtprojekat\ArticleManagement" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.ArticleManagementApplication">
+    <configuration name="ArticleControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ArticleManagement" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nwtprojekat.ArticleManagement.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nwtprojekat.ArticleManagement" />
+      <option name="MAIN_CLASS_NAME" value="nwtprojekat.ArticleManagement.ArticleControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArticleControllerTest.deleteShouldDeleteExistingCategory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ArticleManagement" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nwtprojekat.ArticleManagement.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nwtprojekat.ArticleManagement" />
+      <option name="MAIN_CLASS_NAME" value="nwtprojekat.ArticleManagement.ArticleControllerTest" />
+      <option name="METHOD_NAME" value="deleteShouldDeleteExistingCategory" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArticleControllerTest.testDeleteArticleById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ArticleManagement" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nwtprojekat.ArticleManagement.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nwtprojekat.ArticleManagement" />
+      <option name="MAIN_CLASS_NAME" value="nwtprojekat.ArticleManagement.ArticleControllerTest" />
+      <option name="METHOD_NAME" value="testDeleteArticleById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArticleControllerTest.testDeleteArticleById2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ArticleManagement" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nwtprojekat.ArticleManagement.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nwtprojekat.ArticleManagement" />
+      <option name="MAIN_CLASS_NAME" value="nwtprojekat.ArticleManagement.ArticleControllerTest" />
+      <option name="METHOD_NAME" value="testDeleteArticleById2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ArticleManagementApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ArticleManagement" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="nwtprojekat.ArticleManagement.ArticleManagementApplication" />
@@ -90,6 +166,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ArticleControllerTest.testDeleteArticleById" />
+        <item itemvalue="JUnit.ArticleControllerTest" />
+        <item itemvalue="JUnit.ArticleControllerTest.deleteShouldDeleteExistingCategory" />
+        <item itemvalue="JUnit.ArticleControllerTest.testDeleteArticleById2" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -109,7 +193,8 @@
       <workItem from="1713549037792" duration="654000" />
       <workItem from="1713549726248" duration="23000" />
       <workItem from="1713549932496" duration="3415000" />
-      <workItem from="1713555392645" duration="5411000" />
+      <workItem from="1713555392645" duration="9584000" />
+      <workItem from="1713643298847" duration="3643000" />
     </task>
     <task id="LOCAL-00001" summary="probaaa">
       <option name="closed" value="true" />
@@ -127,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713556366708</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fixed id type in methods">
+      <option name="closed" value="true" />
+      <created>1713561318464</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713561318464</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +229,27 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="probaaa" />
     <MESSAGE value="a lot has been done" />
-    <option name="LAST_COMMIT_MESSAGE" value="a lot has been done" />
+    <MESSAGE value="fixed id type in methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed id type in methods" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java</url>
+          <line>165</line>
+          <properties class="nwtprojekat.ArticleManagement.ArticleControllerTest" method="testDeleteArticleById">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java</url>
+          <line>132</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

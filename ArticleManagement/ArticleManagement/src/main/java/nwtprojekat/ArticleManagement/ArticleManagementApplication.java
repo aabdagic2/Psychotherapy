@@ -90,32 +90,6 @@ public class ArticleManagementApplication implements CommandLineRunner {
 		imageSection2.setArticle(article2);
 		imageRepo.save(imageSection2);
 
-		// treći clanak
-		Article article3 = new Article();
-		article3.setAuthor("ddad59ca-2065-481a-aa3a-03f91ababc14");
-		article3.setTitle("Treci clanak.");
-
-		Text textSection3 = new Text();
-		textSection3.setContent("Tekst treceg clanka.");
-
-		Video videoSection3 = new Video();
-		videoSection3.setVideoUrl("Video treceg clanka.");
-
-		Image imageSection3 = new Image();
-		imageSection3.setImageUrl("Slika treceg clanka.");
-
-		article3.setText(textSection3);
-		article3.setImage(imageSection3);
-		article3.setVideo(videoSection3);
-
-		articleRepo.save(article3);
-
-		textSection3.setArticle(article3);
-		textRepo.save(textSection3);
-		videoSection3.setArticle(article3);
-		videoRepo.save(videoSection3);
-		imageSection3.setArticle(article3);
-		imageRepo.save(imageSection3);
 
 	}
 
