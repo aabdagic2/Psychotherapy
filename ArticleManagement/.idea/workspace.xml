@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="get by keyword changed">
+    <list default="true" id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="create article with psychologist id">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/ArticleManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/ArticleManagementApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/ArticleManagementApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/ArticleManagementApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -190,7 +192,7 @@
       <workItem from="1713549726248" duration="23000" />
       <workItem from="1713549932496" duration="3415000" />
       <workItem from="1713555392645" duration="9584000" />
-      <workItem from="1713643298847" duration="7592000" />
+      <workItem from="1713643298847" duration="9697000" />
     </task>
     <task id="LOCAL-00001" summary="probaaa">
       <option name="closed" value="true" />
@@ -232,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713648099029</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="create article with psychologist id">
+      <option name="closed" value="true" />
+      <created>1713651086320</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1713651086320</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +254,8 @@
     <MESSAGE value="fixed id type in methods" />
     <MESSAGE value="put method fixed" />
     <MESSAGE value="get by keyword changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="get by keyword changed" />
+    <MESSAGE value="create article with psychologist id" />
+    <option name="LAST_COMMIT_MESSAGE" value="create article with psychologist id" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

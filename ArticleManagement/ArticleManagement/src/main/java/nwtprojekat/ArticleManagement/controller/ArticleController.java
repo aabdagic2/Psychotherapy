@@ -102,56 +102,44 @@ public class ArticleController {
         }
     }
 
+    // trebam s aminom vidjeti
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllArticles() {
+        List<Article> articles = articleService.getAllArticles();
+        List<Map<String, Object>> articlesWithPsychologist = new ArrayList<>();
 
-//
-//    // OK
-//    @GetMapping("/all")
-//    public ResponseEntity<?> getAllArticles() {
-//        List<Article> articles = articleService.getAllArticles();
-//        List<Map<String, Object>> articlesWithPsychologist = new ArrayList<>();
-//
-//        if (articles.isEmpty()) {
-//            return ResponseEntity.notFound().build();
-//        } else {
-//            for (Article article : articles) {
-//                try {
-//                    String url = "http://appointmentservice/psychologists/findUserPsychologist/" + article.getAuthor();
-//                    HttpHeaders headers = new HttpHeaders();
-//                    headers.setAccept(Collections.singletonList(MediaType.ALL));
-//                    HttpEntity<?> entity = new HttpEntity<>(headers);
-//                    ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-//
-//                    if (response.getStatusCode().is2xxSuccessful()) {
-//                        String psychologistDetails = response.getBody();
-//                        Map<String, Object> articleWithPsychologist = new HashMap<>();
-//                        articleWithPsychologist.put("article", article);
-//                        articleWithPsychologist.put("psychologistDetails", psychologistDetails);
-//                        articlesWithPsychologist.add(articleWithPsychologist);
-//                    } else {
-//                        System.out.println("Failed to fetch psychologist info for article: " + article.getId());
-//                    }
-//                } catch (Exception e) {
-//                    System.out.println("An error occurred while fetching psychologist info for article: " + article.getId());
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
-//        return ResponseEntity.ok(articlesWithPsychologist);
-//    }
+        if (articles.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            for (Article article : articles) {
+                try {
+                    String url = "http://appointmentservice/psychologists/findUserPsychologist/" + article.getAuthor();
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setAccept(Collections.singletonList(MediaType.ALL));
+                    HttpEntity<?> entity = new HttpEntity<>(headers);
+                    ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+
+                    if (response.getStatusCode().is2xxSuccessful()) {
+                        ObjectMapper objectMapper = new ObjectMapper();
+                        Map<String, Object> psychologistDetails = objectMapper.readValue(response.getBody(), Map.class);
+
+                        Map<String, Object> articleWithPsychologist = new HashMap<>();
+                        articleWithPsychologist.put("article", article);
+                        articleWithPsychologist.put("psychologistDetails", psychologistDetails);
+                        articlesWithPsychologist.add(articleWithPsychologist);
+                    } else {
+                        System.out.println("Failed to fetch psychologist info for article: " + article.getId());
+                    }
+                } catch (Exception e) {
+                    System.out.println("An error occurred while fetching psychologist info for article: " + article.getId());
+                    e.printStackTrace();
+                }
+            }
+        }
+        return ResponseEntity.ok(articlesWithPsychologist);
+    }
 
 
-
-//    @GetMapping("/byAuthor/{authorName}")
-//    public ResponseEntity<?> getArticlesByAuthor(@PathVariable String authorName) {
-//        List<Article> articles = articleService.findArticlesByAuthor(authorName);
-//        Map<String, Object> response = new HashMap<>();
-//        if (articles.isEmpty()) {
-//            response.put("message", "No articles found for author: " + authorName);
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
-//        }
-//        response.put("articles", articles);
-//        return ResponseEntity.ok(response);
-//    }
 
     @GetMapping("/byKeyword/{keyword}")
     public ResponseEntity<?> getArticlesByKeyword(@PathVariable String keyword) {
@@ -163,5 +151,17 @@ public class ArticleController {
         response.put("articles", articles);
         return ResponseEntity.ok(response);
     }
+
+    //    @GetMapping("/byAuthor/{authorName}")
+//    public ResponseEntity<?> getArticlesByAuthor(@PathVariable String authorName) {
+//        List<Article> articles = articleService.findArticlesByAuthor(authorName);
+//        Map<String, Object> response = new HashMap<>();
+//        if (articles.isEmpty()) {
+//            response.put("message", "No articles found for author: " + authorName);
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+//        }
+//        response.put("articles", articles);
+//        return ResponseEntity.ok(response);
+//    }
 }
 
