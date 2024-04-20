@@ -48,6 +48,29 @@ public class ArticleController {
         }
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updateArticle(@PathVariable String id, @Valid @RequestBody Article updatedArticle, BindingResult bindingResult) {
+        try {
+            if (!articleService.existsArticleById(id)) {
+                throw new ArticleNotFoundException(id);
+            }
+
+            if (bindingResult.hasErrors()) {
+                StringBuilder errorMessage = new StringBuilder();
+                bindingResult.getAllErrors().forEach(error -> {
+                    errorMessage.append(error.getDefaultMessage()).append("");
+                });
+                return ResponseEntity.badRequest().body(new ErrorResponse("validation", errorMessage.toString()));
+            }
+
+            updatedArticle.setId(id);
+            Article savedArticle = articleService.updateArticle(updatedArticle);
+            return ResponseEntity.ok(savedArticle);
+        } catch (ArticleNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("validation", ex.getMessage()));
+        }
+    }
+
 //    @PostMapping("/add")
 //    public ResponseEntity<?> createArticle(@RequestBody @Valid Article article, BindingResult bindingResult) {
 //        try {
@@ -120,53 +143,6 @@ public class ArticleController {
 //    }
 
 
-// kako da izmijenim objekat, za koji ne znam
-//    @PutMapping("/update/{id}")
-//    public ResponseEntity<?> updateArticle(@PathVariable String id, @Valid @RequestBody Article updatedArticle, BindingResult bindingResult) {
-//        try {
-//            if (!articleService.existsArticleById(id)) {
-//                throw new ArticleNotFoundException(id);
-//            }
-//
-//            if (bindingResult.hasErrors()) {
-//                    FieldError titleError = bindingResult.getFieldError("title");
-//                    if (titleError != null) {
-//                        Map<String, String> errorResponse = new HashMap<>();
-//                        errorResponse.put("error", "validation");
-//                        errorResponse.put("message", titleError.getDefaultMessage());
-//                        return ResponseEntity.badRequest().body(errorResponse);
-//                    }
-//                    return ResponseEntity.badRequest().body("Invalid data: " + bindingResult.getAllErrors());
-//                }
-//
-//            updatedArticle.setId(id);
-//            Article savedArticle = articleService.updateArticle(updatedArticle);
-//            return ResponseEntity.ok(savedArticle);
-//        } catch(Exception ex) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-//        }
-//    }
-
-    @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateArticle(@PathVariable String id, @Valid @RequestBody Article updatedArticle, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            StringBuilder errorMessage = new StringBuilder();
-            bindingResult.getAllErrors().forEach(error -> {
-                errorMessage.append(error.getDefaultMessage()).append("");
-            });
-            return ResponseEntity.badRequest().body(new ErrorResponse("validation", errorMessage.toString()));
-        }
-
-        try {
-            updatedArticle.setId(id);
-            Article savedArticle = articleService.updateArticle(updatedArticle);
-            return ResponseEntity.ok(savedArticle);
-        } catch (ArticleNotFoundException ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("validation", ex.getMessage()));
-        }
-    }
-
-
 
 //    @GetMapping("/byAuthor/{authorName}")
 //    public ResponseEntity<?> getArticlesByAuthor(@PathVariable String authorName) {
@@ -179,17 +155,16 @@ public class ArticleController {
 //        response.put("articles", articles);
 //        return ResponseEntity.ok(response);
 //    }
-//
-//    @GetMapping("/byKeyword/{keyword}")
-//    public ResponseEntity<?> getArticlesByKeyword(@PathVariable String keyword) {
-//        List<Article> articles = articleService.findArticlesByKeyword(keyword);
-//        Map<String, Object> response = new HashMap<>();
-//        if (articles.isEmpty()) {
-//            response.put("message", "No articles found containing keyword: " + keyword);
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
-//        }
-//        response.put("articles", articles);
-//        return ResponseEntity.ok(response);
-//    }
+
+    @GetMapping("/byKeyword/{keyword}")
+    public ResponseEntity<?> getArticlesByKeyword(@PathVariable String keyword) {
+        List<Article> articles = articleService.findArticlesByKeyword(keyword);
+        Map<String, Object> response = new HashMap<>();
+        if (articles.isEmpty()) {
+            return ResponseEntity.ok(new ErrorResponse("No data", "No articles found containing keyword: " + keyword));
+        }
+        response.put("articles", articles);
+        return ResponseEntity.ok(response);
+    }
 }
 
