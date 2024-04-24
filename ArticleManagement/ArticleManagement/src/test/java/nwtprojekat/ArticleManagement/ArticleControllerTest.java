@@ -15,6 +15,8 @@ import java.util.Optional;
 
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
+import jakarta.transaction.Transactional;
+import nwtprojekat.ArticleManagement.config.JPAConfig;
 import nwtprojekat.ArticleManagement.controller.ArticleController;
 import nwtprojekat.ArticleManagement.model.Article;
 import nwtprojekat.ArticleManagement.model.Image;
@@ -34,6 +36,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -41,9 +44,11 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@ExtendWith({SpringExtension.class, MockitoExtension.class})
-@SpringBootTest
+//@ExtendWith({SpringExtension.class, MockitoExtension.class})
+@SpringBootTest(classes = {ArticleManagementApplication.class, JPAConfig.class})
+@Transactional
 @AutoConfigureMockMvc
+@ActiveProfiles("test")
 public class ArticleControllerTest {
 
     @Autowired
@@ -100,19 +105,21 @@ public class ArticleControllerTest {
     @AfterEach
     public void deleteData() {
         articleRepository.deleteAll();
+        textRepository.deleteAll();
+        imageRepository.deleteAll();
+        videoRepository.deleteAll();
     }
 
-
-    // GET - stara metoda dohvatanja samo clanaka, bez autora (psihologa)
+    // GET - metoda dohvatanja samo clanaka, bez autora (psihologa)
     @Test
-    public void testGetAllArticles() throws Exception {
+    public void testGetAllArticlesWithoutAuthors() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
                         .get("/articles/allArticles"))
                 .andExpect(status().is2xxSuccessful())
                 .andReturn();
 
         String content = result.getResponse().getContentAsString();
-        var articles = objectMapper.convertValue(objectMapper.readTree(content), Article[].class);
+        var articles = objectMapper.readValue(content, Article[].class);
 
         for (Article articleN : articles) {
             System.out.println(articleN.getId() + articleN.getTitle());
@@ -123,15 +130,7 @@ public class ArticleControllerTest {
 
     // POST - uspjesno dodavanje
     @Test
-    public void addNewArticleWithoutAuthor() throws Exception {
-        /*Text textSection = new Text();
-        textSection.setContent("Text 2");
-        Video videoSection = new Video();
-        videoSection.setVideoUrl("Video 2");
-        Image imageSection = new Image();
-        imageSection.setImageUrl("Image 2");
-        Article newArticle = new Article("Title 2", "Author 2", textSection, videoSection, imageSection);*/
-
+    public void testAddNewArticleWithoutAuthor() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/articles/addNew")
                         .content(asJsonString(article))
                         .contentType(MediaType.APPLICATION_JSON)
@@ -157,7 +156,7 @@ public class ArticleControllerTest {
 
     // POST - neuspjesno dodavanje; izuzetak bacen (naslov prazan)
     @Test
-    void addNewArticleWithoutAuthorWithEmptyTitle() throws Exception {
+    void testAddNewArticleWithoutAuthorWithEmptyTitle() throws Exception {
         Article article = new Article();
         article.setTitle("");
 
@@ -169,35 +168,42 @@ public class ArticleControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("The title must not be empty!"));
     }
 
+    // DELETE - uspjesno brisanje
     @Test
-    public void testDeleteArticleById() throws Exception {
+    public void testDeleteExistingArticle() throws Exception {
+        var allArticles = articleRepository.findAll();
 
-        MvcResult result1 = mockMvc.perform(MockMvcRequestBuilders
-                        .get("/articles/allArticles"))
-                .andExpect(status().is2xxSuccessful())
-                .andReturn();
+        var id = allArticles.stream()
+                .filter(a -> a.getTitle() == "Title 1")
+                .findFirst()
+                .get()
+                .getId();
 
-        String content1 = result1.getResponse().getContentAsString();
-        var articles = objectMapper.convertValue(objectMapper.readTree(content1), Article[].class);
-
-        for (Article articleN : articles) {
-            System.out.println(articleN.getId() + articleN.getTitle());
-        }
-
-
-
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.delete("/remove/{id}", article.getId())
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.delete("/articles/remove/{id}", id)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful())
+               .andReturn();
+
+        String content = result.getResponse().getContentAsString();
+        Assertions.assertTrue(content.contains("Article with ID " + id + " has been deleted successfully"));
+    }
+
+    // DELETE - pogresan id; neuspjesno brisanje
+    @Test
+    public void testDeleteNonExistentArticle() throws Exception {
+        String id = "abcdefghijk";
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.
+                        delete("/articles/remove/{id}", id))
+                .andExpect(status().is4xxClientError())
                 .andReturn();
 
         String content = result.getResponse().getContentAsString();
-
-        Assertions.assertTrue(content.contains("Article with ID " + article.getId() + " has been deleted successfully"));
+        Assertions.assertTrue(content.contains("Article with ID " + id + " not found!"));
     }
 
 
-
+//    @Test
+//    public void testUpdateArticle() throws Exception {}
 
     private static String asJsonString(final Object obj) {
         try {

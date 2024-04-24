@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="get all articles and psychologists done">
+    <list default="true" id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="added three successful tests">
+      <change afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/config/JPAConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/ArticleManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/ArticleManagementApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/ArticleManagementApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/ArticleManagementApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,38 +60,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ArticleManagementApplication.executor": "Run",
-    "JUnit.ArticleControllerTest.addNewArticle.executor": "Run",
-    "JUnit.ArticleControllerTest.addNewArticleWithoutAuthorWithEmptyTitle.executor": "Run",
-    "JUnit.ArticleControllerTest.deleteShouldDeleteExistingCategory.executor": "Run",
-    "JUnit.ArticleControllerTest.executor": "Run",
-    "JUnit.ArticleControllerTest.testDeleteArticleById.executor": "Run",
-    "JUnit.ArticleControllerTest.testDeleteArticleById2.executor": "Run",
-    "JUnit.ArticleControllerTest.testGetAllArticles.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.ArticleManagementApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/anida/IdeaProjects/PsychotherapyEurekaServer",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ArticleManagementApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.addNewArticle.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.addNewArticleWithoutAuthorWithEmptyTitle.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.deleteShouldDeleteExistingCategory.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.testDeleteArticleById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.testDeleteArticleById2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.testGetAllArticles.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ArticleManagementApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/anida/IdeaProjects/PsychotherapyEurekaServer&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\anida\IdeaProjects\Psychotherapy\ArticleManagement\ArticleManagement\src\test\java\nwtprojekat\ArticleManagement" />
@@ -213,7 +215,10 @@
       <workItem from="1713555392645" duration="9584000" />
       <workItem from="1713643298847" duration="10803000" />
       <workItem from="1713910259791" duration="173000" />
-      <workItem from="1713943744432" duration="5985000" />
+      <workItem from="1713943744432" duration="6279000" />
+      <workItem from="1713958379986" duration="22000" />
+      <workItem from="1713959585491" duration="4125000" />
+      <workItem from="1713970041003" duration="2320000" />
     </task>
     <task id="LOCAL-00001" summary="probaaa">
       <option name="closed" value="true" />
@@ -271,7 +276,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713653877692</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added three successful tests">
+      <option name="closed" value="true" />
+      <created>1713949954610</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1713949954610</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,14 +298,15 @@
     <MESSAGE value="get by keyword changed" />
     <MESSAGE value="create article with psychologist id" />
     <MESSAGE value="get all articles and psychologists done" />
-    <option name="LAST_COMMIT_MESSAGE" value="get all articles and psychologists done" />
+    <MESSAGE value="added three successful tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="added three successful tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java</url>
-          <line>107</line>
+          <line>114</line>
           <properties class="nwtprojekat.ArticleManagement.ArticleControllerTest" method="testGetAllArticles">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -301,7 +315,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java</url>
-          <line>108</line>
+          <line>115</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
