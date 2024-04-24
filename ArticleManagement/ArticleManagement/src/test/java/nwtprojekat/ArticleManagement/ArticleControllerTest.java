@@ -1,6 +1,6 @@
 package nwtprojekat.ArticleManagement;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.slf4j.LoggerFactoryFriend.reset;
@@ -128,6 +128,49 @@ public class ArticleControllerTest {
         Assertions.assertEquals(1, articles.length);
     }
 
+    // GET - uspjesno dohvatanje clanaka koji u naslovu imaju keyword
+    @Test
+    public void testGetAllArticlesWithKeyword() throws Exception {
+        var allArticles = articleRepository.findAll();
+        String keyword = "Title";
+
+        var foundArticle = allArticles.stream()
+                .filter(a -> a.getTitle().contains(keyword))
+                .findFirst()
+                .orElse(null);
+
+        String foundTitle = foundArticle.getTitle();
+
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                        .get("/articles/byKeyword/{keyword}", keyword))
+                .andExpect(status().is2xxSuccessful())
+                .andReturn();
+
+        Assertions.assertTrue(foundTitle.contains(keyword));
+    }
+
+    // GET - uspjesno; nema clanaka koji u naslovu imaju keyword
+    @Test
+    public void testGetArticlesWithoutKeyword() throws Exception {
+        var allArticles = articleRepository.findAll();
+        String keyword = "nesto";
+
+        var foundArticle = allArticles.stream()
+                .filter(a -> a.getTitle().contains(keyword))
+                .findFirst()
+                .orElse(null);
+
+        assertNull(foundArticle);
+
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                        .get("/articles/byKeyword/{keyword}", keyword))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        String content = result.getResponse().getContentAsString();
+        assertTrue(content.contains("No articles found containing keyword: " + keyword));
+    }
+
     // POST - uspjesno dodavanje
     @Test
     public void testAddNewArticleWithoutAuthor() throws Exception {
@@ -173,7 +216,7 @@ public class ArticleControllerTest {
     public void testDeleteExistingArticle() throws Exception {
         var allArticles = articleRepository.findAll();
 
-        var id = allArticles.stream()
+        String id = allArticles.stream()
                 .filter(a -> a.getTitle() == "Title 1")
                 .findFirst()
                 .get()
@@ -204,8 +247,8 @@ public class ArticleControllerTest {
     // PUT - uspjesna izmjena
     @Test
     public void testSuccessfulUpdateArticle() throws Exception {
-        var allAppointments = articleRepository.findAll();
-        var foundArticle = allAppointments.stream().filter(a -> a.getTitle().equals("Title 1")).findFirst().get();
+        var allArticles = articleRepository.findAll();
+        var foundArticle = allArticles.stream().filter(a -> a.getTitle().equals("Title 1")).findFirst().get();
 
         foundArticle.setTitle("Neki novi testni naslov");
 
@@ -222,6 +265,45 @@ public class ArticleControllerTest {
         Assertions.assertEquals("Neki novi testni naslov", updatedArticle.getTitle());
     }
 
+    // PUT - neuspjesna izmjena; pogresan naslov
+    @Test
+    public void testUpdateArticleWithEmptyTitle() throws Exception {
+        var allArticles = articleRepository.findAll();
+        String id = allArticles.stream()
+                .filter(a -> a.getTitle() == "Title 1")
+                .findFirst()
+                .get()
+                .getId();
+
+        Article updatedArticle = new Article("", "A-B-C", new Text(), new Video(), new Image());
+
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                        .put("/articles/update/{id}", id)
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(updatedArticle)))
+                .andExpect(status().is4xxClientError())
+                .andReturn();
+
+        String content = result.getResponse().getContentAsString();
+        Assertions.assertTrue(content.contains("The title must not be empty!"));
+    }
+
+    // PUT - neuspjesna izmjena; ID ne postoji
+    @Test
+    public void testUpdateNonExistentArticle() throws Exception {
+        String id = "abcdefghijk";
+        Article updatedArticle = new Article("", "A-B-C", new Text(), new Video(), new Image());
+
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                        .put("/articles/update/{id}", id)
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(updatedArticle)))
+                .andExpect(status().is4xxClientError())
+                .andReturn();
+
+        String content = result.getResponse().getContentAsString();
+        Assertions.assertTrue(content.contains("Article with ID " + id + " not found!"));
+    }
 
     private static String asJsonString(final Object obj) {
         try {
