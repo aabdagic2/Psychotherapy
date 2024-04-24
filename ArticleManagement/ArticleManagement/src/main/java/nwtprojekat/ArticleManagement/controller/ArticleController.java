@@ -102,7 +102,6 @@ public class ArticleController {
         }
     }
 
-    // trebam s aminom vidjeti
     @GetMapping("/all")
     public ResponseEntity<?> getAllArticles() {
         List<Article> articles = articleService.getAllArticles();
@@ -139,8 +138,6 @@ public class ArticleController {
         return ResponseEntity.ok(articlesWithPsychologist);
     }
 
-
-
     @GetMapping("/byKeyword/{keyword}")
     public ResponseEntity<?> getArticlesByKeyword(@PathVariable String keyword) {
         List<Article> articles = articleService.findArticlesByKeyword(keyword);
@@ -163,5 +160,35 @@ public class ArticleController {
 //        response.put("articles", articles);
 //        return ResponseEntity.ok(response);
 //    }
+
+    // ----------- Stare metode zbog testiranja -----------
+    @GetMapping("/allArticles")
+    public ResponseEntity<List<Article>> getAllArticlesWithoutAuthors() {
+        List<Article> articles = articleService.getAllArticles();
+        if (articles.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(articles);
+        }
+    }
+
+    @PostMapping("/addNew")
+    public ResponseEntity<?> createArticleOld(@RequestBody @Valid Article article, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            FieldError titleError = bindingResult.getFieldError("title");
+            if (titleError != null) {
+                Map<String, String> errorResponse = new HashMap<>();
+                errorResponse.put("error", "validation");
+                errorResponse.put("message", titleError.getDefaultMessage());
+                return ResponseEntity.badRequest().body(errorResponse);
+            }
+            return ResponseEntity.badRequest().body("Invalid data: " + bindingResult.getAllErrors());
+        }
+
+        Article savedArticle = articleService.createArticle(article);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Article added successfully");
+        return ResponseEntity.ok(response);
+    }
 }
 

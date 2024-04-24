@@ -3,6 +3,7 @@ package nwtprojekat.ArticleManagement;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
+import static org.slf4j.LoggerFactoryFriend.reset;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -23,10 +24,8 @@ import nwtprojekat.ArticleManagement.repository.ArticleRepository;
 import nwtprojekat.ArticleManagement.repository.ImageRepository;
 import nwtprojekat.ArticleManagement.repository.TextRepository;
 import nwtprojekat.ArticleManagement.repository.VideoRepository;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import nwtprojekat.ArticleManagement.service.ArticleService;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -50,24 +49,21 @@ public class ArticleControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Mock
+    @Autowired
     private ArticleRepository articleRepository;
 
-    @Mock
+    @Autowired
     private TextRepository textRepository;
 
-    @Mock
+    @Autowired
     private VideoRepository videoRepository;
 
-    @Mock
+    @Autowired
     private ImageRepository imageRepository;
 
     private static ObjectMapper objectMapper;
-
     @Mock
     private Article article;
-
-
 
     @BeforeAll
     public static void setUp() {
@@ -76,62 +72,73 @@ public class ArticleControllerTest {
         objectMapper.registerModule(new ParameterNamesModule());
     }
 
-//    @BeforeEach
-//    public void initialData() {
-//        article = new Article();
-//        article.setAuthor("aaaaaaaaa-bbbbbbbb-cccc-ddddd-eeeeeee");
-//        //article.setId("pomocni-neki-za-test");
-//        article.setTitle("Title 1");
-//        Text textSection = new Text();
-//        textSection.setContent("Text 1");
-//        Video videoSection = new Video();
-//        videoSection.setVideoUrl("Video 1");
-//        Image imageSection = new Image();
-//        imageSection.setImageUrl("Image 1");
-//        article.setText(textSection);
-//        article.setImage(imageSection);
-//        article.setVideo(videoSection);
-//        articleRepository.save(article);
-//        textSection.setArticle(article);
-//        textRepository.save(textSection);
-//        videoSection.setArticle(article);
-//        videoRepository.save(videoSection);
-//        imageSection.setArticle(article);
-//        imageRepository.save(imageSection);
-//    }
+    @BeforeEach
+    public void initialData() {
+        article = new Article();
+        article.setAuthor("aaaaaaaaa-bbbbbbbb-cccc-ddddd-eeeeeee");
+        article.setTitle("Title 1");
+        Text textSection = new Text();
+        textSection.setContent("Text 1");
+        Video videoSection = new Video();
+        videoSection.setVideoUrl("Video 1");
+        Image imageSection = new Image();
+        imageSection.setImageUrl("Image 1");
+        article.setText(textSection);
+        article.setImage(imageSection);
+        article.setVideo(videoSection);
+
+        articleRepository.save(article);
+
+        textSection.setArticle(article);
+        textRepository.save(textSection);
+        videoSection.setArticle(article);
+        videoRepository.save(videoSection);
+        imageSection.setArticle(article);
+        imageRepository.save(imageSection);
+    }
+
+    @AfterEach
+    public void deleteData() {
+        articleRepository.deleteAll();
+    }
 
 
+    // GET - stara metoda dohvatanja samo clanaka, bez autora (psihologa)
     @Test
     public void testGetAllArticles() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-                        .get("/articles/all"))
+                        .get("/articles/allArticles"))
                 .andExpect(status().is2xxSuccessful())
                 .andReturn();
 
         String content = result.getResponse().getContentAsString();
         var articles = objectMapper.convertValue(objectMapper.readTree(content), Article[].class);
 
+        for (Article articleN : articles) {
+            System.out.println(articleN.getId() + articleN.getTitle());
+        }
+
         Assertions.assertEquals(1, articles.length);
     }
 
     // POST - uspjesno dodavanje
     @Test
-    public void addNewArticle() throws Exception {
-        Text textSection = new Text();
+    public void addNewArticleWithoutAuthor() throws Exception {
+        /*Text textSection = new Text();
         textSection.setContent("Text 2");
         Video videoSection = new Video();
         videoSection.setVideoUrl("Video 2");
         Image imageSection = new Image();
         imageSection.setImageUrl("Image 2");
-        Article newArticle = new Article("Title 2", "Author 2", textSection, videoSection, imageSection);
+        Article newArticle = new Article("Title 2", "Author 2", textSection, videoSection, imageSection);*/
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/articles/add")
-                        .content(asJsonString(newArticle))
+        mockMvc.perform(MockMvcRequestBuilders.post("/articles/addNew")
+                        .content(asJsonString(article))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/articles/all"))
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/articles/allArticles"))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -140,7 +147,7 @@ public class ArticleControllerTest {
 
         boolean articleFound = false;
         for (Article article : articles) {
-            if (article.getTitle().equals("Title 2")) {
+            if (article.getTitle().equals("Title 1")) {
                 articleFound = true;
                 break;
             }
@@ -150,11 +157,11 @@ public class ArticleControllerTest {
 
     // POST - neuspjesno dodavanje; izuzetak bacen (naslov prazan)
     @Test
-    void addNewArticleWithEmptyTitle() throws Exception {
+    void addNewArticleWithoutAuthorWithEmptyTitle() throws Exception {
         Article article = new Article();
         article.setTitle("");
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/articles/add")
+        mockMvc.perform(MockMvcRequestBuilders.post("/articles/addNew")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(article)))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
@@ -164,32 +171,20 @@ public class ArticleControllerTest {
 
     @Test
     public void testDeleteArticleById() throws Exception {
-        Article article = new Article();
-        article.setAuthor("aaaaaaaaa-bbbbbbbb-cccc-ddddd-eeeeeee");
-        article.setTitle("Title 1");
 
-        Text textSection = new Text();
-        textSection.setContent("Text 1");
+        MvcResult result1 = mockMvc.perform(MockMvcRequestBuilders
+                        .get("/articles/allArticles"))
+                .andExpect(status().is2xxSuccessful())
+                .andReturn();
 
-        Video videoSection = new Video();
-        videoSection.setVideoUrl("Video 1");
+        String content1 = result1.getResponse().getContentAsString();
+        var articles = objectMapper.convertValue(objectMapper.readTree(content1), Article[].class);
 
-        Image imageSection = new Image();
-        imageSection.setImageUrl("Image 1");
+        for (Article articleN : articles) {
+            System.out.println(articleN.getId() + articleN.getTitle());
+        }
 
-        article.setText(textSection);
-        article.setImage(imageSection);
-        article.setVideo(videoSection);
-        articleRepository.save(article);
 
-        textSection.setArticle(article);
-        textRepository.save(textSection);
-        videoSection.setArticle(article);
-        videoRepository.save(videoSection);
-        imageSection.setArticle(article);
-        imageRepository.save(imageSection);
-
-        System.out.println(article.getId());
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.delete("/remove/{id}", article.getId())
                         .contentType(MediaType.APPLICATION_JSON))

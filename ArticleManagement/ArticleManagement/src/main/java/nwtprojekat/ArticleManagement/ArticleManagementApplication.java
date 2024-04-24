@@ -38,6 +38,7 @@ public class ArticleManagementApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// prvi clanak
 		Article article = new Article();
+		article.setId("aaaaaaaa");
 		article.setAuthor("9d0d4a57-8623-4686-9d2f-06c2640c78c8");
 		article.setTitle("Ovo je NWT projekat.");
 
