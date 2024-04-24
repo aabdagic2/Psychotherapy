@@ -201,9 +201,27 @@ public class ArticleControllerTest {
         Assertions.assertTrue(content.contains("Article with ID " + id + " not found!"));
     }
 
+    // PUT - uspjesna izmjena
+    @Test
+    public void testSuccessfulUpdateArticle() throws Exception {
+        var allAppointments = articleRepository.findAll();
+        var foundArticle = allAppointments.stream().filter(a -> a.getTitle().equals("Title 1")).findFirst().get();
 
-//    @Test
-//    public void testUpdateArticle() throws Exception {}
+        foundArticle.setTitle("Neki novi testni naslov");
+
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                        .put("/articles/update/{id}", foundArticle.getId())
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(foundArticle)))
+                .andExpect(status().is2xxSuccessful())
+                .andReturn();
+
+        String content = result.getResponse().getContentAsString();
+        var updatedArticle = objectMapper.convertValue(objectMapper.readTree(content), Article.class);
+
+        Assertions.assertEquals("Neki novi testni naslov", updatedArticle.getTitle());
+    }
+
 
     private static String asJsonString(final Object obj) {
         try {
