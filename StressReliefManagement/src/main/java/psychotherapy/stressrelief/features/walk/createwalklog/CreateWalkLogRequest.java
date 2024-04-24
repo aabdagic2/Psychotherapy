@@ -1,5 +1,7 @@
 package psychotherapy.stressrelief.features.walk.createwalklog;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +15,9 @@ import java.util.UUID;
 @Getter
 @Setter
 public class CreateWalkLogRequest {
-    private UUID patientId;
+    @NotBlank(message = "patientId is required")
+    private String patientId;
 
+    @Positive(message = "kilometeres must be positive")
     private double kilometers;
 }
