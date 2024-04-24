@@ -149,7 +149,7 @@ public class ArticleController {
         return ResponseEntity.ok(response);
     }
 
-    //    @GetMapping("/byAuthor/{authorName}")
+//        @GetMapping("/byAuthor/{authorName}")
 //    public ResponseEntity<?> getArticlesByAuthor(@PathVariable String authorName) {
 //        List<Article> articles = articleService.findArticlesByAuthor(authorName);
 //        Map<String, Object> response = new HashMap<>();

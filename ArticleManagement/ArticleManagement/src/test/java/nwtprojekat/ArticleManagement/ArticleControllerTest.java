@@ -305,6 +305,12 @@ public class ArticleControllerTest {
         Assertions.assertTrue(content.contains("Article with ID " + id + " not found!"));
     }
 
+
+    @Test
+    public void testGetArticlesAndAuthors() throws Exception {
+
+    }
+
     private static String asJsonString(final Object obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);
