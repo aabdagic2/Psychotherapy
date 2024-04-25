@@ -106,7 +106,7 @@ public class ArticleController {
     public ResponseEntity<?> getAllArticles() {
         List<Article> articles = articleService.getAllArticles();
         List<Map<String, Object>> articlesWithPsychologist = new ArrayList<>();
-
+        // smisliti kako će se vratiti vise clanaka i psihologa
         if (articles.isEmpty()) {
             return ResponseEntity.notFound().build();
         } else {

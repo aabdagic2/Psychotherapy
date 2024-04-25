@@ -149,6 +149,7 @@ public class ArticleControllerTest {
         Assertions.assertTrue(foundTitle.contains(keyword));
     }
 
+
     // GET - uspjesno; nema clanaka koji u naslovu imaju keyword
     @Test
     public void testGetArticlesWithoutKeyword() throws Exception {
@@ -306,10 +307,10 @@ public class ArticleControllerTest {
     }
 
 
-    @Test
-    public void testGetArticlesAndAuthors() throws Exception {
-
-    }
+//    @Test
+//    public void testGetArticlesAndAuthors() throws Exception {
+//
+//    }
 
     private static String asJsonString(final Object obj) {
         try {
