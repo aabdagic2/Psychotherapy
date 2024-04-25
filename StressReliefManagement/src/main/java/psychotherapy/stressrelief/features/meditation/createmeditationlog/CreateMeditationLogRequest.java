@@ -1,6 +1,7 @@
 package psychotherapy.stressrelief.features.meditation.createmeditationlog;
 
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +16,8 @@ import java.util.UUID;
 @Getter
 @Setter
 public class CreateMeditationLogRequest {
-    private UUID patientId;
+    @NotBlank(message = "patientId is required")
+    private String patientId;
 
     private boolean music;
 }

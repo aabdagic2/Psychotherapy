@@ -22,7 +22,8 @@ public abstract class StressReliefAction {
     @Column(columnDefinition = "VARCHAR(36)")
     private String stressReliefActionId;
 
-    private UUID patientId;
+    @Column(columnDefinition = "VARCHAR(36)")
+    private String patientId;
 
     @Column(
             columnDefinition = "DATETIME"
@@ -34,7 +35,7 @@ public abstract class StressReliefAction {
     public StressReliefAction() {
         this.stressReliefActionId = UUID.randomUUID().toString();
     }
-    public StressReliefAction(UUID patientId, OffsetDateTime startedAt, double durationTime) {
+    public StressReliefAction(String patientId, OffsetDateTime startedAt, double durationTime) {
         this.patientId = patientId;
         this.startedAt = startedAt;
         this.durationTime = durationTime;
