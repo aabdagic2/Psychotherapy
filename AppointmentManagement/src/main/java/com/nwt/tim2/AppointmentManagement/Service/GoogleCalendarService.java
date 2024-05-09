@@ -1,4 +1,5 @@
 package com.nwt.tim2.AppointmentManagement.Service;
+import ba.unsa.etf.pnwt.proto.LoggingRequest;
 import com.google.api.client.auth.oauth2.AuthorizationCodeTokenRequest;
 import com.google.api.client.auth.oauth2.TokenResponse;
 import com.google.api.client.http.GenericUrl;
@@ -10,9 +11,14 @@ import com.google.api.services.calendar.model.*;
 import com.nwt.tim2.AppointmentManagement.Configuration.GoogleConfiguration;
 import lombok.AllArgsConstructor;
 import lombok.val;
+import net.devh.boot.grpc.client.inject.GrpcClient;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import com.nwt.tim2.AppointmentManagement.Configuration.GrpcConfig;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.time.*;
@@ -20,18 +26,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
+import net.devh.boot.grpc.client.inject.GrpcClient;
 @Controller
 @AllArgsConstructor
+@Service
 public class GoogleCalendarService {
     private final Logger logger = LoggerFactory.getLogger(GoogleCalendarService.class);
     private final GoogleConfiguration config;
-
     public Optional<TokenResponse> authorize(String code) {
         System.out.println(code);
         val scopes = new ArrayList<String>();
         scopes.add("https://www.googleapis.com/auth/calendar");
         try {
+
             return Optional.of(new AuthorizationCodeTokenRequest(new NetHttpTransport(), new GsonFactory(),
                     new GenericUrl("https://oauth2.googleapis.com/token"), code)
                     .setRedirectUri(config.getRedirectUri())
@@ -81,7 +88,6 @@ public class GoogleCalendarService {
             event.setRecurrence(Arrays.asList(recurrence));
             Event createdEvent = calendar.events().insert("primary", event).execute();
             addConferenceToEvent(tokenResponse, createdEvent.getId());
-
             return Optional.ofNullable(createdEvent.getId());
         } catch (Exception e) {
             logger.error("Could not schedule event", e);

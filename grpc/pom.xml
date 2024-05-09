@@ -104,6 +104,11 @@
             <artifactId>grpc-stub</artifactId>
             <version>${grpc.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -132,7 +137,7 @@
                         io.grpc:protoc-gen-grpc-java:1.22.1:exe:${os.detected.classifier}
                     </pluginArtifact>
                     <protoSourceRoot>
-                        C:/Users/naimm/Desktop/Psychotherapy/grpc/src/main/proto/
+                        C:/Users/amina/Documents/Projekti/PsychotherapyGRPC/Psychotherapy/grpc/src/main/proto/
                     </protoSourceRoot>
                 </configuration>
                 <executions>

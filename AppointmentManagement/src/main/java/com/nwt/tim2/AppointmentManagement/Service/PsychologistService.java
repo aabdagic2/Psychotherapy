@@ -8,6 +8,7 @@ import com.nwt.tim2.AppointmentManagement.Models.Psychologist;
 import com.nwt.tim2.AppointmentManagement.Repos.PsychologistRepo;
 import com.nwt.tim2.AppointmentManagement.Responses.UserPsychologistResponse;
 import jakarta.transaction.Transactional;
+import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class PsychologistService {
-
+    @GrpcClient("logging")
+    ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
     private final PsychologistRepo psychologistRepository;
     private final PsychologistMapper psychologistMapper;
     @Autowired
@@ -30,6 +32,7 @@ public class PsychologistService {
 
     public PsychologistDto savePsychologist(@Valid PsychologistDto psychologist) {
         if (!isValidUUID(psychologist.getUserId())) {
+
             throw new IdNotUUID("Invalid userId format");
         }
         Psychologist p=psychologistMapper.fromDto(psychologist);
