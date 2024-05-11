@@ -1,6 +1,7 @@
 package com.management.user.controllers;
 
 //
+import com.management.user.Configuration.RabbitMqConfig;
 import com.management.user.Request.PatientRequest;
 import com.management.user.Request.PsychologistRequest;
 import com.management.user.dto.UserDto;
@@ -12,6 +13,7 @@ import com.management.user.repository.UserRepository;
 import com.management.user.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
@@ -32,6 +34,8 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 //
+ @Autowired
+ private RabbitTemplate rabbitTemplate;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
@@ -54,7 +58,9 @@ public class UserController {
         patientRequest.setAge(age);
         patientRequest.setSelectedPsychologistId(null);
        // return new ResponseEntity<>(patientRequest, HttpStatus.CREATED);
-        restTemplate.postForObject(urlPatient,patientRequest, PatientRequest.class);
+       // restTemplate.postForObject(urlPatient,patientRequest, PatientRequest.class);
+        rabbitTemplate.convertAndSend(RabbitMqConfig.EXCHANGE_NAME, RabbitMqConfig.ROUTING_KEY, patientRequest);
+
         return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
     }
 
@@ -72,10 +78,11 @@ public class UserController {
             String urlPsychologist = "http://appointmentservice/psychologists/save";
         PsychologistRequest psychologistRequest = new PsychologistRequest();
         psychologistRequest.setUserId(createdUserDto.getUserId());
-        restTemplate.postForObject(urlPsychologist,psychologistRequest,PsychologistRequest.class);
+      //  restTemplate.postForObject(urlPsychologist,psychologistRequest,PsychologistRequest.class);
+        rabbitTemplate.convertAndSend(RabbitMqConfig.PSYCHOLOGIST_EXCHANGE_NAME, RabbitMqConfig.PSYCHOLOGIST_ROUTING_KEY, psychologistRequest);
 
 
-            return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
     }
 
 
