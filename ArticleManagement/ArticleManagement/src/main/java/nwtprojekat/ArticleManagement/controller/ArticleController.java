@@ -102,11 +102,12 @@ public class ArticleController {
         }
     }
 
+    // vratiti vise clanaka
     @GetMapping("/all")
     public ResponseEntity<?> getAllArticles() {
         List<Article> articles = articleService.getAllArticles();
-        List<Map<String, Object>> articlesWithPsychologist = new ArrayList<>();
-        // smisliti kako će se vratiti vise clanaka i psihologa
+        List<Map<String, Object>> psychologistsWithArticles = new ArrayList<>();
+
         if (articles.isEmpty()) {
             return ResponseEntity.notFound().build();
         } else {
@@ -122,10 +123,21 @@ public class ArticleController {
                         ObjectMapper objectMapper = new ObjectMapper();
                         Map<String, Object> psychologistDetails = objectMapper.readValue(response.getBody(), Map.class);
 
-                        Map<String, Object> articleWithPsychologist = new HashMap<>();
-                        articleWithPsychologist.put("article", article);
-                        articleWithPsychologist.put("psychologistDetails", psychologistDetails);
-                        articlesWithPsychologist.add(articleWithPsychologist);
+                        Map<String, Object> existingPsychologist = psychologistsWithArticles.stream()
+                                .filter(p -> p.get("psychologistDetails").equals(psychologistDetails))
+                                .findFirst()
+                                .orElse(null);
+
+                        if (existingPsychologist == null) {
+                            Map<String, Object> psychologistWithArticles = new HashMap<>();
+                            psychologistWithArticles.put("psychologistDetails", psychologistDetails);
+                            psychologistWithArticles.put("articles", new ArrayList<Article>());
+                            psychologistsWithArticles.add(psychologistWithArticles);
+                            existingPsychologist = psychologistWithArticles;
+                        }
+
+                        List<Article> articlesOfPsychologist = (List<Article>) existingPsychologist.get("articles");
+                        articlesOfPsychologist.add(article);
                     } else {
                         System.out.println("Failed to fetch psychologist info for article: " + article.getId());
                     }
@@ -135,7 +147,7 @@ public class ArticleController {
                 }
             }
         }
-        return ResponseEntity.ok(articlesWithPsychologist);
+        return ResponseEntity.ok(psychologistsWithArticles);
     }
 
     @GetMapping("/byKeyword/{keyword}")
