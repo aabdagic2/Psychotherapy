@@ -1,8 +1,7 @@
-package nwtprojekat.ArticleManagement.model;
+package ba.unsa.etf.pnwt.ArticleManagement.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
 @Table(name = "articles")

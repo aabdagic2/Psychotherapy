@@ -6,7 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="now corrected method returns one psychologist and a list of his articles">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/target/classes/nwtprojekat/ArticleManagement/controller/ArticleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/ArticleManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/ArticleManagementApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/config/ApplicationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/config/JPAConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/config/JPAConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/exception/ArticleNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/exception/ArticleNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/exception/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/exception/ErrorResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/model/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/model/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/model/Text.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Video.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/model/Video.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/ArticleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/repository/ArticleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/ImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/repository/ImageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/TextRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/repository/TextRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/VideoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/repository/VideoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerAdvancedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/test/java/ba/unsa/etf/pnwt/ArticleManagement/ArticleControllerAdvancedTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/test/java/ba/unsa/etf/pnwt/ArticleManagement/ArticleControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleManagementApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/test/java/ba/unsa/etf/pnwt/ArticleManagement/ArticleManagementApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +192,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ArticleManagementApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="ArticleManagement" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ba.unsa.etf.pnwt.ArticleManagement.ArticleManagementApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ArticleManagementApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ArticleManagement" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="nwtprojekat.ArticleManagement.ArticleManagementApplication" />
@@ -226,7 +252,7 @@
       <workItem from="1715695201374" duration="15000" />
       <workItem from="1715714227268" duration="4480000" />
       <workItem from="1715787163673" duration="57000" />
-      <workItem from="1715789731287" duration="1414000" />
+      <workItem from="1715789731287" duration="2444000" />
     </task>
     <task id="LOCAL-00001" summary="probaaa">
       <option name="closed" value="true" />
@@ -340,7 +366,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715722330174</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="now corrected method returns one psychologist and a list of his articles">
+      <option name="closed" value="true" />
+      <created>1715793786998</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715793786998</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

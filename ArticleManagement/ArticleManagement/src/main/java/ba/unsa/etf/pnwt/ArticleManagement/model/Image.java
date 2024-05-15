@@ -1,35 +1,34 @@
-package nwtprojekat.ArticleManagement.model;
+package ba.unsa.etf.pnwt.ArticleManagement.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "text_sections")
-public class Text {
+@Table(name = "image_sections")
+public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", columnDefinition = "VARCHAR(64)")
     private String id;
 
-    @Column(nullable = false)
-    //@NotBlank(message = "Article must have text!")
-    private String content;
 
-    @OneToOne(mappedBy = "text")
+    @Column(nullable = false)
+    private String imageUrl;
+
+    @OneToOne(mappedBy = "image")
     private Article article;
 
-    public Text() {}
+    public Image() {}
 
-    public String getContent() {
-        return content;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getId() {

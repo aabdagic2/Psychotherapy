@@ -1,4 +1,4 @@
-package nwtprojekat.ArticleManagement.exception;
+package ba.unsa.etf.pnwt.ArticleManagement.exception;
 
 public class ErrorResponse {
     private String error;

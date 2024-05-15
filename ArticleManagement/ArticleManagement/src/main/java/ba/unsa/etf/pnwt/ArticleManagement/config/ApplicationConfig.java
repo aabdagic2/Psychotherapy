@@ -1,4 +1,4 @@
-package nwtprojekat.ArticleManagement.config;
+package ba.unsa.etf.pnwt.ArticleManagement.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

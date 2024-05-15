@@ -1,4 +1,4 @@
-package nwtprojekat.ArticleManagement.exception;
+package ba.unsa.etf.pnwt.ArticleManagement.exception;
 
 public class ArticleNotFoundException extends RuntimeException {
     private String error = "validation";

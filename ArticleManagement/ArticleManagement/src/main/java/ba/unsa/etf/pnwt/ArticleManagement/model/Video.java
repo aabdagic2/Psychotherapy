@@ -1,4 +1,4 @@
-package nwtprojekat.ArticleManagement.model;
+package ba.unsa.etf.pnwt.ArticleManagement.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

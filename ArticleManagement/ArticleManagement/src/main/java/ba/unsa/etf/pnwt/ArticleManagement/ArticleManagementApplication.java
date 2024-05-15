@@ -1,21 +1,19 @@
-package nwtprojekat.ArticleManagement;
+package ba.unsa.etf.pnwt.ArticleManagement;
 
+import ba.unsa.etf.pnwt.ArticleManagement.model.Article;
+import ba.unsa.etf.pnwt.ArticleManagement.model.Text;
+import ba.unsa.etf.pnwt.ArticleManagement.model.Video;
+import ba.unsa.etf.pnwt.ArticleManagement.repository.ImageRepository;
+import ba.unsa.etf.pnwt.ArticleManagement.repository.TextRepository;
+import ba.unsa.etf.pnwt.ArticleManagement.repository.VideoRepository;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.servers.Server;
-import nwtprojekat.ArticleManagement.model.Article;
-import nwtprojekat.ArticleManagement.model.Image;
-import nwtprojekat.ArticleManagement.model.Video;
-import nwtprojekat.ArticleManagement.model.Text;
-import nwtprojekat.ArticleManagement.repository.ArticleRepository;
-import nwtprojekat.ArticleManagement.repository.ImageRepository;
-import nwtprojekat.ArticleManagement.repository.TextRepository;
-import nwtprojekat.ArticleManagement.repository.VideoRepository;
+import ba.unsa.etf.pnwt.ArticleManagement.model.Image;
+import ba.unsa.etf.pnwt.ArticleManagement.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.*;
 
 @SpringBootApplication
 @OpenAPIDefinition(servers = {@Server(url = "/", description = "Default Server URL")})

@@ -1,4 +1,4 @@
-package nwtprojekat.ArticleManagement.config;
+package ba.unsa.etf.pnwt.ArticleManagement.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

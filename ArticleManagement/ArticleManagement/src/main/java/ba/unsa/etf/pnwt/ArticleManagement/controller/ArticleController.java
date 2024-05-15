@@ -1,22 +1,19 @@
-package nwtprojekat.ArticleManagement.controller;
+package ba.unsa.etf.pnwt.ArticleManagement.controller;
 
 //import io.swagger.annotations.Api;
-import com.fasterxml.jackson.databind.JsonNode;
+import ba.unsa.etf.pnwt.ArticleManagement.model.Article;
+import ba.unsa.etf.pnwt.ArticleManagement.service.ArticleService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Valid;
-import nwtprojekat.ArticleManagement.exception.ArticleNotFoundException;
-import nwtprojekat.ArticleManagement.model.Article;
-import nwtprojekat.ArticleManagement.repository.ArticleRepository;
-import nwtprojekat.ArticleManagement.service.ArticleService;
+import ba.unsa.etf.pnwt.ArticleManagement.exception.ArticleNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.*;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
-import nwtprojekat.ArticleManagement.exception.ErrorResponse;
+import ba.unsa.etf.pnwt.ArticleManagement.exception.ErrorResponse;
 
 import java.util.*;
 

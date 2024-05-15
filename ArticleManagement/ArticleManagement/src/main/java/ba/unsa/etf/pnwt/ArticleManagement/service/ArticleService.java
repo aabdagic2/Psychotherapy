@@ -1,12 +1,11 @@
-package nwtprojekat.ArticleManagement.service;
+package ba.unsa.etf.pnwt.ArticleManagement.service;
 
-import nwtprojekat.ArticleManagement.exception.ArticleNotFoundException;
-import nwtprojekat.ArticleManagement.model.Article;
-import nwtprojekat.ArticleManagement.repository.ArticleRepository;
+import ba.unsa.etf.pnwt.ArticleManagement.model.Article;
+import ba.unsa.etf.pnwt.ArticleManagement.exception.ArticleNotFoundException;
+import ba.unsa.etf.pnwt.ArticleManagement.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ArticleService {
