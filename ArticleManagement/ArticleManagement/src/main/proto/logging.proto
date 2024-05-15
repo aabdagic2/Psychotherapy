@@ -17,7 +17,6 @@ message LoggingResponse {
   required string response_message = 1;
 }
 
-
 service LoggingService {
   rpc logRequest(LoggingRequest) returns (LoggingResponse) {};
 }

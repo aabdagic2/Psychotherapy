@@ -3,6 +3,7 @@ package ba.unsa.etf.pnwt.ArticleManagement.service;
 import ba.unsa.etf.pnwt.ArticleManagement.model.Article;
 import ba.unsa.etf.pnwt.ArticleManagement.exception.ArticleNotFoundException;
 import ba.unsa.etf.pnwt.ArticleManagement.repository.ArticleRepository;
+import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -12,6 +13,9 @@ public class ArticleService {
 
     @Autowired
     private ArticleRepository articleRepository;
+
+    //@GrpcClient("logging")
+    //ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
 
     public Article getArticleById(String id) {
         return articleRepository.findById(id)
