@@ -15,4 +15,5 @@ public class UserDto {
     private String passwordHash;
     @Getter
     private String userId;
+    private String roleId;
 }

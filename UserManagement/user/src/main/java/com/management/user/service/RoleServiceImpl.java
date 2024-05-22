@@ -1,6 +1,7 @@
 package com.management.user.service;
 
 import com.management.user.dto.RoleDto;
+import com.management.user.exceptions.RoleNotFoundException;
 import com.management.user.mapper.RoleMapper;
 import com.management.user.models.RoleEntity;
 import com.management.user.repository.RoleRepository;
@@ -32,14 +33,18 @@ public class RoleServiceImpl implements RoleService {
         return RoleMapper.toRoleDto(savedRole);
     }
 
-
-
     @Override
     public List<RoleDto> getAllRoles() {
         List<RoleEntity> roleEntities = (List<RoleEntity>) roleRepository.findAll();
         return roleEntities.stream()
                 .map(RoleMapper::toRoleDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public RoleDto getRoleById(String roleId) {
+        var role = roleRepository.findById(roleId).orElseThrow(() -> new RoleNotFoundException("Role not found"));
+        return RoleMapper.toRoleDto(role);
     }
 
 }

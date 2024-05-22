@@ -1,16 +1,14 @@
 package com.management.user.controllers;
 
-//
 import com.management.user.Request.PatientRequest;
 import com.management.user.Request.PsychologistRequest;
+import com.management.user.dto.LoginRequestDto;
+import com.management.user.dto.LoginResponseDto;
 import com.management.user.dto.UserDto;
-import com.management.user.exceptions.UserNotFoundException;
-
-import com.management.user.mapper.UserMapper;
-import com.management.user.models.UserEntity;
 import com.management.user.repository.UserRepository;
+import com.management.user.security.JwtTokenHelper;
+import com.management.user.service.RoleService;
 import com.management.user.service.UserService;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -20,9 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 //
 @RefreshScope
@@ -31,14 +27,26 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
-//
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
 
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    private JwtTokenHelper tokenHelper;
+
+    @PostMapping(path = "/login")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<LoginResponseDto> login(@RequestBody LoginRequestDto loginRequestDto) {
+        var user = userService.getUserByEmail(loginRequestDto.getEmail());
+        var userRole = roleService.getRoleById(user.getRoleId());
+        String token = tokenHelper.generateToken(user.getEmail(), userRole.getName());
+        return ResponseEntity.ok(new LoginResponseDto(token));
+    }
 
     @PostMapping(path="/registerPatient/{age}")
     @ResponseStatus(HttpStatus.CREATED)
@@ -78,9 +86,6 @@ public class UserController {
             return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
     }
 
-
-
-
     @GetMapping(path = "/users")
     public ResponseEntity<List<UserDto>> getAllUsers(){
         List<UserDto> users = userService.getAllUsers();
@@ -93,16 +98,12 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-
-
     @PutMapping("/user/{email}")
     public ResponseEntity<UserDto> updateUserByEmail(@PathVariable String email, @RequestBody UserDto userDto) {
         UserDto updatedUserDto = userService.updateUser(userDto, email);
 
         return ResponseEntity.ok(updatedUserDto);
     }
-
-
 
     @DeleteMapping("/delete")
     public ResponseEntity<Void> deleteUserByEmail(@RequestBody UserDto userDto) {
@@ -117,11 +118,6 @@ public class UserController {
         List<UserDto> users = userService.searchUsersByName(name);
         return ResponseEntity.ok(users);
     }
-
-
-
-
-
 
 }
 

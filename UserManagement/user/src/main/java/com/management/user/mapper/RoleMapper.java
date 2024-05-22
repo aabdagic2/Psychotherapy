@@ -5,7 +5,10 @@ import com.management.user.models.RoleEntity;
 
 public class RoleMapper {
     public static RoleDto toRoleDto(RoleEntity roleEntity) {
-        return new RoleDto(roleEntity.getName());
+        return new RoleDto(
+                roleEntity.getRoleId(),
+                roleEntity.getName()
+        );
     }
 
     public static RoleEntity toRoleEntity(RoleDto roleDto) {

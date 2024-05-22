@@ -1,6 +1,6 @@
 package com.management.user.service;
 
-import ba.unsa.etf.pnwt.proto.LoggingRequest;
+//import ba.unsa.etf.pnwt.proto.LoggingRequest;
 import com.management.user.dto.UserDto;
 import com.management.user.exceptions.InvalidFormatException;
 import com.management.user.exceptions.UserAlreadyExistsException;
@@ -24,8 +24,8 @@ public class UserServiceImp implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    @GrpcClient("logging")
-    ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
+//    @GrpcClient("logging")
+//    ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
     @Autowired
     public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
@@ -85,14 +85,14 @@ public class UserServiceImp implements UserService {
         UserEntity savedUser = userRepository.save(user);
         String id = savedUser.getUserId();
 
-        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
-                .setServiceName("UserService")
-                .setControllerName("UserController")
-                .setActionUrl("/registerPsychologist")
-                .setActionType("POST")
-                .setActionResponse("SUCCESS")
-                .build();
-        loggingServiceBlockingStub.logRequest(loggingRequest);
+//        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+//                .setServiceName("UserService")
+//                .setControllerName("UserController")
+//                .setActionUrl("/registerPsychologist")
+//                .setActionType("POST")
+//                .setActionResponse("SUCCESS")
+//                .build();
+//        loggingServiceBlockingStub.logRequest(loggingRequest);
 
         return UserMapper.mapToUserDto(savedUser);
     }
@@ -115,14 +115,14 @@ public class UserServiceImp implements UserService {
             userDtos.add(UserMapper.mapToUserDto(userEntity));
         }
 
-        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
-                .setServiceName("UserService")
-                .setControllerName("UserController")
-                .setActionUrl("/users")
-                .setActionType("GET")
-                .setActionResponse("SUCCESS")
-                .build();
-        loggingServiceBlockingStub.logRequest(loggingRequest);
+//        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+//                .setServiceName("UserService")
+//                .setControllerName("UserController")
+//                .setActionUrl("/users")
+//                .setActionType("GET")
+//                .setActionResponse("SUCCESS")
+//                .build();
+//        loggingServiceBlockingStub.logRequest(loggingRequest);
         return userDtos;
     }
 

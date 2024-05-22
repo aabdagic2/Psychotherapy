@@ -78,17 +78,23 @@
 		</dependency>
 
 		<dependency>
-			<groupId>ba.unsa.etf.pnwt</groupId>
-			<artifactId>grpc</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.12.5</version>
 		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>ba.unsa.etf.pnwt</groupId>-->
+<!--			<artifactId>grpc</artifactId>-->
+<!--			<version>0.0.1-SNAPSHOT</version>-->
+<!--		</dependency>-->
 
 
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.24</version>
+			<version>1.18.30</version>
 			<scope>provided</scope>
 		</dependency>
 

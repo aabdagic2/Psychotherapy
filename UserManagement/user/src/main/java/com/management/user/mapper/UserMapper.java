@@ -12,7 +12,8 @@ public class UserMapper {
                 user.getName(),
                 user.getEmail(),
                 user.getPasswordHash(),
-                user.getUserId()
+                user.getUserId(),
+                user.getRole().getRoleId()
         );
         return userDto;
     }
