@@ -1,6 +1,6 @@
 package com.nwt.tim2.AppointmentManagement.Service;
 
-import ba.unsa.etf.pnwt.proto.LoggingRequest;
+//import ba.unsa.etf.pnwt.proto.LoggingRequest;
 import com.nwt.tim2.AppointmentManagement.Dtos.DailyReportDto;
 import com.nwt.tim2.AppointmentManagement.Dtos.Mapper.DailyReportMapper;
 import com.nwt.tim2.AppointmentManagement.Exception.DailyReportNotFound;
@@ -27,8 +27,8 @@ public class DailyReportService {
     private final PatientRepo patientRepo;
     private final WeeklyReportRepo weeklyReportRepo;
     private final DailyReportMapper dailyReportMapper;
-    @GrpcClient("logging")
-    ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
+//    @GrpcClient("logging")
+//    ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
     @Autowired
     public DailyReportService(DailyReportRepo dailyReportRepo, PatientRepo patientRepo, WeeklyReportRepo weeklyReportRepo,DailyReportMapper dailyReportMapper) {
         this.dailyReportRepo = dailyReportRepo;
@@ -41,27 +41,27 @@ public class DailyReportService {
         Optional<Patient> patientOptional = patientRepo.findById(patientId);
 
         if (patientOptional.isEmpty()) {
-            LoggingRequest loggingRequest = LoggingRequest.newBuilder()
-                    .setServiceName("DailyReportService")
-                    .setControllerName("DailyReportController")
-                    .setActionUrl("/appointmentmanagement/getDailyReports")
-                    .setActionType("GET")
-                    .setActionResponse("ERROR")
-                    .build();
-            loggingServiceBlockingStub.logRequest(loggingRequest);
+//            LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+//                    .setServiceName("DailyReportService")
+//                    .setControllerName("DailyReportController")
+//                    .setActionUrl("/appointmentmanagement/getDailyReports")
+//                    .setActionType("GET")
+//                    .setActionResponse("ERROR")
+//                    .build();
+//            loggingServiceBlockingStub.logRequest(loggingRequest);
             throw new UserNotFound("Patient not found.");
         }
 
         LocalDate weekAgo = LocalDate.now().minusDays(7);
         List<DailyReport> d= dailyReportRepo.findByPatientAndCreatedAtAfter(patientOptional.get(), weekAgo);
-        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
-                .setServiceName("DailyReportService")
-                .setControllerName("DailyReportController")
-                .setActionUrl("/appointmentmanagement/getDailyReports")
-                .setActionType("GET")
-                .setActionResponse("SUCCESS")
-                .build();
-        loggingServiceBlockingStub.logRequest(loggingRequest);
+//        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+//                .setServiceName("DailyReportService")
+//                .setControllerName("DailyReportController")
+//                .setActionUrl("/appointmentmanagement/getDailyReports")
+//                .setActionType("GET")
+//                .setActionResponse("SUCCESS")
+//                .build();
+//        loggingServiceBlockingStub.logRequest(loggingRequest);
         return d.stream()
                 .map(dailyReportMapper::toDto)
                 .collect(Collectors.toList());
@@ -72,38 +72,38 @@ public class DailyReportService {
         Optional<Patient> patientOptional = patientRepo.findById(d.getPatient().getUserId());
         Optional<WeeklyReport> weeklyReportOptional = weeklyReportRepo.findById(d.getWeeklyReport().getWeeklyReportId());
         if (patientOptional.isEmpty()) {
-            LoggingRequest loggingRequest = LoggingRequest.newBuilder()
-                    .setServiceName("DailyReportService")
-                    .setControllerName("DailyReportController")
-                    .setActionUrl("/appointmentmanagement/createDailyReport")
-                    .setActionType("POST")
-                    .setActionResponse("ERROR")
-                    .build();
-            loggingServiceBlockingStub.logRequest(loggingRequest);
-            throw new UserNotFound("Patient not found.");
-        } else if ( weeklyReportOptional.isEmpty()) {
-            LoggingRequest loggingRequest = LoggingRequest.newBuilder()
-                    .setServiceName("DailyReportService")
-                    .setControllerName("DailyReportController")
-                    .setActionUrl("/appointmentmanagement/createDailyReport")
-                    .setActionType("POST")
-                    .setActionResponse("ERROR")
-                    .build();
-            loggingServiceBlockingStub.logRequest(loggingRequest);
+//            LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+//                    .setServiceName("DailyReportService")
+//                    .setControllerName("DailyReportController")
+//                    .setActionUrl("/appointmentmanagement/createDailyReport")
+//                    .setActionType("POST")
+//                    .setActionResponse("ERROR")
+//                    .build();
+//            loggingServiceBlockingStub.logRequest(loggingRequest);
+//            throw new UserNotFound("Patient not found.");
+//        } else if ( weeklyReportOptional.isEmpty()) {
+//            LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+//                    .setServiceName("DailyReportService")
+//                    .setControllerName("DailyReportController")
+//                    .setActionUrl("/appointmentmanagement/createDailyReport")
+//                    .setActionType("POST")
+//                    .setActionResponse("ERROR")
+//                    .build();
+//            loggingServiceBlockingStub.logRequest(loggingRequest);
             throw new WeeklyReportNotFound("Weekly report not found.");
         }
         Patient patient = patientOptional.get();
         WeeklyReport weeklyReport = weeklyReportOptional.get();
         DailyReport dailyReport = new DailyReport(d.getContent(), patient, weeklyReport);
         DailyReport savedDailyReport = dailyReportRepo.save(dailyReport);
-        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
-                .setServiceName("DailyReportService")
-                .setControllerName("DailyReportController")
-                .setActionUrl("/appointmentmanagement/createDailyReport")
-                .setActionType("POST")
-                .setActionResponse("SUCCESS")
-                .build();
-        loggingServiceBlockingStub.logRequest(loggingRequest);
+//        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+//                .setServiceName("DailyReportService")
+//                .setControllerName("DailyReportController")
+//                .setActionUrl("/appointmentmanagement/createDailyReport")
+//                .setActionType("POST")
+//                .setActionResponse("SUCCESS")
+//                .build();
+//        loggingServiceBlockingStub.logRequest(loggingRequest);
         return dailyReportMapper.toDto(savedDailyReport);
     }
 
@@ -111,24 +111,24 @@ public class DailyReportService {
         Optional<DailyReport> dailyReportOptional = dailyReportRepo.findById(dto.getDailyReportId());
 
         if (dailyReportOptional.isEmpty()) {
-            LoggingRequest loggingRequest = LoggingRequest.newBuilder()
-                    .setServiceName("DailyReportService")
-                    .setControllerName("DailyReportController")
-                    .setActionUrl("/appointmentmanagement/updateDailyReport")
-                    .setActionType("PUT")
-                    .setActionResponse("ERROR")
-                    .build();
-            loggingServiceBlockingStub.logRequest(loggingRequest);
+//            LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+//                    .setServiceName("DailyReportService")
+//                    .setControllerName("DailyReportController")
+//                    .setActionUrl("/appointmentmanagement/updateDailyReport")
+//                    .setActionType("PUT")
+//                    .setActionResponse("ERROR")
+//                    .build();
+//            loggingServiceBlockingStub.logRequest(loggingRequest);
             throw new DailyReportNotFound("Daily report not found.");
         }
-        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
-                .setServiceName("DailyReportService")
-                .setControllerName("DailyReportController")
-                .setActionUrl("/appointmentmanagement/updateDailyReport")
-                .setActionType("PUT")
-                .setActionResponse("SUCCESS")
-                .build();
-        loggingServiceBlockingStub.logRequest(loggingRequest);
+//        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+//                .setServiceName("DailyReportService")
+//                .setControllerName("DailyReportController")
+//                .setActionUrl("/appointmentmanagement/updateDailyReport")
+//                .setActionType("PUT")
+//                .setActionResponse("SUCCESS")
+//                .build();
+//        loggingServiceBlockingStub.logRequest(loggingRequest);
         DailyReport dailyReport = dailyReportOptional.get();
         dailyReport.setContent(dto.getContent());
         return dailyReportMapper.toDto(dailyReportRepo.save(dailyReport));
@@ -138,23 +138,23 @@ public class DailyReportService {
     try {
         dailyReportRepo.deleteById(dailyReportId);
     } catch (Exception e) {
-        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
-                .setServiceName("DailyReportService")
-                .setControllerName("DailyReportController")
-                .setActionUrl("/appointmentmanagement/deleteDailyReport")
-                .setActionType("DELETE")
-                .setActionResponse("ERROR")
-                .build();
-        loggingServiceBlockingStub.logRequest(loggingRequest);
+//        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+//                .setServiceName("DailyReportService")
+//                .setControllerName("DailyReportController")
+//                .setActionUrl("/appointmentmanagement/deleteDailyReport")
+//                .setActionType("DELETE")
+//                .setActionResponse("ERROR")
+//                .build();
+//        loggingServiceBlockingStub.logRequest(loggingRequest);
         throw new DailyReportNotFound("Daily report not found.");
     }
-    LoggingRequest loggingRequest = LoggingRequest.newBuilder()
-            .setServiceName("DailyReportService")
-            .setControllerName("DailyReportController")
-            .setActionUrl("/appointmentmanagement/deleteDailyReport")
-            .setActionType("DELETE")
-            .setActionResponse("SUCCESS")
-            .build();
-    loggingServiceBlockingStub.logRequest(loggingRequest);
+//    LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+//            .setServiceName("DailyReportService")
+//            .setControllerName("DailyReportController")
+//            .setActionUrl("/appointmentmanagement/deleteDailyReport")
+//            .setActionType("DELETE")
+//            .setActionResponse("SUCCESS")
+//            .build();
+//    loggingServiceBlockingStub.logRequest(loggingRequest);
     }
 }
