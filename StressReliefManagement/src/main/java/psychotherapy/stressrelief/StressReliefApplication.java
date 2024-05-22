@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import psychotherapy.stressrelief.datacontext.model.BreathControl;
 import psychotherapy.stressrelief.datacontext.model.StressReliefAction;
 import psychotherapy.stressrelief.datacontext.repository.StressReliefActionRepository;
@@ -13,6 +14,7 @@ import java.time.ZoneOffset;
 import java.util.UUID;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class StressReliefApplication implements CommandLineRunner {
 
 	@Autowired
