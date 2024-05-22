@@ -1,5 +1,6 @@
 package com.management.user.service;
 
+import ba.unsa.etf.pnwt.proto.LoggingRequest;
 import com.management.user.dto.UserDto;
 import com.management.user.exceptions.InvalidFormatException;
 import com.management.user.exceptions.UserAlreadyExistsException;
@@ -7,9 +8,11 @@ import com.management.user.exceptions.UserNotFoundException;
 import com.management.user.mapper.UserMapper;
 import com.management.user.models.UserEntity;
 import com.management.user.repository.UserRepository;
+import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +24,8 @@ public class UserServiceImp implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-
+    @GrpcClient("logging")
+    ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
     @Autowired
     public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
@@ -52,6 +56,7 @@ public class UserServiceImp implements UserService {
 
         UserEntity savedUser = userRepository.save(user);
 
+
         return UserMapper.mapToUserDto(savedUser);
     }
 
@@ -63,8 +68,6 @@ public class UserServiceImp implements UserService {
         if (userRepository.existsByEmail(email)) {
             throw new UserAlreadyExistsException("User with email '" + email + "' already exists.");
         }
-
-
 
 
         String password = userDto.getPasswordHash();
@@ -81,6 +84,16 @@ public class UserServiceImp implements UserService {
 
         UserEntity savedUser = userRepository.save(user);
         String id = savedUser.getUserId();
+
+        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+                .setServiceName("UserService")
+                .setControllerName("UserController")
+                .setActionUrl("/registerPsychologist")
+                .setActionType("POST")
+                .setActionResponse("SUCCESS")
+                .build();
+        loggingServiceBlockingStub.logRequest(loggingRequest);
+
         return UserMapper.mapToUserDto(savedUser);
     }
 
@@ -101,6 +114,15 @@ public class UserServiceImp implements UserService {
         for (UserEntity userEntity : users) {
             userDtos.add(UserMapper.mapToUserDto(userEntity));
         }
+
+        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+                .setServiceName("UserService")
+                .setControllerName("UserController")
+                .setActionUrl("/users")
+                .setActionType("GET")
+                .setActionResponse("SUCCESS")
+                .build();
+        loggingServiceBlockingStub.logRequest(loggingRequest);
         return userDtos;
     }
 
