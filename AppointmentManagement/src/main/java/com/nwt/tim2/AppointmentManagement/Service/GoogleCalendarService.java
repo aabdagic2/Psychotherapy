@@ -1,5 +1,5 @@
 package com.nwt.tim2.AppointmentManagement.Service;
-import ba.unsa.etf.pnwt.proto.LoggingRequest;
+//import ba.unsa.etf.pnwt.proto.LoggingRequest;
 import com.google.api.client.auth.oauth2.AuthorizationCodeTokenRequest;
 import com.google.api.client.auth.oauth2.TokenResponse;
 import com.google.api.client.http.GenericUrl;

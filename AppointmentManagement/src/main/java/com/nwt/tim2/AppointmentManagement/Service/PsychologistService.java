@@ -20,8 +20,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class PsychologistService {
-    @GrpcClient("logging")
-    ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
+//    @GrpcClient("logging")
+//    ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
     private final PsychologistRepo psychologistRepository;
     private final PsychologistMapper psychologistMapper;
     @Autowired
