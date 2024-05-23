@@ -22,7 +22,7 @@ import psychotherapy.stressrelief.features.walk.createwalklog.CreateWalkLogReque
 import psychotherapy.stressrelief.features.walk.createwalklog.CreateWalkLogResponse;
 
 @RestController
-@RequestMapping("/api/stressrelief")
+@RequestMapping("/stressrelief")
 public class StressReliefActionController {
     @Autowired
     private GetActionLogsHandler getActionLogsHandler;

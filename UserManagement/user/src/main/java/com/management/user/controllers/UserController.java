@@ -5,6 +5,7 @@ import com.management.user.Request.PsychologistRequest;
 import com.management.user.dto.LoginRequestDto;
 import com.management.user.dto.LoginResponseDto;
 import com.management.user.dto.UserDto;
+import com.management.user.dto.ValidateTokenRequestDto;
 import com.management.user.repository.UserRepository;
 import com.management.user.security.JwtTokenHelper;
 import com.management.user.service.RoleService;
@@ -17,6 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.List;
 
@@ -46,6 +49,24 @@ public class UserController {
         var userRole = roleService.getRoleById(user.getRoleId());
         String token = tokenHelper.generateToken(user.getEmail(), userRole.getName());
         return ResponseEntity.ok(new LoginResponseDto(token));
+    }
+
+    @PostMapping(path="/validate-token")
+    public ResponseEntity<Void> validateToken(
+            @RequestBody ValidateTokenRequestDto validateTokenRequestDto) {
+        try {
+            var attributes = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes());
+            var req = attributes.getRequest();
+            var authHeader = req.getHeader("Authorization");
+            var token = authHeader != null ? authHeader.substring(7) : "";
+            if (tokenHelper.validateTokenAndItsClaims(token, validateTokenRequestDto.getRoles())) {
+                return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+            }
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @PostMapping(path="/registerPatient/{age}")
