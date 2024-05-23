@@ -3,9 +3,13 @@ package ba.unsa.etf.pnwt.ArticleManagement.service;
 import ba.unsa.etf.pnwt.ArticleManagement.model.Article;
 import ba.unsa.etf.pnwt.ArticleManagement.exception.ArticleNotFoundException;
 import ba.unsa.etf.pnwt.ArticleManagement.repository.ArticleRepository;
+import ba.unsa.etf.pnwt.proto.LoggingRequest;
+import ba.unsa.etf.pnwt.proto.LoggingResponse;
+import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ArticleService {
@@ -13,12 +17,43 @@ public class ArticleService {
     @Autowired
     private ArticleRepository articleRepository;
 
+    @GrpcClient("logging")
+    ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
+
     public Article getArticleById(String id) {
-        return articleRepository.findById(id)
-                .orElseThrow(() -> new ArticleNotFoundException(id));
+        Optional<Article> optionalArticle = articleRepository.findById(id);
+        if (optionalArticle.isPresent()) {
+            LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+                    .setServiceName("ArticleService")
+                    .setControllerName("ArticleController")
+                    .setActionUrl("/articlemanagement/article")
+                    .setActionType("GET")
+                    .setActionResponse("SUCCESS")
+                    .build();
+            loggingServiceBlockingStub.logRequest(loggingRequest);
+            return optionalArticle.get();
+        } else {
+            LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+                    .setServiceName("ArticleService")
+                    .setControllerName("ArticleController")
+                    .setActionUrl("/articlemanagement/article")
+                    .setActionType("GET")
+                    .setActionResponse("ERROR")
+                    .build();
+            loggingServiceBlockingStub.logRequest(loggingRequest);
+            throw new ArticleNotFoundException(id);
+        }
     }
 
     public Article createArticle(Article article) {
+        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+                .setServiceName("ArticleService")
+                .setControllerName("ArticleController")
+                .setActionType("POST")
+                .setActionResponse("SUCCESS")
+                .build();
+        LoggingResponse loggingResponse = loggingServiceBlockingStub.logRequest(loggingRequest);
+
         return articleRepository.save(article);
     }
 

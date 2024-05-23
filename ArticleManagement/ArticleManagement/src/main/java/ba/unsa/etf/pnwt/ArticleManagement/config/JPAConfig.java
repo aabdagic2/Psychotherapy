@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "nwtprojekat.ArticleManagement")
+@EnableJpaRepositories(basePackages = "ba.unsa.etf.pnwt.ArticleManagement")
 @EnableTransactionManagement
 public class JPAConfig {
     @Bean

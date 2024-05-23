@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="now corrected method returns one psychologist and a list of his articles">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/ArticleManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/ArticleManagementApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/config/ApplicationConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/config/JPAConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/config/JPAConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/config/SwaggerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/exception/ArticleNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/exception/ArticleNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/exception/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/exception/ErrorResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/model/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/model/Image.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/model/Text.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/model/Video.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/model/Video.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/ArticleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/repository/ArticleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/ImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/repository/ImageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/TextRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/repository/TextRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/repository/VideoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/repository/VideoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/nwtprojekat/ArticleManagement/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerAdvancedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/test/java/ba/unsa/etf/pnwt/ArticleManagement/ArticleControllerAdvancedTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/test/java/ba/unsa/etf/pnwt/ArticleManagement/ArticleControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/test/java/nwtprojekat/ArticleManagement/ArticleManagementApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/test/java/ba/unsa/etf/pnwt/ArticleManagement/ArticleManagementApplicationTests.java" afterDir="false" />
-    </list>
+    <list default="true" id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="build success (mvn clean install)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,39 +53,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ArticleManagementApplication.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerAdvancedTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerTest.addNewArticle.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerTest.addNewArticleWithoutAuthorWithEmptyTitle.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerTest.deleteShouldDeleteExistingCategory.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerTest.testDeleteArticleById.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerTest.testDeleteArticleById2.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ArticleControllerTest.testGetAllArticles.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ArticleManagementApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/anida/IdeaProjects/PsychotherapyEurekaServer&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ArticleManagementApplication.executor": "Run",
+    "JUnit.ArticleControllerAdvancedTest.executor": "Run",
+    "JUnit.ArticleControllerTest.addNewArticle.executor": "Run",
+    "JUnit.ArticleControllerTest.addNewArticleWithoutAuthorWithEmptyTitle.executor": "Run",
+    "JUnit.ArticleControllerTest.deleteShouldDeleteExistingCategory.executor": "Run",
+    "JUnit.ArticleControllerTest.executor": "Run",
+    "JUnit.ArticleControllerTest.testDeleteArticleById.executor": "Run",
+    "JUnit.ArticleControllerTest.testDeleteArticleById2.executor": "Run",
+    "JUnit.ArticleControllerTest.testGetAllArticles.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.ArticleManagementApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/anida/IdeaProjects/Psychotherapy/ArticleManagement/ArticleManagement",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\anida\IdeaProjects\Psychotherapy\ArticleManagement\ArticleManagement\src\test\java\nwtprojekat\ArticleManagement" />
@@ -252,7 +230,7 @@
       <workItem from="1715695201374" duration="15000" />
       <workItem from="1715714227268" duration="4480000" />
       <workItem from="1715787163673" duration="57000" />
-      <workItem from="1715789731287" duration="2444000" />
+      <workItem from="1715789731287" duration="5369000" />
     </task>
     <task id="LOCAL-00001" summary="probaaa">
       <option name="closed" value="true" />
@@ -374,7 +352,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715793786998</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="grpc dependency added and package changed">
+      <option name="closed" value="true" />
+      <created>1715794735628</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1715794735628</updated>
+    </task>
+    <task id="LOCAL-00017" summary="build success (mvn clean install)">
+      <option name="closed" value="true" />
+      <created>1715798340231</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1715798340231</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,6 +389,8 @@
     <MESSAGE value="testing done" />
     <MESSAGE value="testing done 2" />
     <MESSAGE value="now corrected method returns one psychologist and a list of his articles" />
-    <option name="LAST_COMMIT_MESSAGE" value="now corrected method returns one psychologist and a list of his articles" />
+    <MESSAGE value="grpc dependency added and package changed" />
+    <MESSAGE value="build success (mvn clean install)" />
+    <option name="LAST_COMMIT_MESSAGE" value="build success (mvn clean install)" />
   </component>
 </project>

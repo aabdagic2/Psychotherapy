@@ -3,19 +3,20 @@ package ba.unsa.etf.pnwt.ArticleManagement;
 import ba.unsa.etf.pnwt.ArticleManagement.model.Article;
 import ba.unsa.etf.pnwt.ArticleManagement.model.Text;
 import ba.unsa.etf.pnwt.ArticleManagement.model.Video;
+import ba.unsa.etf.pnwt.ArticleManagement.repository.ArticleRepository;
 import ba.unsa.etf.pnwt.ArticleManagement.repository.ImageRepository;
 import ba.unsa.etf.pnwt.ArticleManagement.repository.TextRepository;
 import ba.unsa.etf.pnwt.ArticleManagement.repository.VideoRepository;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.servers.Server;
 import ba.unsa.etf.pnwt.ArticleManagement.model.Image;
-import ba.unsa.etf.pnwt.ArticleManagement.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages ={"ba.unsa.etf.pnwt.ArticleManagement","ba.unsa.etf.pnwt.ArticleManagement.repository"} )
 @OpenAPIDefinition(servers = {@Server(url = "/", description = "Default Server URL")})
 // @EnableEurekaClient
 public class ArticleManagementApplication implements CommandLineRunner {
