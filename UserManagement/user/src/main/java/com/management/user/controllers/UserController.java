@@ -47,22 +47,29 @@ public class UserController {
     @PostMapping(path="/registerPatient/{age}")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<UserDto> createPatient(@RequestBody UserDto userDto, @RequestParam int age) {
-        userDto.setPasswordHash(passwordEncoder.encode(userDto.getPasswordHash()));
-        UserDto createdUserDto = userService.createPatient(userDto);
-        String urlPatient = "http://appointmentservice/patients/save";
+        try {
+            userDto.setPasswordHash(passwordEncoder.encode(userDto.getPasswordHash()));
+            UserDto createdUserDto = userService.createPatient(userDto);
+            String urlPatient = "http://appointmentservice/patients/save";
 
-        String userId = createdUserDto.getUserId();
+            String userId = createdUserDto.getUserId();
 
-        PatientRequest patientRequest = new PatientRequest();
-        patientRequest.setUserId(userId);
-        patientRequest.setAge(age);
-        patientRequest.setSelectedPsychologistId(null);
-       // return new ResponseEntity<>(patientRequest, HttpStatus.CREATED);
-       // restTemplate.postForObject(urlPatient,patientRequest, PatientRequest.class);
-        rabbitTemplate.convertAndSend(RabbitMqConfig.EXCHANGE_NAME, RabbitMqConfig.ROUTING_KEY, patientRequest);
+            PatientRequest patientRequest = new PatientRequest();
+            patientRequest.setUserId(userId);
+            patientRequest.setAge(age);
+            patientRequest.setSelectedPsychologistId(null);
+            // return new ResponseEntity<>(patientRequest, HttpStatus.CREATED);
+            // restTemplate.postForObject(urlPatient,patientRequest, PatientRequest.class);
+            rabbitTemplate.convertAndSend(RabbitMqConfig.EXCHANGE_NAME, RabbitMqConfig.ROUTING_KEY, patientRequest);
 
-        return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
-    }
+            return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
+        }
+        catch (Exception e) {
+            userService.deleteUser(userDto);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        }
 
     @GetMapping("/userId/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable String id) {
@@ -72,17 +79,21 @@ public class UserController {
     @PostMapping(path = "/registerPsychologist")
         @ResponseStatus(HttpStatus.CREATED)
         public ResponseEntity<UserDto> createPsychologist(@RequestBody UserDto userDto) {
+        try {
             userDto.setPasswordHash(passwordEncoder.encode(userDto.getPasswordHash()));
             UserDto createdUserDto = userService.createPsychologist(userDto);
 
             String urlPsychologist = "http://appointmentservice/psychologists/save";
-        PsychologistRequest psychologistRequest = new PsychologistRequest();
-        psychologistRequest.setUserId(createdUserDto.getUserId());
-      //  restTemplate.postForObject(urlPsychologist,psychologistRequest,PsychologistRequest.class);
-        rabbitTemplate.convertAndSend(RabbitMqConfig.PSYCHOLOGIST_EXCHANGE_NAME, RabbitMqConfig.PSYCHOLOGIST_ROUTING_KEY, psychologistRequest);
-
-
-        return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
+            PsychologistRequest psychologistRequest = new PsychologistRequest();
+            psychologistRequest.setUserId(createdUserDto.getUserId());
+            //  restTemplate.postForObject(urlPsychologist,psychologistRequest,PsychologistRequest.class);
+            rabbitTemplate.convertAndSend(RabbitMqConfig.PSYCHOLOGIST_EXCHANGE_NAME, RabbitMqConfig.PSYCHOLOGIST_ROUTING_KEY, psychologistRequest);
+            return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
+        }
+        catch (Exception e) {
+            userService.deleteUser(userDto);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 
