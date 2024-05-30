@@ -1,5 +1,7 @@
 package com.management.user.security;
 
+import com.management.user.dto.RoleDto;
+import com.management.user.dto.UserDto;
 import com.management.user.service.RoleService;
 import com.management.user.service.UserService;
 import com.netflix.discovery.converters.Auto;
@@ -27,7 +29,7 @@ public class JwtTokenHelper {
     @Autowired
     private RoleService roleService;
 
-    public String generateToken(String username, String role) {
+    public String generateToken(UserDto user, RoleDto role) {
         Date now = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(now);
@@ -37,10 +39,12 @@ public class JwtTokenHelper {
         SecretKey key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
 
         return Jwts.builder()
-                .subject(username)
+                .subject(user.getUserId())
                 .issuedAt(now)
                 .expiration(expirationDate)
-                .claim("role", role)
+                .claim("name", user.getName())
+                .claim("email", user.getName())
+                .claim("role", role.getName())
                 .signWith(key).compact();
     }
 

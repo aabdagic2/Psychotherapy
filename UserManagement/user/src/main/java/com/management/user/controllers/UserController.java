@@ -47,7 +47,7 @@ public class UserController {
     public ResponseEntity<LoginResponseDto> login(@RequestBody LoginRequestDto loginRequestDto) {
         var user = userService.getUserByEmail(loginRequestDto.getEmail());
         var userRole = roleService.getRoleById(user.getRoleId());
-        String token = tokenHelper.generateToken(user.getEmail(), userRole.getName());
+        String token = tokenHelper.generateToken(user, userRole);
         return ResponseEntity.ok(new LoginResponseDto(token));
     }
 

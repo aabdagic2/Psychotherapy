@@ -40,7 +40,7 @@ public class UserEntity {
     private String email;
     @Setter
     @Getter
-    @Column(name = "passwordHash", columnDefinition = "VARCHAR(256)")
+    @Column(name = "password_hash", columnDefinition = "VARCHAR(256)")
     private String passwordHash;
 
     public UserEntity() {
