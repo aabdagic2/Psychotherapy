@@ -28,26 +28,25 @@ public class ApiGatewayApplication {
 				.route("userservice", p -> p
 						.path("/userservice/**")
 						.filters(f -> f
-                                .stripPrefix(1)
-                                .filter(authFilter.apply(
-                                    new AuthPrefilter.Config(Arrays.asList(UserRoles.administrator)))
-                                ))
+								.filter(authFilter.apply(
+										new AuthPrefilter.Config(Arrays.asList(UserRoles.administrator)))
+								)
+                                .stripPrefix(1))
 						.uri("lb://userservice"))
 
 
 				.route("appointmentservice", p -> p
 						.path("/appointmentservice/**")
 						.filters(f -> f
-								.stripPrefix(1)
 								.filter(authFilter.apply(
 										new AuthPrefilter.Config(Arrays.asList(UserRoles.patient, UserRoles.psychologist)))
-								))
+								)
+								.stripPrefix(1))
 						.uri("lb://appointmentservice"))
 
 				.route("articleservice", p -> p
 						.path("/articleservice/**")
 						.filters(f -> f
-								.stripPrefix(1)
 								.filter(authFilter.apply(
 										new AuthPrefilter.Config(
 												Arrays.asList(
@@ -56,32 +55,30 @@ public class ApiGatewayApplication {
 														UserRoles.administrator
 												)
 										))
-								))
+								)
+								.stripPrefix(1))
 						.uri("lb://articleservice"))
 
 				.route("stressreliefservice/stressrelief/actionlogs", p -> p
 						.path("/stressreliefservice/stressrelief/actionlogs")
 						.filters(f -> f
-								.stripPrefix(1)
 								.filter(
 										authFilter.apply(
 												new AuthPrefilter.Config(Arrays.asList(UserRoles.patient, UserRoles.psychologist)))
-								))
+								)
+								.stripPrefix(1))
 						.uri("lb://stressreliefservice/stressrelief/actionlogs"))
 
 				.route("stressreliefservice", p -> p
 						.path("/stressreliefservice/**")
 						.filters(f -> f
-								.stripPrefix(1)
 								.filter(
 										authFilter.apply(
 												new AuthPrefilter.Config(Arrays.asList(UserRoles.patient)))
-								))
+								)
+								.stripPrefix(1))
 						.uri("lb://stressreliefservice"))
 				.build();
-
-
-
 	}
 
 }
