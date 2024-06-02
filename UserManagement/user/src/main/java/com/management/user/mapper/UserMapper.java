@@ -11,7 +11,7 @@ public class UserMapper {
                 user.getType(),
                 user.getName(),
                 user.getEmail(),
-                user.getPasswordHash(),
+                user.getPassword(),
                 user.getUserId(),
                 user.getRole().getRoleId()
         );
@@ -22,9 +22,9 @@ public class UserMapper {
     public static UserEntity mapToUser(UserDto userDto){
         UserEntity user = new UserEntity(
                 userDto.getType(),
-                userDto.getName(),
                 userDto.getEmail(),
-                userDto.getPasswordHash()
+                userDto.getName(),
+                userDto.getPassword()
         );
         return user;
     }

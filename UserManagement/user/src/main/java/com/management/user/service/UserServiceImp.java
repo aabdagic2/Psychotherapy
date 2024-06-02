@@ -7,8 +7,8 @@ import com.management.user.exceptions.UserAlreadyExistsException;
 import com.management.user.exceptions.UserNotFoundException;
 import com.management.user.mapper.UserMapper;
 import com.management.user.models.UserEntity;
+import com.management.user.repository.RoleRepository;
 import com.management.user.repository.UserRepository;
-import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,12 +24,15 @@ public class UserServiceImp implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
+    private final RoleRepository roleRepository;
 //    @GrpcClient("logging")
 //    ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
     @Autowired
-    public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.roleRepository = roleRepository;
     }
 
     @Override
@@ -39,10 +42,7 @@ public class UserServiceImp implements UserService {
             throw new UserAlreadyExistsException("User with email '" + email + "' already exists.");
         }
 
-
-
-
-        String password = userDto.getPasswordHash();
+        String password = userDto.getPassword();
         if (isPasswordValid(password)) {
             throw new InvalidFormatException("Invalid password. Password must meet policy requirements.");
         }
@@ -51,11 +51,16 @@ public class UserServiceImp implements UserService {
             throw new InvalidFormatException("Invalid email format.");
         }
 
+        var role = roleRepository.findById(userDto.getRoleId());
+        if (role.isEmpty()) {
+            throw new InvalidFormatException("Role does not exist");
+        }
+
         UserEntity user = UserMapper.mapToUser(userDto);
-        user.setPasswordHash(passwordEncoder.encode(password));
+        user.setPassword(passwordEncoder.encode(password));
+        user.setRole(role.get());
 
         UserEntity savedUser = userRepository.save(user);
-
 
         return UserMapper.mapToUserDto(savedUser);
     }
@@ -70,7 +75,7 @@ public class UserServiceImp implements UserService {
         }
 
 
-        String password = userDto.getPasswordHash();
+        String password = userDto.getPassword();
         if (isPasswordValid(password)) {
             throw new InvalidFormatException("Invalid password. Password must meet policy requirements.");
         }
@@ -80,7 +85,7 @@ public class UserServiceImp implements UserService {
         }
 
         UserEntity user = UserMapper.mapToUser(userDto);
-        user.setPasswordHash(passwordEncoder.encode(password));
+        user.setPassword(passwordEncoder.encode(password));
 
         UserEntity savedUser = userRepository.save(user);
         String id = savedUser.getUserId();
@@ -150,7 +155,7 @@ public class UserServiceImp implements UserService {
             UserEntity user = optionalUser.get();
             user.setType(userDto.getType());
             user.setName(userDto.getName());
-            user.setPasswordHash(passwordEncoder.encode(userDto.getPasswordHash()));
+            user.setPassword(passwordEncoder.encode(userDto.getPassword()));
             UserEntity updatedUser = userRepository.save(user);
             return UserMapper.mapToUserDto(updatedUser);
         }

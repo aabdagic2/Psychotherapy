@@ -69,10 +69,10 @@ public class UserController {
         }
     }
 
-    @PostMapping(path="/registerPatient/{age}")
+    @PostMapping(path="/registerPatient")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<UserDto> createPatient(@RequestBody UserDto userDto, @RequestParam int age) {
-        userDto.setPasswordHash(passwordEncoder.encode(userDto.getPasswordHash()));
+        userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
         UserDto createdUserDto = userService.createPatient(userDto);
         String urlPatient = "http://appointmentservice/patients/save";
 
@@ -95,7 +95,7 @@ public class UserController {
     @PostMapping(path = "/registerPsychologist")
         @ResponseStatus(HttpStatus.CREATED)
         public ResponseEntity<UserDto> createPsychologist(@RequestBody UserDto userDto) {
-            userDto.setPasswordHash(passwordEncoder.encode(userDto.getPasswordHash()));
+            userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
             UserDto createdUserDto = userService.createPsychologist(userDto);
 
             String urlPsychologist = "http://appointmentservice/psychologists/save";

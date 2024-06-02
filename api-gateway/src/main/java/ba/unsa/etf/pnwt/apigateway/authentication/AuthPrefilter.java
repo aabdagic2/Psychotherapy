@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.util.StringUtils;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
@@ -30,8 +31,10 @@ public class AuthPrefilter extends AbstractGatewayFilterFactory<AuthPrefilter.Co
     private final String[] allowAnonymous = new String[] {
             "/userservice/login",
             "/userservice/validate-token",
-            "userservice/registerPatient/**"
+            "/userservice/registerPatient",
+            "/userservice/roles/**"
     };
+    private final AntPathMatcher pathMatcher = new AntPathMatcher();
 
     private final WebClient.Builder webClientBuilder;
 
@@ -109,7 +112,7 @@ public class AuthPrefilter extends AbstractGatewayFilterFactory<AuthPrefilter.Co
 
     }
 
-    private final Predicate<ServerHttpRequest> isAnonymous = request -> Arrays.stream(allowAnonymous).anyMatch(uri -> request.getURI().getPath().contains(uri));
+    private final Predicate<ServerHttpRequest> isAnonymous = request -> Arrays.stream(allowAnonymous).anyMatch(uri -> pathMatcher.match(uri, request.getURI().getPath()));
 
     private String getJwtTokenFromRequest(ServerHttpRequest request) {
         String bearerToken = request.getHeaders().getFirst("Authorization");

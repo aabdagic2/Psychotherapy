@@ -41,17 +41,17 @@ public class UserEntity {
     @Setter
     @Getter
     @Column(name = "password_hash", columnDefinition = "VARCHAR(256)")
-    private String passwordHash;
+    private String password;
 
     public UserEntity() {
 
     }
 
-    public UserEntity(String type, String email, String name, String passwordHash) {
+    public UserEntity(String type, String email, String name, String password) {
 
         this.email = email;
         this.name = name;
-        this.passwordHash = passwordHash;
+        this.password = password;
         this.type = type;
     }
 
@@ -64,7 +64,7 @@ public class UserEntity {
                 ", type=" +type+ '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", passwordHash='" + passwordHash + '\'' +
+                ", passwordHash='" + password + '\'' +
                 '}';
     }
 }
