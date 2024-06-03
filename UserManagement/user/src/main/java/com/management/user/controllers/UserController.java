@@ -1,16 +1,15 @@
 package com.management.user.controllers;
 
-//
 import com.management.user.Request.PatientRequest;
 import com.management.user.Request.PsychologistRequest;
+import com.management.user.dto.LoginRequestDto;
+import com.management.user.dto.LoginResponseDto;
 import com.management.user.dto.UserDto;
-import com.management.user.exceptions.UserNotFoundException;
-
-import com.management.user.mapper.UserMapper;
-import com.management.user.models.UserEntity;
+import com.management.user.dto.ValidateTokenRequestDto;
 import com.management.user.repository.UserRepository;
+import com.management.user.security.JwtTokenHelper;
+import com.management.user.service.RoleService;
 import com.management.user.service.UserService;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -19,10 +18,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 //
 @RefreshScope
@@ -31,19 +30,49 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
-//
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
 
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    private JwtTokenHelper tokenHelper;
 
-    @PostMapping(path="/registerPatient/{age}")
+    @PostMapping(path = "/login")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<LoginResponseDto> login(@RequestBody LoginRequestDto loginRequestDto) {
+        var user = userService.getUserByEmail(loginRequestDto.getEmail());
+        var userRole = roleService.getRoleById(user.getRoleId());
+        String token = tokenHelper.generateToken(user, userRole);
+        return ResponseEntity.ok(new LoginResponseDto(token));
+    }
+
+    @PostMapping(path="/validate-token")
+    public ResponseEntity<Void> validateToken(
+            @RequestBody ValidateTokenRequestDto validateTokenRequestDto) {
+        try {
+            var attributes = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes());
+            var req = attributes.getRequest();
+            var authHeader = req.getHeader("Authorization");
+            var token = authHeader != null ? authHeader.substring(7) : "";
+            if (tokenHelper.validateTokenAndItsClaims(token, validateTokenRequestDto.getRoles())) {
+                return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+            }
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
+    @PostMapping(path="/registerPatient")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<UserDto> createPatient(@RequestBody UserDto userDto, @RequestParam int age) {
-        userDto.setPasswordHash(passwordEncoder.encode(userDto.getPasswordHash()));
+        userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
         UserDto createdUserDto = userService.createPatient(userDto);
         String urlPatient = "http://appointmentservice/patients/save";
 
@@ -66,7 +95,7 @@ public class UserController {
     @PostMapping(path = "/registerPsychologist")
         @ResponseStatus(HttpStatus.CREATED)
         public ResponseEntity<UserDto> createPsychologist(@RequestBody UserDto userDto) {
-            userDto.setPasswordHash(passwordEncoder.encode(userDto.getPasswordHash()));
+            userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
             UserDto createdUserDto = userService.createPsychologist(userDto);
 
             String urlPsychologist = "http://appointmentservice/psychologists/save";
@@ -77,9 +106,6 @@ public class UserController {
 
             return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
     }
-
-
-
 
     @GetMapping(path = "/users")
     public ResponseEntity<List<UserDto>> getAllUsers(){
@@ -93,16 +119,12 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-
-
     @PutMapping("/user/{email}")
     public ResponseEntity<UserDto> updateUserByEmail(@PathVariable String email, @RequestBody UserDto userDto) {
         UserDto updatedUserDto = userService.updateUser(userDto, email);
 
         return ResponseEntity.ok(updatedUserDto);
     }
-
-
 
     @DeleteMapping("/delete")
     public ResponseEntity<Void> deleteUserByEmail(@RequestBody UserDto userDto) {
@@ -117,11 +139,6 @@ public class UserController {
         List<UserDto> users = userService.searchUsersByName(name);
         return ResponseEntity.ok(users);
     }
-
-
-
-
-
 
 }
 

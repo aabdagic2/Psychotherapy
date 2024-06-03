@@ -12,7 +12,8 @@ public class UserDto {
     private String type;
     private String name;
     private String email;
-    private String passwordHash;
+    private String password;
     @Getter
     private String userId;
+    private String roleId;
 }

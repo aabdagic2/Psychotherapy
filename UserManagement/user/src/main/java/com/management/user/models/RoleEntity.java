@@ -10,6 +10,7 @@ public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "role_id", columnDefinition = "VARCHAR(64)")
+    @Getter
     private String roleId;
     @Setter
     @Getter

@@ -30,13 +30,13 @@ public class GoogleConfiguration {
     }
 
     public String getClientId() {
-        return env.getProperty("GOOGLE_CLIENT_ID");
+        return "409514322651-su510k0g2c2grtqu2t4i4lgjpf1mh5lh.apps.googleusercontent.com";
     }
 
     public String getRedirectUri() {
-        return env.getProperty("GOOGLE_REDIRECT_URIS");
+        return "http://localhost:8081/route/token";
     }
     public String getClientSecret() {
-        return env.getProperty("GOOGLE_CLIENT_SECRET");
+        return "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";
     }
 }

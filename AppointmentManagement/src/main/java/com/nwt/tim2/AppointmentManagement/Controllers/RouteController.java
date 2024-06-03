@@ -30,16 +30,19 @@ public class RouteController {
     private final StateService state;
     private final GoogleCalendarService calendarService;
 
+
     @GetMapping("/")
-    public Map<String, Object> index() {
+    public Map<String, Object> index(@RequestParam("psychologistEmail") String psychologistEmail,
+                                     @RequestParam("day") String day,
+                                     @RequestParam("time") String time) {
         Map<String, Object> model = new HashMap<>();
         if (state.token.isPresent()) {
             TokenResponse tokenResponse = state.token.get();
-            DayOfWeek sessionDay = DayOfWeek.MONDAY;
-            LocalTime sessionTime = LocalTime.of(10, 0);
-            String selectedPsychologistEmail = "aminaa.abdagic@gmail.com";
+            DayOfWeek sessionDay = DayOfWeek.valueOf(day.toUpperCase());
+            LocalTime sessionTime = LocalTime.parse(time);
+            String selectedPsychologistEmail = psychologistEmail;
 
-            Optional<String> entriesOpt =calendarService.createEntryy(tokenResponse, sessionDay, sessionTime, selectedPsychologistEmail);
+            Optional<String> entriesOpt = calendarService.createEntryy(tokenResponse, sessionDay, sessionTime, selectedPsychologistEmail);
 
             if(entriesOpt.isEmpty()) {
                 model.put("error", "Could not load calendar entries");
@@ -49,7 +52,7 @@ public class RouteController {
                 model.put("entries", entries);
                 model.put("viewName", "index");
             }
-        } else {
+        }  else {
             val googleUrl = String.format("https://accounts.google.com/o/oauth2/auth?client_id=%s&redirect_uri=%s&scope=%s&response_type=code&access_type=offline",
                     configuration.getClientId(),
                     configuration.getRedirectUri(),

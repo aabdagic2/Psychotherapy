@@ -54,7 +54,7 @@ public class UserControllerTests {
     public void init() {
         userEntity = new UserEntity();
         userEntity.setEmail("user@example.com");
-        userEntity.setPasswordHash("password");
+        userEntity.setPassword("password");
         userEntity.setType("guest");
         userEntity.setName("John Doe");
     }
