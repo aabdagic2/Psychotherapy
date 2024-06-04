@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="build success (mvn clean install)" />
+    <list default="true" id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="build success (mvn clean install)">
+      <change afterPath="$PROJECT_DIR$/../StressReliefManagement/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../UserManagement/user/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../api-gateway/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AppointmentManagement/src/test/java/com/nwt/tim2/AppointmentManagement/AppointmentManagementApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AppointmentManagement/src/test/java/com/nwt/tim2/AppointmentManagement/AppointmentManagementApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StressReliefManagement/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../StressReliefManagement/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StressReliefManagement/src/test/java/psychotherapy/stressrelief/AppointmentsApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StressReliefManagement/src/test/java/psychotherapy/stressrelief/AppointmentsApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserManagement/user/src/test/java/com/management/user/Controller/UserControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserManagement/user/src/test/java/com/management/user/Controller/UserControllerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserManagement/user/src/test/java/com/management/user/UserApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserManagement/user/src/test/java/com/management/user/UserApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigateway/apigateway/HELP.md" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,17 +84,18 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.ArticleManagementApplication (1).executor": "Run",
     "Spring Boot.ArticleManagementApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/anida/IdeaProjects/Psychotherapy/ArticleManagement/ArticleManagement",
+    "last_opened_file_path": "C:/Users/amina/Documents/Projekti/PsychotherapyGRPC/Psychotherapy/ArticleManagement/ArticleManagement",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
     "vue.rearranger.settings.migration": "true"
@@ -91,7 +106,7 @@
       <recent name="C:\Users\anida\IdeaProjects\Psychotherapy\ArticleManagement\ArticleManagement\src\test\java\nwtprojekat\ArticleManagement" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ArticleManagementApplication">
+  <component name="RunManager" selected="Spring Boot.ArticleManagementApplication (1)">
     <configuration name="ArticleControllerAdvancedTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ArticleManagement" />
       <extension name="coverage">
@@ -231,6 +246,7 @@
       <workItem from="1715714227268" duration="4480000" />
       <workItem from="1715787163673" duration="57000" />
       <workItem from="1715789731287" duration="5369000" />
+      <workItem from="1717019283479" duration="5652000" />
     </task>
     <task id="LOCAL-00001" summary="probaaa">
       <option name="closed" value="true" />

@@ -1,5 +1,4 @@
 package ba.unsa.etf.pnwt.ArticleManagement.service;
-
 import ba.unsa.etf.pnwt.ArticleManagement.model.Article;
 import ba.unsa.etf.pnwt.ArticleManagement.exception.ArticleNotFoundException;
 import ba.unsa.etf.pnwt.ArticleManagement.repository.ArticleRepository;
@@ -17,13 +16,13 @@ public class ArticleService {
     @Autowired
     private ArticleRepository articleRepository;
 
-    @GrpcClient("logging")
-    ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
+   @GrpcClient("logging")
+   ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
 
     public Article getArticleById(String id) {
         Optional<Article> optionalArticle = articleRepository.findById(id);
         if (optionalArticle.isPresent()) {
-            LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+           LoggingRequest loggingRequest = LoggingRequest.newBuilder()
                     .setServiceName("ArticleService")
                     .setControllerName("ArticleController")
                     .setActionUrl("/articlemanagement/article")
@@ -33,26 +32,26 @@ public class ArticleService {
             loggingServiceBlockingStub.logRequest(loggingRequest);
             return optionalArticle.get();
         } else {
-            LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+          /*  LoggingRequest loggingRequest = LoggingRequest.newBuilder()
                     .setServiceName("ArticleService")
                     .setControllerName("ArticleController")
                     .setActionUrl("/articlemanagement/article")
                     .setActionType("GET")
                     .setActionResponse("ERROR")
                     .build();
-            loggingServiceBlockingStub.logRequest(loggingRequest);
+            loggingServiceBlockingStub.logRequest(loggingRequest);*/
             throw new ArticleNotFoundException(id);
         }
     }
 
     public Article createArticle(Article article) {
-        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+     /*   LoggingRequest loggingRequest = LoggingRequest.newBuilder()
                 .setServiceName("ArticleService")
                 .setControllerName("ArticleController")
                 .setActionType("POST")
                 .setActionResponse("SUCCESS")
                 .build();
-        LoggingResponse loggingResponse = loggingServiceBlockingStub.logRequest(loggingRequest);
+        LoggingResponse loggingResponse = loggingServiceBlockingStub.logRequest(loggingRequest);*/
 
         return articleRepository.save(article);
     }

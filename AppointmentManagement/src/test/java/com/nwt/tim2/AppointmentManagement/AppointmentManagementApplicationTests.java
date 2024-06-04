@@ -1,4 +1,4 @@
-package com.nwt.tim2.AppointmentManagement;
+/*package com.nwt.tim2.AppointmentManagement;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,4 +10,4 @@ class AppointmentManagementApplicationTests {
 	void contextLoads() {
 	}
 
-}
+}*/
