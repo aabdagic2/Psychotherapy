@@ -6,7 +6,7 @@ services:
     container_name: config-server
     hostname: ConfigurationServer
     build:
-      context: ./PsychotherapyConfig/
+      context: ./PsychotherapyEur/
       dockerfile: Dockerfile
     image: config-server:latest
     restart: on-failure
@@ -19,7 +19,7 @@ services:
     container_name: eureka-server
     hostname: eureka-server
     build:
-      context: ./PsychotherapyEureka/
+      context: ./Psychotherapy3/
       dockerfile: Dockerfile
     image: eureka-server:latest
     restart: on-failure
