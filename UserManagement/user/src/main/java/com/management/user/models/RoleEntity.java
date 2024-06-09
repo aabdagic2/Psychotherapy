@@ -8,7 +8,6 @@ import lombok.*;
 @Entity // This tells Hibernate to make a table out of this class
 public class RoleEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "role_id", columnDefinition = "VARCHAR(64)")
     @Getter
     private String roleId;
@@ -20,9 +19,9 @@ public class RoleEntity {
 
     public RoleEntity(){}
 
-    public RoleEntity(String name) {
+    public RoleEntity(String name, String id) {
         this.name = name;
-
+        this.roleId =id;
     }
 
 

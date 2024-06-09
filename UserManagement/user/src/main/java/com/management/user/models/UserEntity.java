@@ -17,9 +17,8 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id", columnDefinition = "VARCHAR(64)")
     private String userId;
- @Setter
- @Getter
-
+    @Setter
+    @Getter
     @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "role_id")
     private RoleEntity role;
@@ -47,12 +46,12 @@ public class UserEntity {
 
     }
 
-    public UserEntity(String type, String email, String name, String password) {
-
+    public UserEntity(String type, String email, String name, String password, RoleEntity role) {
         this.email = email;
         this.name = name;
         this.password = password;
         this.type = type;
+        this.role = role;
     }
 
 

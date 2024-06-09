@@ -29,20 +29,20 @@ public class UserApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		RoleEntity administratorRole = roleRepository.save(new RoleEntity("Administrator"));
-		RoleEntity psychologistRole = roleRepository.save(new RoleEntity("Psychologist"));
-		RoleEntity patientRole = roleRepository.save(new RoleEntity("Patient"));
-
-		UserEntity adminUser = new UserEntity("admin", "admin@example.com", "Admin", "admin123");
+		RoleEntity administratorRole = roleRepository.save(new RoleEntity("Administrator", "805f349f-dc46-4eaa-b4b2-20bb2a1e77ce"));
+		RoleEntity psychologistRole = roleRepository.save(new RoleEntity("Psychologist","b6fce159-9d1d-417a-93da-19111cad606c"));
+		RoleEntity patientRole = roleRepository.save(new RoleEntity("Patient", "e4aaef69-2a78-4ec2-8047-283fe0eedcb4"));
+/*
+		UserEntity adminUser = new UserEntity("admin", "admin@example.com", "Admin", "admin123", roleRepository.findById("286458d0-5913-49ef-a8f0-d634a0915d1a").orElse(null));
 		adminUser.setRole(administratorRole);
 		userRepository.save(adminUser);
 
-		UserEntity psychologistUser = new UserEntity("psychologist", "psychologist@example.com", "Psychologist", "psychologist123");
+		UserEntity psychologistUser = new UserEntity("psychologist", "psychologist@example.com", "Psychologist", "psychologist123", roleRepository.findById("286458d0-5913-49ef-a8f0-d634a0915d1a").orElse(null));
 		psychologistUser.setRole(psychologistRole);
 		userRepository.save(psychologistUser);
 
-		UserEntity patientUser = new UserEntity("patient", "patient@example.com", "Patient", "patient123");
+		UserEntity patientUser = new UserEntity("patient", "patient@example.com", "Patient", "patient123", roleRepository.findById("286458d0-5913-49ef-a8f0-d634a0915d1a").orElse(null));
 		patientUser.setRole(patientRole);
-		userRepository.save(patientUser);
+		userRepository.save(patientUser);*/
 	}
 }
