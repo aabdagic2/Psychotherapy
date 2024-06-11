@@ -2,6 +2,7 @@ package ba.unsa.etf.pnwt.apigateway;
 
 import ba.unsa.etf.pnwt.apigateway.authentication.AuthPrefilter;
 import ba.unsa.etf.pnwt.apigateway.authentication.UserRoles;
+import org.apache.catalina.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -29,7 +30,7 @@ public class ApiGatewayApplication {
 						.path("/userservice/**")
 						.filters(f -> f
 								.filter(authFilter.apply(
-										new AuthPrefilter.Config(Arrays.asList(UserRoles.administrator)))
+										new AuthPrefilter.Config(Arrays.asList(UserRoles.administrator, UserRoles.psychologist, UserRoles.patient)))
 								)
                                 .stripPrefix(1))
 						.uri("lb://userservice"))
