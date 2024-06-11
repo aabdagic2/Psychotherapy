@@ -50,22 +50,22 @@ public class AppointmentManagementApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Psychologist psychologist = new Psychologist();
-		psychologist.setUserId(UUID.randomUUID().toString());
-		psychologist=psychologistRepository.save(psychologist);
-		Patient patient = new Patient(30,psychologist);
-		patient.setUserId(UUID.randomUUID().toString());
-		patientRepository.save(patient);
-		Message message = new Message("Sample message content", new Date(), patient, psychologist);
-		messageRepository.save(message);
-		QualityRate qualityRate = new QualityRate(psychologist, patient, 5);
-		qualityRateRepository.save(qualityRate);
-		WeeklyReport weeklyReport = new WeeklyReport("Sample weekly report content", psychologist,patient);
-		weeklyReportRepository.save(weeklyReport);
-		DailyReport dailyReport = new DailyReport("Sample content", patient, weeklyReport);
-		dailyReportRepository.save(dailyReport);
-		Session session = new Session(psychologist, patient, "Monday", "09:00");
-		sessionRepository.save(session);
+//		Psychologist psychologist = new Psychologist();
+//		psychologist.setUserId(UUID.randomUUID().toString());
+//		psychologist=psychologistRepository.save(psychologist);
+//		Patient patient = new Patient(30,psychologist);
+//		patient.setUserId(UUID.randomUUID().toString());
+//		patientRepository.save(patient);
+//		Message message = new Message("Sample message content", new Date(), patient, psychologist);
+//		messageRepository.save(message);
+//		QualityRate qualityRate = new QualityRate(psychologist, patient, 5);
+//		qualityRateRepository.save(qualityRate);
+//		WeeklyReport weeklyReport = new WeeklyReport("Sample weekly report content", psychologist,patient);
+//		weeklyReportRepository.save(weeklyReport);
+//		DailyReport dailyReport = new DailyReport("Sample content", patient, weeklyReport);
+//		dailyReportRepository.save(dailyReport);
+//		Session session = new Session(psychologist, patient, "Monday", "09:00");
+//		sessionRepository.save(session);
 
 	}
 

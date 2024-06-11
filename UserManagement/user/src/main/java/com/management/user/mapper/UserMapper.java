@@ -21,7 +21,8 @@ public class UserMapper {
                 user.getEmail(),
                 user.getPassword(),
                 user.getUserId(),
-                user.getRole().getRoleId()
+                user.getRole().getRoleId(),
+                user.getImageUrl()
         );
         return userDto;
     }
@@ -33,7 +34,8 @@ public class UserMapper {
                 userDto.getEmail(),
                 userDto.getName(),
                 userDto.getPassword(),
-                roleRepository.findById(userDto.getRoleId()).orElse(null)
+                roleRepository.findById(userDto.getRoleId()).orElse(null),
+                userDto.getImageUrl()
         );
         return user;
     }

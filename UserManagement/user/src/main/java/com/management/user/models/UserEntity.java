@@ -42,16 +42,22 @@ public class UserEntity {
     @Column(name = "password_hash", columnDefinition = "VARCHAR(256)")
     private String password;
 
+    @Getter
+    @Setter
+    @Column(name = "image_url", columnDefinition = "VARCHAR(1024)")
+    private String imageUrl;
+
     public UserEntity() {
 
     }
 
-    public UserEntity(String type, String email, String name, String password, RoleEntity role) {
+    public UserEntity(String type, String email, String name, String password, RoleEntity role, String imageUrl) {
         this.email = email;
         this.name = name;
         this.password = password;
         this.type = type;
         this.role = role;
+        this.imageUrl = imageUrl;
     }
 
 

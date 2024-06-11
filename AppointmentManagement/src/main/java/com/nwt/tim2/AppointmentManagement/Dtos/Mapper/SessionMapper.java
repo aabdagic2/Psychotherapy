@@ -29,7 +29,9 @@ public class SessionMapper {
         SessionDto dto = new SessionDto();
         dto.setSessionId(session.getQualityRateId());
         dto.setPsychologistId(session.getPsychologist().getUserId());
-        dto.setPatientId(session.getPatient().getUserId());
+        if (session.getPatient() != null) {
+            dto.setPatientId(session.getPatient().getUserId());
+        }
         dto.setTime(session.getTime());
         dto.setDay(session.getDay());
         return dto;
