@@ -14,7 +14,7 @@ public class Text {
     @Column(name = "id", columnDefinition = "VARCHAR(64)")
     private String id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     //@NotBlank(message = "Article must have text!")
     private String content;
 
