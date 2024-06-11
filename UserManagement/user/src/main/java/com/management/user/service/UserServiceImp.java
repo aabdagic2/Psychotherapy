@@ -26,13 +26,15 @@ public class UserServiceImp implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     private final RoleRepository roleRepository;
+    private final UserMapper userMapper;
 //    @GrpcClient("logging")
 //    ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
     @Autowired
-    public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
+    public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
+        this.userMapper = userMapper;
     }
 
     @Override
@@ -56,13 +58,13 @@ public class UserServiceImp implements UserService {
             throw new InvalidFormatException("Role does not exist");
         }
 
-        UserEntity user = UserMapper.mapToUser(userDto);
+        UserEntity user = userMapper.mapToUser(userDto);
         user.setPassword(passwordEncoder.encode(password));
         user.setRole(role.get());
 
         UserEntity savedUser = userRepository.save(user);
 
-        return UserMapper.mapToUserDto(savedUser);
+        return userMapper.mapToUserDto(savedUser);
     }
 
 
@@ -84,7 +86,7 @@ public class UserServiceImp implements UserService {
             throw new InvalidFormatException("Invalid email format.");
         }
 
-        UserEntity user = UserMapper.mapToUser(userDto);
+        UserEntity user = userMapper.mapToUser(userDto);
         user.setPassword(passwordEncoder.encode(password));
 
         UserEntity savedUser = userRepository.save(user);
@@ -99,7 +101,7 @@ public class UserServiceImp implements UserService {
 //                .build();
 //        loggingServiceBlockingStub.logRequest(loggingRequest);
 
-        return UserMapper.mapToUserDto(savedUser);
+        return userMapper.mapToUserDto(savedUser);
     }
 
     private boolean isPasswordValid(String password) {
@@ -117,7 +119,7 @@ public class UserServiceImp implements UserService {
         Iterable<UserEntity> users = userRepository.findAll();
         List<UserDto> userDtos = new ArrayList<>();
         for (UserEntity userEntity : users) {
-            userDtos.add(UserMapper.mapToUserDto(userEntity));
+            userDtos.add(userMapper.mapToUserDto(userEntity));
         }
 
 //        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
@@ -136,7 +138,7 @@ public class UserServiceImp implements UserService {
         Optional<UserEntity> optionalUser = userRepository.findByEmail(email);
         if (optionalUser.isPresent()) {
             UserEntity user = optionalUser.get();
-            return UserMapper.mapToUserDto(user);
+            return userMapper.mapToUserDto(user);
         }
         throw new UserNotFoundException("User not found with email: " + email);
     }
@@ -145,7 +147,7 @@ public class UserServiceImp implements UserService {
         UserEntity user = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + id));
 
-        return UserMapper.mapToUserDto(user);
+        return userMapper.mapToUserDto(user);
     }
 
     @Override
@@ -157,7 +159,7 @@ public class UserServiceImp implements UserService {
             user.setName(userDto.getName());
             user.setPassword(passwordEncoder.encode(userDto.getPassword()));
             UserEntity updatedUser = userRepository.save(user);
-            return UserMapper.mapToUserDto(updatedUser);
+            return userMapper.mapToUserDto(updatedUser);
         }
         throw new UserNotFoundException("User not found with email: " + email);
     }
@@ -175,7 +177,11 @@ public class UserServiceImp implements UserService {
     @Override
     public List<UserDto> searchUsersByName(String name) {
         List<UserEntity> users = userRepository.findByNameContainingIgnoreCase(name);
-        return users.stream().map(UserMapper::mapToUserDto).collect(Collectors.toList());
+        List<UserDto> userDtos = new ArrayList<>();
+        for(UserEntity u : users) {
+            userDtos.add(userMapper.mapToUserDto(u));
+        }
+        return userDtos;
     }
 
 
