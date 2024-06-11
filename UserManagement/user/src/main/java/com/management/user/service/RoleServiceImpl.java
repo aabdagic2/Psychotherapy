@@ -9,6 +9,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,7 +28,7 @@ public class RoleServiceImpl implements RoleService {
             throw new IllegalArgumentException("Role with name '" + roleName + "' already exists.");
         }
 
-        RoleEntity roleEntity = new RoleEntity(roleName);
+        RoleEntity roleEntity = new RoleEntity(roleName, UUID.randomUUID().toString());
         RoleEntity savedRole = roleRepository.save(roleEntity);
 
         return RoleMapper.toRoleDto(savedRole);

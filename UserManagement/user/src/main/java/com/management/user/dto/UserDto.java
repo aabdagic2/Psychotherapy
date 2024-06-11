@@ -16,4 +16,5 @@ public class UserDto {
     @Getter
     private String userId;
     private String roleId;
+    private String imageUrl;
 }

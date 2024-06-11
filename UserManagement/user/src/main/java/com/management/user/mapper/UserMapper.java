@@ -1,30 +1,41 @@
 package com.management.user.mapper;
 
 import com.management.user.dto.UserDto;
+import com.management.user.models.RoleEntity;
 import com.management.user.models.UserEntity;
+import com.management.user.repository.RoleRepository;
+import com.management.user.service.RoleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserMapper {
+    @Autowired
+    private RoleRepository roleRepository;
 
     // Convert User JPA Entity into UserDto
-    public static UserDto mapToUserDto(UserEntity user){
+    public UserDto mapToUserDto(UserEntity user){
         UserDto userDto = new UserDto(
                 user.getType(),
                 user.getName(),
                 user.getEmail(),
                 user.getPassword(),
                 user.getUserId(),
-                user.getRole().getRoleId()
+                user.getRole().getRoleId(),
+                user.getImageUrl()
         );
         return userDto;
     }
 
     // Convert UserDto into User JPA Entity
-    public static UserEntity mapToUser(UserDto userDto){
+    public UserEntity mapToUser(UserDto userDto){
         UserEntity user = new UserEntity(
                 userDto.getType(),
                 userDto.getEmail(),
                 userDto.getName(),
-                userDto.getPassword()
+                userDto.getPassword(),
+                roleRepository.findById(userDto.getRoleId()).orElse(null),
+                userDto.getImageUrl()
         );
         return user;
     }
