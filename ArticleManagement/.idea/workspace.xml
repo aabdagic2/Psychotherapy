@@ -5,19 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e072f6b-c357-4707-a76e-5f35ddc8092a" name="Changes" comment="build success (mvn clean install)">
-      <change afterPath="$PROJECT_DIR$/../StressReliefManagement/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../UserManagement/user/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../api-gateway/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AppointmentManagement/src/test/java/com/nwt/tim2/AppointmentManagement/AppointmentManagementApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AppointmentManagement/src/test/java/com/nwt/tim2/AppointmentManagement/AppointmentManagementApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ArticleManagement/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../grpc/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ArticleManagement.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ArticleManagement.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArticleManagement/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArticleManagement/src/main/java/ba/unsa/etf/pnwt/ArticleManagement/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StressReliefManagement/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../StressReliefManagement/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StressReliefManagement/src/test/java/psychotherapy/stressrelief/AppointmentsApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StressReliefManagement/src/test/java/psychotherapy/stressrelief/AppointmentsApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserManagement/user/src/test/java/com/management/user/Controller/UserControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserManagement/user/src/test/java/com/management/user/Controller/UserControllerTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserManagement/user/src/test/java/com/management/user/UserApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserManagement/user/src/test/java/com/management/user/UserApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apigateway/apigateway/HELP.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grpc/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,42 +63,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ArticleManagementApplication.executor": "Run",
-    "JUnit.ArticleControllerAdvancedTest.executor": "Run",
-    "JUnit.ArticleControllerTest.addNewArticle.executor": "Run",
-    "JUnit.ArticleControllerTest.addNewArticleWithoutAuthorWithEmptyTitle.executor": "Run",
-    "JUnit.ArticleControllerTest.deleteShouldDeleteExistingCategory.executor": "Run",
-    "JUnit.ArticleControllerTest.executor": "Run",
-    "JUnit.ArticleControllerTest.testDeleteArticleById.executor": "Run",
-    "JUnit.ArticleControllerTest.testDeleteArticleById2.executor": "Run",
-    "JUnit.ArticleControllerTest.testGetAllArticles.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.ArticleManagementApplication (1).executor": "Run",
-    "Spring Boot.ArticleManagementApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/amina/Documents/Projekti/PsychotherapyGRPC/Psychotherapy/ArticleManagement/ArticleManagement",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ArticleManagementApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerAdvancedTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.addNewArticle.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.addNewArticleWithoutAuthorWithEmptyTitle.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.deleteShouldDeleteExistingCategory.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.testDeleteArticleById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.testDeleteArticleById2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArticleControllerTest.testGetAllArticles.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ArticleManagementApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ArticleManagementApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;probaa&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/naimm/Desktop/PsychotherapyDocker/ArticleManagement&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\naimm\Desktop\PsychotherapyDocker\ArticleManagement\ArticleManagement" />
+      <recent name="C:\Users\naimm\Desktop\PsychotherapyDocker\ArticleManagement" />
       <recent name="C:\Users\anida\IdeaProjects\Psychotherapy\ArticleManagement\ArticleManagement\src\test\java\nwtprojekat\ArticleManagement" />
     </key>
   </component>
@@ -247,6 +245,8 @@
       <workItem from="1715787163673" duration="57000" />
       <workItem from="1715789731287" duration="5369000" />
       <workItem from="1717019283479" duration="5652000" />
+      <workItem from="1718057124167" duration="9010000" />
+      <workItem from="1718195970387" duration="599000" />
     </task>
     <task id="LOCAL-00001" summary="probaaa">
       <option name="closed" value="true" />

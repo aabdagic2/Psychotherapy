@@ -129,16 +129,10 @@
                 <artifactId>protobuf-maven-plugin</artifactId>
                 <version>0.5.1</version>
                 <configuration>
-                    <protocArtifact>
-                        com.google.protobuf:protoc:3.6.1:exe:${os.detected.classifier}
-                    </protocArtifact>
+                    <protocArtifact>com.google.protobuf:protoc:3.19.1:exe:${os.detected.classifier}</protocArtifact>
                     <pluginId>grpc-java</pluginId>
-                    <pluginArtifact>
-                        io.grpc:protoc-gen-grpc-java:1.22.1:exe:${os.detected.classifier}
-                    </pluginArtifact>
-                    <protoSourceRoot>
-                        C:\Users\naimm\Desktop\Psychotherapy\grpc\src\main\proto
-                    </protoSourceRoot>
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.42.1:exe:${os.detected.classifier}</pluginArtifact>
+                    <protoSourceRoot>C:\Users\naimm\Desktop\PsychotherapyDocker\grpc\src\main\proto</protoSourceRoot>
                 </configuration>
                 <executions>
                     <execution>
@@ -149,6 +143,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+
         </plugins>
     </build>
 

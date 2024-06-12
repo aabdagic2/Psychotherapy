@@ -6,7 +6,7 @@ services:
     container_name: config-server
     hostname: ConfigurationServer
     build:
-      context: ./PsychotherapyEur/
+      context: ./Configuration/
       dockerfile: Dockerfile
     image: config-server:latest
     restart: on-failure
@@ -19,7 +19,7 @@ services:
     container_name: eureka-server
     hostname: eureka-server
     build:
-      context: ./Psychotherapy3/
+      context: ./Eureka/
       dockerfile: Dockerfile
     image: eureka-server:latest
     restart: on-failure
@@ -96,6 +96,30 @@ services:
       - config-server
       - eureka-server
 
+  article-service:
+    container_name: article-service
+    build:
+      context: ./ArticleManagement/ArticleManagement/
+      dockerfile: Dockerfile
+    image: article-management:latest
+    restart: on-failure
+    environment:
+      - CONFIG_SERVER_URL=http://config-server:8888
+      - SPRING_DATASOURCE_URL=jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11696376
+      - SPRING_DATASOURCE_USERNAME=sql11696376
+      - SPRING_DATASOURCE_PASSWORD=eZMWYdPWGG
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
+    expose:
+      - 8082
+    ports:
+      - 8082:8082
+    depends_on:
+      - config-server
+      - eureka-server
+
+
+
   api-gateway:
     container_name: api-gateway
     build:
@@ -115,3 +139,30 @@ services:
       - user-service
       - appointment-service
       - stressrelief-service
+      - article-service
+
+  grpc:
+    container_name: grpc
+    build:
+      context: ./grpc/
+      dockerfile: Dockerfile
+    image: grpc:latest
+    restart: on-failure
+    environment:
+      - CONFIG_SERVER_URL=http://config-server:8090
+      - SPRING_DATASOURCE_URL=jdbc:mysql://avnadmin:AVNS_wmyhuJYWHCBzg1Zmrzf@mysql-2bfc1969-eqvox-b3e7.e.aivencloud.com:23919/defaultdb?ssl-mode=REQUIRED
+      - SPRING_DATASOURCE_USERNAME=sql11696376
+      - SPRING_DATASOURCE_PASSWORD=AVNS_wmyhuJYWHCBzg1Zmrzf
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
+    expose:
+      - 8082
+    ports:
+      - 8082:8082
+    depends_on:
+      - eureka-server
+      - config-server
+      - user-service
+      - appointment-service
+      - stressrelief-service
+      - article-service
