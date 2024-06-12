@@ -1,4 +1,4 @@
-# MentalHealthPlatform.ba
+# MentalHealthPlatform
 
 Projekat iz predmeta Praktikum - Napredne web tehnologije
 
