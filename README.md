@@ -9,7 +9,7 @@ Projekat iz predmeta Praktikum - Napredne web tehnologije
 - Zlata Ohran
 
 ## Opis projekta
-Platforma za mentalno zdravlje pruža sveobuhvatan set alata i resursa za korisnike koji se suočavaju s anksioznošću i stresom. Korisnici mogu procijeniti svoje simptome putem razgovora s AI chatom ili doktorom GPT-om i dobiti prikaz mogućih stanja. Platforma nudi članke o zdravstvenim stanjima, vodiče za meditaciju, opuštajuće zvukove i muziku, sesije za bolji san, i emotivni slajder za praćenje emocija. Također, omogućuje zakazivanje privatnih online sesija s psihologom uz online plaćanje.
+Platforma za mentalno zdravlje pruža sveobuhvatan set alata i resursa za korisnike koji se suočavaju s anksioznošću i stresom. Korisnici mogu procijeniti svoje simptome putem razgovora  doktorom i dobiti prikaz mogućih stanja. Platforma nudi članke o zdravstvenim stanjima, vodiče za meditaciju, opuštajuće zvukove i muziku, sesije za bolji san, i emotivni slajder za praćenje emocija. Također, omogućuje zakazivanje privatnih online sesija s psihologom.
 
 ## Docker
 Za pokretanje aplikacije koristeći Docker, potrebno je imati instaliran JDK 17 i Maven verziju 3.8.4.
