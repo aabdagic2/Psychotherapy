@@ -116,6 +116,8 @@ public class SessionService {
             session.setPatient(patient);
 
             try {
+                patient.setSelectedPsychologist(psychologist);
+                patientRepo.save(patient);
                 return sessionMapper.toDto(sessionRepo.save(session));
             } catch (Exception e) {
                 throw new FailedToAdd("Failed to add patient to session");
