@@ -58,10 +58,13 @@ public class ArticleService {
     }
 
     public void deleteArticleById(String id) {
-        Article article = articleRepository.findById(id)
-                .orElseThrow(() -> new ArticleNotFoundException(id));
+        Article article = articleRepository.findById(id).orElse(null);
+        if (article == null) {
+            throw new ArticleNotFoundException(id);
+        } else {
+            articleRepository.deleteById(id);
+        }
 
-        articleRepository.deleteById(id);
     }
 
     public boolean existsArticleById(String id) {
