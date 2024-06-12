@@ -42,7 +42,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://avnadmin:AVNS_ZLF4pMhUQz19ftLA3Sz@mysql-36fd5e58-etf-31e6.a.aivencloud.com:13331/defaultdb?ssl-mode=REQUIRED
       - SPRING_DATASOURCE_USERNAME=avnadmin
       - SPRING_DATASOURCE_PASSWORD=AVNS_ZLF4pMhUQz19ftLA3Sz
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
     expose:
       - 8080
@@ -64,7 +64,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://avnadmin:AVNS_7Zh1XzTbQRLZ5f1V4Gh@mysql-3639d8b9-etf-a6e6.b.aivencloud.com:14622/defaultdb?ssl-mode=REQUIRED
       - SPRING_DATASOURCE_USERNAME=avnadmin
       - SPRING_DATASOURCE_PASSWORD=AVNS_7Zh1XzTbQRLZ5f1V4Gh
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
     expose:
       - 8081
@@ -86,7 +86,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-3a7f378b-etf-nwt.a.aivencloud.com:24769/defaultdb
       - SPRING_DATASOURCE_USERNAME=avnadmin
       - SPRING_DATASOURCE_PASSWORD=AVNS_Q20z2R3w897c7GZovle
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
     expose:
       - 8083
@@ -108,7 +108,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11696376
       - SPRING_DATASOURCE_USERNAME=sql11696376
       - SPRING_DATASOURCE_PASSWORD=eZMWYdPWGG
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
     expose:
       - 8082
@@ -141,28 +141,3 @@ services:
       - stressrelief-service
       - article-service
 
-  grpc:
-    container_name: grpc
-    build:
-      context: ./grpc/
-      dockerfile: Dockerfile
-    image: grpc:latest
-    restart: on-failure
-    environment:
-      - CONFIG_SERVER_URL=http://config-server:8090
-      - SPRING_DATASOURCE_URL=jdbc:mysql://avnadmin:AVNS_wmyhuJYWHCBzg1Zmrzf@mysql-2bfc1969-eqvox-b3e7.e.aivencloud.com:23919/defaultdb?ssl-mode=REQUIRED
-      - SPRING_DATASOURCE_USERNAME=sql11696376
-      - SPRING_DATASOURCE_PASSWORD=AVNS_wmyhuJYWHCBzg1Zmrzf
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
-      - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
-    expose:
-      - 8082
-    ports:
-      - 8082:8082
-    depends_on:
-      - eureka-server
-      - config-server
-      - user-service
-      - appointment-service
-      - stressrelief-service
-      - article-service
