@@ -1,0 +1,143 @@
+version: '3'
+
+services:
+
+  config-server:
+    container_name: config-server
+    hostname: ConfigurationServer
+    build:
+      context: ./Configuration/
+      dockerfile: Dockerfile
+    image: config-server:latest
+    restart: on-failure
+    expose:
+      - 8888
+    ports:
+      - 8888:8888
+
+  eureka-server:
+    container_name: eureka-server
+    hostname: eureka-server
+    build:
+      context: ./Eureka/
+      dockerfile: Dockerfile
+    image: eureka-server:latest
+    restart: on-failure
+    expose:
+      - 8999
+    ports:
+      - 8999:8999
+    depends_on:
+      - config-server
+
+  user-service:
+    container_name: user-service
+    build:
+      context: ./UserManagement/user/
+      dockerfile: Dockerfile
+    image: user:latest
+    restart: on-failure
+    environment:
+      - CONFIG_SERVER_URL=http://config-server:8888
+      - SPRING_DATASOURCE_URL=jdbc:mysql://avnadmin:AVNS_ZLF4pMhUQz19ftLA3Sz@mysql-36fd5e58-etf-31e6.a.aivencloud.com:13331/defaultdb?ssl-mode=REQUIRED
+      - SPRING_DATASOURCE_USERNAME=avnadmin
+      - SPRING_DATASOURCE_PASSWORD=AVNS_ZLF4pMhUQz19ftLA3Sz
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    depends_on:
+      - config-server
+      - eureka-server
+
+  appointment-service:
+    container_name: appointment-service
+    build:
+      context: ./AppointmentManagement/
+      dockerfile: Dockerfile
+    image: appointment-management:latest
+    restart: on-failure
+    environment:
+      - CONFIG_SERVER_URL=http://config-server:8888
+      - SPRING_DATASOURCE_URL=jdbc:mysql://avnadmin:AVNS_7Zh1XzTbQRLZ5f1V4Gh@mysql-3639d8b9-etf-a6e6.b.aivencloud.com:14622/defaultdb?ssl-mode=REQUIRED
+      - SPRING_DATASOURCE_USERNAME=avnadmin
+      - SPRING_DATASOURCE_PASSWORD=AVNS_7Zh1XzTbQRLZ5f1V4Gh
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
+    expose:
+      - 8081
+    ports:
+      - 8081:8081
+    depends_on:
+      - config-server
+      - eureka-server
+
+  stressrelief-service:
+    container_name: stressrelief-service
+    build:
+      context: ./StressReliefManagement/
+      dockerfile: Dockerfile
+    image:  stressrelief-management:latest
+    restart: on-failure
+    environment:
+      - CONFIG_SERVER_URL=http://config-server:8888
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-3a7f378b-etf-nwt.a.aivencloud.com:24769/defaultdb
+      - SPRING_DATASOURCE_USERNAME=avnadmin
+      - SPRING_DATASOURCE_PASSWORD=AVNS_Q20z2R3w897c7GZovle
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
+    expose:
+      - 8083
+    ports:
+      - 8083:8083
+    depends_on:
+      - config-server
+      - eureka-server
+
+  article-service:
+    container_name: article-service
+    build:
+      context: ./ArticleManagement/ArticleManagement/
+      dockerfile: Dockerfile
+    image: article-management:latest
+    restart: on-failure
+    environment:
+      - CONFIG_SERVER_URL=http://config-server:8888
+      - SPRING_DATASOURCE_URL=jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11696376
+      - SPRING_DATASOURCE_USERNAME=sql11696376
+      - SPRING_DATASOURCE_PASSWORD=eZMWYdPWGG
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
+    expose:
+      - 8082
+    ports:
+      - 8082:8082
+    depends_on:
+      - config-server
+      - eureka-server
+
+
+
+  api-gateway:
+    container_name: api-gateway
+    build:
+      context: ./api-gateway/
+      dockerfile: Dockerfile
+    image: api-gateway-dockerfile:latest
+    restart: on-failure
+    environment:
+      - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
+    expose:
+      - 8089
+    ports:
+      - 8089:8089
+    depends_on:
+      - eureka-server
+      - config-server
+      - user-service
+      - appointment-service
+      - stressrelief-service
+      - article-service
+

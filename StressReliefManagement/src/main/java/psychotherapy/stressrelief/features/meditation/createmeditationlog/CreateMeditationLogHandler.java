@@ -1,7 +1,7 @@
 package psychotherapy.stressrelief.features.meditation.createmeditationlog;
 
-import ba.unsa.etf.pnwt.proto.LoggingRequest;
-import net.devh.boot.grpc.client.inject.GrpcClient;
+//import ba.unsa.etf.pnwt.proto.LoggingRequest;
+//import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +20,8 @@ public class CreateMeditationLogHandler {
     private StressReliefActionRepository stressReliefActionRepository;
     @Autowired
     private CheckPatientExistenceHandler patientExistenceHandler;
-    @GrpcClient("grpc")
-    ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
+//    @GrpcClient("grpc")
+//    ba.unsa.etf.pnwt.proto.LoggingServiceGrpc.LoggingServiceBlockingStub loggingServiceBlockingStub;
 
     public ResponseEntity<CreateMeditationLogResponse> handle(CreateMeditationLogRequest request) {
         var patientExists = patientExistenceHandler.handle(request.getPatientId());
@@ -31,14 +31,14 @@ public class CreateMeditationLogHandler {
         StressReliefAction action = CreateMeditationLogMapper.INSTANCE.requestToEntity(request);
         action.setStartedAt(OffsetDateTime.now().withOffsetSameInstant(ZoneOffset.UTC));
         Meditation savedMeditation = (Meditation) stressReliefActionRepository.save(action);
-        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
-                .setServiceName("StressReliefService")
-                .setControllerName("StressReliefActionController")
-                .setActionUrl("/stressrelief/meditation")
-                .setActionType("POST")
-                .setActionResponse("SUCCESS")
-                .build();
-        loggingServiceBlockingStub.logRequest(loggingRequest);
+//        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
+//                .setServiceName("StressReliefService")
+//                .setControllerName("StressReliefActionController")
+//                .setActionUrl("/stressrelief/meditation")
+//                .setActionType("POST")
+//                .setActionResponse("SUCCESS")
+//                .build();
+//        loggingServiceBlockingStub.logRequest(loggingRequest);
         CreateMeditationLogResponse response = CreateMeditationLogMapper.INSTANCE.entityToResponse(savedMeditation);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }

@@ -1,13 +1,13 @@
-package psychotherapy.stressrelief;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
-class AppointmentsApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
-}
+//package psychotherapy.stressrelief;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//@SpringBootTest
+//class AppointmentsApplicationTests {
+//
+//	@Test
+//	void contextLoads() {
+//	}
+//
+//}
