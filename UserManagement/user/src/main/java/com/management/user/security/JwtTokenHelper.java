@@ -43,7 +43,7 @@ public class JwtTokenHelper {
                 .issuedAt(now)
                 .expiration(expirationDate)
                 .claim("name", user.getName())
-                .claim("email", user.getName())
+                .claim("email", user.getEmail())
                 .claim("role", role.getName())
                 .signWith(key).compact();
     }

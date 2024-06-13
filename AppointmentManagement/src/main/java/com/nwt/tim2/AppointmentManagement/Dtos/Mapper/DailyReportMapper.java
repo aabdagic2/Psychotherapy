@@ -12,6 +12,7 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Component
 public class DailyReportMapper {
@@ -27,7 +28,9 @@ public class DailyReportMapper {
         }
         DailyReportDto dto = new DailyReportDto();
         dto.setPatientId(dailyReport.getPatient().getUserId());
-        dto.setWeeklyReportId(dailyReport.getWeeklyReport().getWeeklyReportId());
+        if (dailyReport.getWeeklyReport() != null) {
+            dto.setWeeklyReportId(dailyReport.getWeeklyReport().getWeeklyReportId());
+        }
         dto.setContent(dailyReport.getContent());
         dto.setCreatedAt(dailyReport.getCreatedAt());
         dto.setDailyReportId(dailyReport.getDailyReportId());
@@ -43,11 +46,11 @@ public class DailyReportMapper {
         dailyReport.setCreatedAt(dailyReportDto.getCreatedAt());
         Patient patient = patientRepo.findById(dailyReportDto.getPatientId())
                 .orElseThrow(() -> new IllegalArgumentException("Patient not found with ID: " + dailyReportDto.getPatientId()));
-        WeeklyReport weeklyReport = weeklyReportRepo.findById(dailyReportDto.getWeeklyReportId())
-                .orElseThrow(() -> new IllegalArgumentException("WeeklyReport not found with ID: " + dailyReportDto.getWeeklyReportId()));
         dailyReport.setPatient(patient);
-        dailyReport.setWeeklyReport(weeklyReport);
-
+        if (dailyReportDto.getDailyReportId() != null) {
+            Optional<WeeklyReport> weeklyReport = weeklyReportRepo.findById(dailyReportDto.getWeeklyReportId());
+            weeklyReport.ifPresent(dailyReport::setWeeklyReport);
+        }
         return dailyReport;
     }
 }

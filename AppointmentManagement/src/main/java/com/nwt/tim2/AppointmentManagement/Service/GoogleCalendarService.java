@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -124,6 +125,19 @@ public class GoogleCalendarService {
             logger.error("Could not add conference to event", e);
             return Optional.empty();
         }
+    }
+
+    private String getRecurrenceEndDate() {
+        LocalDateTime currentDate = LocalDateTime.now();
+
+        // Increment the year by 1
+        LocalDateTime nextYearDate = currentDate.plusYears(1);
+
+        // Format the date to YYYYMMDD'T'HHMMSS'Z'
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss'Z'");
+
+        // Convert to UTC
+        return nextYearDate.atOffset(ZoneOffset.UTC).format(formatter);
     }
 
 }

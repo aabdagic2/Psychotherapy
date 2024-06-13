@@ -3,6 +3,7 @@ package com.nwt.tim2.AppointmentManagement.Models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Null;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,8 +23,7 @@ public class DailyReport {
     private String dailyReportId;
 
     @NotBlank(message = "Content cannot be blank")
-    @Size(max = 1024, message = "Content length must be less than or equal to 1024 characters")
-    @Column(name = "content", columnDefinition = "VARCHAR(1024)")
+    @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
     @NotNull(message = "Patient must be specified")
@@ -31,7 +31,6 @@ public class DailyReport {
     @JoinColumn(name = "patient_id", referencedColumnName = "user_id")
     private Patient patient;
 
-    @NotNull(message = "Weekly report must be specified")
     @ManyToOne
     @JoinColumn(name = "weekly_report_id", referencedColumnName = "weekly_report_id")
     private WeeklyReport weeklyReport;

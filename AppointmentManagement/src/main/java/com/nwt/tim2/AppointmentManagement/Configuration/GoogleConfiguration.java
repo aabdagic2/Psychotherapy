@@ -34,7 +34,7 @@ public class GoogleConfiguration {
     }
 
     public String getRedirectUri() {
-        return "http://localhost:8081/route/token";
+        return "http://localhost:4200/patient/psychologist-select";
     }
     public String getClientSecret() {
         return "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";

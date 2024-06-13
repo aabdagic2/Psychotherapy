@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.Option;
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
@@ -69,8 +70,14 @@ public class DailyReportService {
 
     public DailyReportDto createDailyReport(@Valid DailyReportDto dailyReportDto) {
         DailyReport d=dailyReportMapper.fromDto(dailyReportDto);
-        Optional<Patient> patientOptional = patientRepo.findById(d.getPatient().getUserId());
-        Optional<WeeklyReport> weeklyReportOptional = weeklyReportRepo.findById(d.getWeeklyReport().getWeeklyReportId());
+        Optional<Patient> patientOptional = Optional.empty();
+        Optional<WeeklyReport> weeklyReportOptional = Optional.empty();
+        if (d.getPatient() != null) {
+            patientOptional = patientRepo.findById(d.getPatient().getUserId());
+        }
+        if (d.getWeeklyReport() != null) {
+            weeklyReportOptional = weeklyReportRepo.findById(d.getWeeklyReport().getWeeklyReportId());
+        }
         if (patientOptional.isEmpty()) {
 //            LoggingRequest loggingRequest = LoggingRequest.newBuilder()
 //                    .setServiceName("DailyReportService")
@@ -93,7 +100,7 @@ public class DailyReportService {
             throw new WeeklyReportNotFound("Weekly report not found.");
         }
         Patient patient = patientOptional.get();
-        WeeklyReport weeklyReport = weeklyReportOptional.get();
+        WeeklyReport weeklyReport = weeklyReportOptional.orElseGet(() -> null);
         DailyReport dailyReport = new DailyReport(d.getContent(), patient, weeklyReport);
         DailyReport savedDailyReport = dailyReportRepo.save(dailyReport);
 //        LoggingRequest loggingRequest = LoggingRequest.newBuilder()
