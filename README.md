@@ -19,3 +19,6 @@ Za pokretanje aplikacije koristeći Docker, potrebno je imati instaliran JDK 17 
 3. Nakon uspješne izgradnje, pokrenite aplikaciju sa `docker compose -f docker-compose.yml up`.
 
 Ove korake možete pratiti kako biste osigurali ispravno pokretanje aplikacije u Docker okruženju.
+
+## Video 
+https://drive.google.com/drive/folders/1oc7Ocp2uBlBwCBh_OFuf9rqu1bg_87MX?usp=sharing
