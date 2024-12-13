@@ -1,10 +1,10 @@
-version: '3'
+version: '3.9'
 
 services:
 
   config-server:
     container_name: config-server
-    hostname: ConfigurationServer
+    hostname: config-server
     build:
       context: ./Configuration/
       dockerfile: Dockerfile
@@ -14,10 +14,17 @@ services:
       - 8888
     ports:
       - 8888:8888
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://config-server:8888/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
 
   eureka-server:
     container_name: eureka-server
-    hostname: eureka-server
+    hostname: discovery-server
     build:
       context: ./Eureka/
       dockerfile: Dockerfile
@@ -27,15 +34,27 @@ services:
       - 8999
     ports:
       - 8999:8999
+
     depends_on:
-      - config-server
+      config-server:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://eureka-server:8999/eureka/apps"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      - EUREKA_SERVER_EVICTION_INTERVAL_TIMER_IN_MS=4000
+      - EUREKA_SERVER_RENEWAL_PERCENT_THRESHOLD=0.85
+    networks:
+      - app-network
 
   user-service:
     container_name: user-service
     build:
       context: ./UserManagement/user/
       dockerfile: Dockerfile
-    image: user:latest
+    image: user-service:latest
     restart: on-failure
     environment:
       - CONFIG_SERVER_URL=http://config-server:8888
@@ -49,21 +68,32 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      - config-server
-      - eureka-server
+      config-server:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://user-service:8080/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
 
   appointment-service:
     container_name: appointment-service
     build:
       context: ./AppointmentManagement/
       dockerfile: Dockerfile
-    image: appointment-management:latest
+    image: appointment-service:latest
     restart: on-failure
     environment:
       - CONFIG_SERVER_URL=http://config-server:8888
-      - SPRING_DATASOURCE_URL=jdbc:mysql://avnadmin:AVNS_7Zh1XzTbQRLZ5f1V4Gh@mysql-3639d8b9-etf-a6e6.b.aivencloud.com:14622/defaultdb?ssl-mode=REQUIRED
+      - SPRING_DATASOURCE_URL=jdbc:mysql://avnadmin:AVNS_mOZQBXvwz0I-NAeMgkB@appointment-gianes-9ebb.e.aivencloud.com:24334/defaultdb?ssl-mode=REQUIRED
       - SPRING_DATASOURCE_USERNAME=avnadmin
-      - SPRING_DATASOURCE_PASSWORD=AVNS_7Zh1XzTbQRLZ5f1V4Gh
+      - SPRING_DATASOURCE_PASSWORD=AVNS_mOZQBXvwz0I-NAeMgkB
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
     expose:
@@ -71,21 +101,30 @@ services:
     ports:
       - 8081:8081
     depends_on:
-      - config-server
-      - eureka-server
+      config-server:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://appointment-service:8081/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
 
   stressrelief-service:
     container_name: stressrelief-service
     build:
       context: ./StressReliefManagement/
       dockerfile: Dockerfile
-    image:  stressrelief-management:latest
+    image: stressrelief-service:latest
     restart: on-failure
     environment:
       - CONFIG_SERVER_URL=http://config-server:8888
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-3a7f378b-etf-nwt.a.aivencloud.com:24769/defaultdb
+      - SPRING_DATASOURCE_URL=jdbc:mysql://avnadmin:AVNS_RCbR6rhl5mxqDKpsqvI@mysql-23b72a2b-azuretechtalk-94bb.g.aivencloud.com:10379/defaultdb?ssl-mode=REQUIRED
       - SPRING_DATASOURCE_USERNAME=avnadmin
-      - SPRING_DATASOURCE_PASSWORD=AVNS_Q20z2R3w897c7GZovle
+      - SPRING_DATASOURCE_PASSWORD=AVNS_RCbR6rhl5mxqDKpsqvI
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
     expose:
@@ -93,21 +132,30 @@ services:
     ports:
       - 8083:8083
     depends_on:
-      - config-server
-      - eureka-server
+      config-server:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://stressrelief-service:8083/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
 
   article-service:
     container_name: article-service
     build:
       context: ./ArticleManagement/ArticleManagement/
       dockerfile: Dockerfile
-    image: article-management:latest
+    image: article-service:latest
     restart: on-failure
     environment:
       - CONFIG_SERVER_URL=http://config-server:8888
-      - SPRING_DATASOURCE_URL=jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11696376
-      - SPRING_DATASOURCE_USERNAME=sql11696376
-      - SPRING_DATASOURCE_PASSWORD=eZMWYdPWGG
+      - SPRING_DATASOURCE_URL=jdbc:mysql://avnadmin:AVNS_oARMFA_a9EfKpb85b_B@article-logsmarter-f8c0.e.aivencloud.com:15491/defaultdb?ssl-mode=REQUIRED
+      - SPRING_DATASOURCE_USERNAME=avnadmin
+      - SPRING_DATASOURCE_PASSWORD=AVNS_oARMFA_a9EfKpb85b_B
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
     expose:
@@ -115,17 +163,25 @@ services:
     ports:
       - 8082:8082
     depends_on:
-      - config-server
-      - eureka-server
+      config-server:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://article-service:8082/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
 
-
+    networks:
+      - app-network
 
   api-gateway:
     container_name: api-gateway
     build:
       context: ./api-gateway/
       dockerfile: Dockerfile
-    image: api-gateway-dockerfile:latest
+    image: api-gateway:latest
     restart: on-failure
     environment:
       - EUREKA_SERVER_URL=http://eureka-server:8999/eureka
@@ -134,10 +190,18 @@ services:
     ports:
       - 8089:8089
     depends_on:
-      - eureka-server
-      - config-server
-      - user-service
-      - appointment-service
-      - stressrelief-service
-      - article-service
+      config-server:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://api-gateway:8089/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+    networks:
+      - app-network
 
+networks:
+  app-network:
+    driver: bridge
