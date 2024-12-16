@@ -51,7 +51,7 @@ public class AuthPrefilter extends AbstractGatewayFilterFactory<AuthPrefilter.Co
             if (!isAnonymous.test(request)) {
                 String bearerToken = getJwtTokenFromRequest(request);
                 return webClientBuilder.build().post()
-                        .uri("http://localhost:8080/validate-token")
+                        .uri("http://userservice:8080/validate-token")
                         .header(HttpHeaders.AUTHORIZATION, bearerToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(new ValidateTokenRequestDto(config.getRoles()))

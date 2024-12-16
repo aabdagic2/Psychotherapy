@@ -16,8 +16,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication(scanBasePackages ={"ba.unsa.etf.pnwt.ArticleManagement","ba.unsa.etf.pnwt.ArticleManagement.repository"} )
-@OpenAPIDefinition(servers = {@Server(url = "/", description = "Default Server URL")})
+@SpringBootApplication
 // @EnableEurekaClient
 public class ArticleManagementApplication implements CommandLineRunner {
 
@@ -35,34 +34,47 @@ public class ArticleManagementApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// prvi clanak
-//		Article article = new Article();
-//		article.setId("aaaaaaaa");
-//		article.setAuthor("9d0d4a57-8623-4686-9d2f-06c2640c78c8"); // dodati istog autora
-//		article.setTitle("Ovo je NWT projekat.");
-//
-//		Text textSection = new Text();
-//		textSection.setContent("Ovo je tekst.");
-//
-//		Video videoSection = new Video();
-//		videoSection.setVideoUrl("Ovo je video.");
-//
-//		Image imageSection = new Image();
-//		imageSection.setImageUrl("Ovo je slika.");
-//
-//		article.setText(textSection);
-//		article.setImage(imageSection);
-//		article.setVideo(videoSection);
-//
-//		articleRepo.save(article);
-//
-//		textSection.setArticle(article);
-//		textRepo.save(textSection);
-//		videoSection.setArticle(article);
-//		videoRepo.save(videoSection);
-//		imageSection.setArticle(article);
-//		imageRepo.save(imageSection);
+		// Kreiranje članka sa fiksnim ID-om i podacima
+		Article article = new Article();
+		article.setId("1"); // Fiksni ID za članak
+		article.setAuthor("59a8bf4f-1414-4a1e-b184-a370bd61313c"); // Postojeći userId
+		article.setTitle("Važnost mentalnog zdravlja");
+
+		// Tekstualni sadržaj članka
+		Text textSection = new Text();
+		textSection.setContent("Mentalno zdravlje je jednako važno kao i fizičko zdravlje. "
+				+ "Redovno razgovaranje sa stručnjacima, kao i briga o sebi kroz meditaciju, "
+				+ "fizičku aktivnost i kvalitetan san može značajno unaprijediti kvalitet života.");
+
+		// Video sadržaj članka
+		Video videoSection = new Video();
+		videoSection.setVideoUrl("https://www.youtube.com/watch?v=abc123test"); // Testni video link
+
+		// Slikovni sadržaj članka
+		Image imageSection = new Image();
+		imageSection.setImageUrl("https://example.com/mental-health.jpg"); // Testni link za sliku
+
+		// Postavljanje sadržaja članka
+		article.setText(textSection);
+		article.setImage(imageSection);
+		article.setVideo(videoSection);
+
+		// Spremanje članka u bazu
+		articleRepo.save(article);
+
+		// Povezivanje sadržaja sa člankom
+		textSection.setArticle(article);
+		textRepo.save(textSection);
+
+		videoSection.setArticle(article);
+		videoRepo.save(videoSection);
+
+		imageSection.setArticle(article);
+		imageRepo.save(imageSection);
+
+		System.out.println("Testni članak sa slikom, videom i tekstom uspješno dodat u bazu!");
 	}
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(ArticleManagementApplication.class, args);
